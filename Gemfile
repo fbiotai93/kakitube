@@ -23,6 +23,10 @@ group :development do
   gem 'quiet_assets'
 end
 
+group :test do
+  gem "codeclimate-test-reporter", require: nil
+end
+
 group :development, :test do
   gem 'byebug'
 	gem 'web-console', '~> 2.0'
