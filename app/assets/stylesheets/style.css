@@ -86,3 +86,62 @@ body {
 	border-bottom: 1px solid transparent !important;
 	border-radius: 0 !important;
 }
+
+/*
+	Login, Register n' Forgot Password
+*/
+
+.sessions.new,
+.registrations.new,
+.registrations.create,
+.passwords.new,
+.passwords.create {
+	background-color: #AE5D54;
+}
+
+section#login-form {
+	padding-top: 60px;
+}
+
+section#register-form {
+	padding-top: 60px;
+}
+
+section#password-form {
+	padding-top: 100px;
+}
+
+section#login-form h1,
+section#register-form h1,
+section#password-form h1 {
+	color: #ffffff;
+}
+
+section#login-form p,
+section#register-form p,
+section#password-form p {
+	font-size: 16px;
+	color: #ffffff;
+}
+
+section#login-form p a,
+section#register-form p a,
+section#password-form p a {
+	color: #ffffff;
+	text-decoration: underline;
+	font-weight: 600;
+}
+
+#login-form .form-box,
+#register-form .form-box,
+#password-form .form-box {
+	background-color: #ffffff;
+	padding: 0 20px;
+	border-radius: 6px;
+}
+
+#login-form .form-box .page-header,
+#register-form .form-box .page-header,
+#password-form .form-box .page-header {
+	padding-top: 10px;
+}
