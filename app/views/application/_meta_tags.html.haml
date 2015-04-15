@@ -1,0 +1,33 @@
+- og_description ||= ""
+- og_title ||= ""
+- og_type ||= ""
+- og_url ||= ""
+- og_image ||= ""
+- image_url ||= image_path('kakitube@2x.png')
+%meta{:content => "#{!og_type.blank? ? og_type : 'website'}", :property => "og:type"}/
+%meta{:content => "#{!og_title.blank? ? og_title : title}", :property => "og:title"}/
+%meta{:content => "#{!og_url.blank? ? og_url : request.url}", :property => "og:url"}/
+%meta{:content => "#{!og_image.blank? ? og_image : image_url('logo2.png')}", :property => "og:image"}/
+%meta{:content => "#{!og_description.blank? ? og_description : description}", :property => "og:description"}/
+%meta{:content => "KakiTube", :property => "og:site_name"}/
+%meta{:content => title, :name => "title"}/
+%meta{:content => description, :name => "description"}/
+%link{:href => canonical, :rel => "canonical"}/
+= favicon_link_tag 'favicon.ico', :rel => 'apple-touch-icon shortcut icon', :type => 'image/png'
+= favicon_link_tag 'apple-icon-precomposed.png', :rel => 'apple-touch-icon-precompose', size: "192x192", :type => 'image/png'
+/ non-retina iPhone pre iOS 7
+= favicon_link_tag 'apple-icon-57x57.png', :rel => 'apple-touch-icon', size: "57x57", :type => 'image/png'
+= favicon_link_tag 'apple-icon-60x60.png', :rel => 'apple-touch-icon', size: "60x60", :type => 'image/png'
+/ non-retina iPad pre iOS 7
+= favicon_link_tag 'apple-icon-72x72.png', :rel => 'apple-touch-icon', size: "72x72", :type => 'image/png'
+/ non-retina iPad iOS 7
+= favicon_link_tag 'apple-icon-76x76.png', :rel => 'apple-touch-icon', size: "76x76", :type => 'image/png'
+/ retina iPhone pre iOS 7
+= favicon_link_tag 'apple-icon-114x114.png', :rel => 'apple-touch-icon', size: "114x114", :type => 'image/png'
+/ retina iPhone iOS 7
+= favicon_link_tag 'apple-icon-120x120.png', :rel => 'apple-touch-icon', size: "120x120", :type => 'image/png'
+/ retina iPad pre iOS 7
+= favicon_link_tag 'apple-icon-144x144.png', :rel => 'apple-touch-icon', size: "144x144", :type => 'image/png'
+/ retina iPad iOS 7
+= favicon_link_tag 'apple-icon-152x152.png', :rel => 'apple-touch-icon', size: "152x152", :type => 'image/png'
+= favicon_link_tag 'apple-icon-180x180.png', :rel => 'apple-touch-icon', size: "180x180", :type => 'image/png'

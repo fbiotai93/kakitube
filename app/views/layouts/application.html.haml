@@ -2,11 +2,17 @@
 %html
 	%head
 		%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-		%title Kakitube
+		%meta{:charset => "UTF-8"}/
+		%title= (title = yield :title).blank? ? "KakiTube" : title
+		%meta{:content => "KakiTube", :name => "keywords"}/
+		%meta{:content => "KakiTube", :name => "description"}/
+		%meta{:content => "KakiTube", :name => "author"}/
+		%meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
 		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 		= javascript_include_tag 'application', 'data-turbolinks-track' => true
 		= csrf_meta_tags
-	%body
+		= yield :meta_tags
+	%body{class: "#{body_class}"}
 		%p.notice= notice
 		%p.alert= alert
 		= yield
