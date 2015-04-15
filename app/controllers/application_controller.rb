@@ -11,4 +11,10 @@ class ApplicationController < ActionController::Base
 		devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
 		devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
 	end
+
+  def admin_only
+    unless current_user.is_admin?
+      redirect_to root_path, :alert => "Sorry! You have no permission to view that page."
+    end
+  end
 end

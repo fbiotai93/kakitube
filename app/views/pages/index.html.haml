@@ -5,3 +5,7 @@
 - else
 	%li= link_to "Sign In", login_path
 	%li= link_to "Register", register_path
+- if user_signed_in? && current_user.is_admin?
+	%h1 I'm ADMIN
+- elsif user_signed_in?
+	%h1 I'm NOT ADMIN

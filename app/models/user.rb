@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
 
   default_scope -> { order('users.id DESC') }
 
+  def is_admin?
+  	admin === true
+  end
+
   def self.find_first_by_auth_conditions(warden_conditions)
 	  conditions = warden_conditions.dup
 	  if login = conditions.delete(:login)

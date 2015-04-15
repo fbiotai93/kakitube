@@ -39,4 +39,12 @@ FactoryGirl.define do
     confirmed_at Date.today
     admin false
   end
+  factory :admin, :class => User do
+    username 'admin'
+    email 'admin@example.com'
+    password 'secret123'
+    password_confirmation 'secret123'
+    confirmed_at Date.today
+    admin true
+  end
 end
