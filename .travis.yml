@@ -1,0 +1,5 @@
+language: ruby
+before_script:
+  - mysql -e 'create database kakitube_test;'
+rvm:
+ - 2.2.1
