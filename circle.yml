@@ -1,0 +1,10 @@
+---
+machine:
+  environment:
+    DB: mysql
+  # services:
+  #   - postgresql
+  ruby:
+    version: 2.2.1
+  timezone:
+    Asia/Kuala_Lumpur
