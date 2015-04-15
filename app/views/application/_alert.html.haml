@@ -1,0 +1,12 @@
+- if alert
+  .alert.alert-danger.alert-dismissible.nomar-bot{:role => "alert"}
+    %button.close{"data-dismiss" => "alert", :type => "button"}
+      %span{"aria-hidden" => "true"} ×
+      %span.sr-only Close
+    = alert
+- elsif notice
+  .alert.alert-warning.alert-dismissible.nomar-bot{:role => "alert"}
+    %button.close{"data-dismiss" => "alert", :type => "button"}
+      %span{"aria-hidden" => "true"} ×
+      %span.sr-only Close
+    = notice

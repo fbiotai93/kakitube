@@ -1,0 +1,37 @@
+%nav.navbar.navbar-default.navbar-inverse
+  .container
+    .navbar-header
+      = link_to image_tag("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAA81BMVEX///9VPnxWPXxWPXxWPXxWPXxWPXxWPXz///9hSYT6+vuFc6BXPn37+vz8+/z9/f2LeqWMe6aOfqiTg6uXiK5bQ4BZQX9iS4VdRYFdRYJfSINuWI5vWY9xXJF0YJR3Y5Z4ZZd5ZZd6Z5h9apq0qcW1qsW1q8a6sMqpnLyrn76tocCvpMGwpMJoUoprVYxeRoJjS4abjLGilLemmbrDutDFvdLPx9nX0eDa1OLb1uPd1+Td2OXe2eXh3Ofj3+nk4Orl4evp5u7u7PLv7fPx7/T08vb08/f19Pf29Pj39vn6+fuEcZ9YP35aQn/8/P1ZQH5fR4PINAOdAAAAB3RSTlMAIWWOw/P002ipnAAAAPhJREFUeF6NldWOhEAUBRvtRsfdfd3d3e3/v2ZPmGSWZNPDqScqqaSBSy4CGJbtSi2ubRkiwXRkBo6ZdJIApeEwoWMIS1JYwuZCW7hc6ApJkgrr+T/eW1V9uKXS5I5GXAjW2VAV9KFfSfgJpk+w4yXhwoqwl5AIGwp4RPgdK3XNHD2ETYiwe6nUa18f5jYSxle4vulw7/EtoCdzvqkPv3bn7M0eYbc7xFPXzqCrRCgH0Hsm/IjgTSb04W0i7EGjz+xw+wR6oZ1MnJ9TWrtToEx+4QfcZJ5X6tnhw+nhvqebdVhZUJX/oFcKvaTotUcvUnY188ue/n38AunzPPE8yg7bAAAAAElFTkSuQmCC", alt: "KakiTube", class: "navbar-brand"), root_path
+      %button.navbar-toggle.collapsed{"data-target" => "#navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+    #navbar-collapse.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          %a{:href => "#"} About
+        %li
+          %a{:href => "#"} Help
+        - if user_signed_in? && current_user.is_admin?
+          %li{:class => "#{current_page(dashboard_path)}"}
+            = link_to "Dashboard", dashboard_path
+      .nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %ul.nav.navbar-nav
+            %li.dropdown
+              = link_to "", class: "dropdown-toggle", "data-toggle" => "dropdown", role: "button", "aria-expanded" => "false" do
+                = image_tag avatar_url(current_user), alt: "#{current_user.username}", class: "img-circle"
+                = current_user.username
+                %span.caret
+              %ul.dropdown-menu{:role => "menu"}
+                %li= link_to "Account Settings", account_update_path
+                %li.divider 
+                %li= link_to "Logout", destroy_user_session_path, method: "delete"
+        - else
+          = link_to login_path, class: "btn btn-default btn-primary btn-xs navbar-btn" do
+            .small.glyphicon.glyphicon-lock
+            Sign In
+          = link_to register_path, class: "btn btn-default btn-xs navbar-btn" do
+            .small.glyphicon.glyphicon-user
+            Create An Account

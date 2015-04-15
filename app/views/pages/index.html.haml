@@ -1,10 +1,7 @@
-%h1 Pages#index
+%h1
+	Pages#index
+	.glyphicon.glyphicon-search
 %p Find me in app/views/pages/index.html.haml
-- if user_signed_in?
-	%li= link_to "Logout", destroy_user_session_path, method: "delete"
-- else
-	%li= link_to "Sign In", login_path
-	%li= link_to "Register", register_path
 - if user_signed_in? && current_user.is_admin?
 	%h1 I'm ADMIN
 - elsif user_signed_in?
