@@ -3,3 +3,6 @@ before_script:
   - mysql -e 'create database kakitube_test;'
 rvm:
  - 2.2.1
+addons:
+ code_climate:
+  repo_token: 0da455fec7411cc9cebef195c0d4b285b5bbf2e274c2dc8e68b66f157d411fd4
