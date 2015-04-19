@@ -16,6 +16,8 @@
         - if user_signed_in? && current_user.is_admin?
           %li{:class => "#{current_page(dashboard_path)}"}
             = link_to "Dashboard", dashboard_path
+          %li{:class => "#{current_page(posts_path)}"}
+            = link_to "Post", posts_path
       .nav.navbar-nav.navbar-right
         - if user_signed_in?
           %ul.nav.navbar-nav

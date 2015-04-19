@@ -1,0 +1,40 @@
+.panel-body
+	- if post.errors.any?
+		.alert.alert.danger.alert-dismissable
+			%button.close{type: "button", 'data-dismiss' => 'alert', 'alert-hidden' => 'true'} &times;
+			%strong
+				= pluralize(post.errors.count, "error")
+				prohibited this page from being saved:
+			%ul
+				- post.errors.full_messages.each do |msg|
+					%li= msg
+	.row
+		.col-md-6
+			.form-group
+				= f.label :imdbID, "IMDB ID", class: "col-sm-2 control-label"
+				.col-sm-10
+					= f.text_field :imdbID, class: "form-control"
+			.form-group
+				= f.label :title, "Title", class: "col-sm-2 control-label"
+				.col-sm-10
+					= f.text_field :title, class: "form-control"
+			.form-group
+				= f.label :description, "Description", class: "col-sm-2 control-label"
+				.col-sm-10
+					= f.text_area :description, class: "form-control", rows: 6
+			.form-group
+				= f.label :embed, "Embed Code", class: "col-sm-2 control-label"
+				.col-sm-10
+					= f.text_area :embed, class: "form-control", rows: 12, placeholder: "Insert your embed code here"
+		- if params[:preview_button]
+			#preview.col-md-6
+				.form-group
+					%strong Title
+					= @result['Title']
+				.form-group
+					%strong Year
+					= @result['Year']
+.panel-footer
+	= f.submit "Submit", class: "btn btn-primary"
+	= f.submit "Preview", name: "preview_button", class: "btn btn-default"
+	= link_to "Cancel", posts_path, class: "btn btn-link"

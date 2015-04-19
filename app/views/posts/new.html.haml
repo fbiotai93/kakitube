@@ -1,0 +1,19 @@
+- content_for :title do
+  KakiTube | Add New Post
+- content_for :meta_tags do
+  = render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | New Post", :url => request.url, :description => "KakiTube", :canonical => request.url, :og_title => "KakiTube | New Post", :og_description => "KakiTube" }
+  
+/ Page Content
+.container
+  .row
+    .col-lg-12
+      .page-header
+        %h1
+          Add New Post
+          %small Subtext for header
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title New Post Form
+        = form_for @post, html: { class: "form-horizontal", method: :post } do |f|
+          = render partial: 'form', locals: {f: f, post: @post}
+

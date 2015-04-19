@@ -37,6 +37,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
+  has_many :posts
+
   validates :username, :uniqueness => { :case_sensitive => false }, format: { with: /\A[-\w.]*\z/ }, presence: true
 
   default_scope -> { order('users.id DESC') }

@@ -1,0 +1,37 @@
+- content_for :title do
+  KakiTube | Post List
+- content_for :meta_tags do
+  = render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | Post List", :url => request.url, :description => "KakiTube", :canonical => request.url, :og_title => "KakiTube | Post List", :og_description => "KakiTube" }
+  
+/ Page Content
+.container
+  .row
+    .col-lg-12
+      .page-header
+        %h1 Post List
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title
+            Post List #{link_to "Add new post", new_post_path, class: "btn btn-xs btn-primary pull-right", style: "color:#FFFFFF;"}
+        .panel-body
+          %table.table.table-bordered.table-hovered
+            %thead
+              %tr
+                %th Type
+                %th.col-md-2 Date Added
+                %th.col-md-2 Action
+            %tbody
+              - @posts.each do |post|
+                %tr
+                  %td= post.title
+                  %td= post.created_at.strftime("%d %B %Y")
+                  %td
+                    .btn-group.btn-group-justified.btn-group-xs
+                      = link_to post_url(post), class: "btn btn-primary" do
+                        %span.glyphicon.glyphicon-eye-open{"aria-hidden" => true}
+                      = link_to edit_post_url(post), class: "btn btn-default" do
+                        %span.glyphicon.glyphicon-edit{"aria-hidden" => true}
+                      = link_to post_url(post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do
+                        %span.glyphicon.glyphicon-remove{"aria-hidden" => true}
+        / .panel-footer
+
