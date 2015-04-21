@@ -1,8 +1,107 @@
-%h1
-	Pages#index
-	.glyphicon.glyphicon-search
-%p Find me in app/views/pages/index.html.haml
-- if user_signed_in? && current_user.is_admin?
-	%h1 I'm ADMIN
-- elsif user_signed_in?
-	%h1 I'm NOT ADMIN
+.row
+	.col-md-8
+		.movie.latest
+			%a{href: "#"}
+				.gradient
+				%img.img-responsive{src: "http://placehold.it/750x250"}
+				.watch
+					%a.btn.btn-sm.btn-primary{href: "#"} Watch Now
+				.mini-desc
+					%h4 Avengers: Age of Ultron Angel Union
+					%p.hidden-sm.hidden-xs When Tony Stark jumpstarts a dormant peacekeeping program, things go awry and Earth's Mightiest Heroes, including Iron Man, Captain America, Thor, The Incredible Hulk, Black Wid...
+		%hr
+		%h4 Latest Movie
+		.movie.small-movie.effect
+			.mask
+			%a{href: "#"}
+				.gradient
+				%img.img-responsive{src: "http://placehold.it/233x290"}
+				.mini-desc2
+					%h4 Avengers: Age of Ultron Angel Union
+		.movie.small-movie.effect
+			.mask
+			%a{href: "#"}
+				.gradient
+				%img.img-responsive{src: "http://placehold.it/233x290"}
+				.mini-desc2
+					%h4 Avengers: Age of Ultron Angel Union
+		.movie.small-movie.effect.last
+			.mask
+			%a{href: "#"}
+				.gradient
+				%img.img-responsive{src: "http://placehold.it/233x290"}
+				.mini-desc2
+					%h4 Avengers: Age of Ultron Angel Union
+		.movie.small-movie.effect
+			.mask
+			%a{href: "#"}
+				.gradient
+				%img.img-responsive{src: "http://placehold.it/233x290"}
+				.mini-desc2
+					%h4 Avengers: Age of Ultron Angel Union
+		.movie.small-movie.effect
+			.mask
+			%a{href: "#"}
+				.gradient
+				%img.img-responsive{src: "http://placehold.it/233x290"}
+				.mini-desc2
+					%h4 Avengers: Age of Ultron Angel Union
+		.movie.small-movie.effect.last
+			.mask
+			%a{href: "#"}
+				.gradient
+				%img.img-responsive{src: "http://placehold.it/233x290"}
+				.mini-desc2
+					%h4 Avengers: Age of Ultron Angel Union
+		.movie.small-movie.effect
+			.mask
+			%a{href: "#"}
+				.gradient
+				%img.img-responsive{src: "http://placehold.it/233x290"}
+				.mini-desc2
+					%h4 Avengers: Age of Ultron Angel Union
+		.movie.small-movie.effect
+			.mask
+			%a{href: "#"}
+				.gradient
+				%img.img-responsive{src: "http://placehold.it/233x290"}
+				.mini-desc2
+					%h4 Avengers: Age of Ultron Angel Union
+		.movie.small-movie.effect.last
+			.mask
+			%a{href: "#"}
+				.gradient
+				%img.img-responsive{src: "http://placehold.it/233x290"}
+				.mini-desc2
+					%h4 Avengers: Age of Ultron Angel Union
+		.movie.small-movie.effect
+			.mask
+			%a{href: "#"}
+				.gradient
+				%img.img-responsive{src: "http://placehold.it/233x290"}
+				.mini-desc2
+					%h4 Avengers: Age of Ultron Angel Union
+		.movie.small-movie.effect
+			.mask
+			%a{href: "#"}
+				.gradient
+				%img.img-responsive{src: "http://placehold.it/233x290"}
+				.mini-desc2
+					%h4 Avengers: Age of Ultron Angel Union
+		.movie.small-movie.effect.last
+			.mask
+			%a{href: "#"}
+				.gradient
+				%img.img-responsive{src: "http://placehold.it/233x290"}
+				.mini-desc2
+					%h4 Avengers: Age of Ultron Angel Union
+	.col-md-4
+		%center
+			%img.img-responsive{src: "http://placehold.it/336x280"}
+		%hr
+		.fb-page{"data-href" => "https://www.facebook.com/osemnetwork", "data-width" => "360", "data-hide-cover" => "false", "data-show-facepile" => "true", "data-show-posts" => "false"}
+			.fb-xfbml-parse-ignore
+				%blockquote{ cite: "https://www.facebook.com/osemnetwork"}
+					%a{href: "https://www.facebook.com/osemnetwork"} Osem Network
+		%hr
+		%a.twitter-timeline{href: "https://twitter.com/osemnetwork", "data-widget-id" => "270974553793110016"} Tweets by @osemnetwork

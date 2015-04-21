@@ -145,3 +145,87 @@ section#password-form p a {
 #password-form .form-box .page-header {
 	padding-top: 10px;
 }
+
+/*
+	frontpage - latest
+*/
+
+.movie {
+	border-radius: 2px;
+		-moz-border-radius: 2px;
+		-webkit-border-radius: 2px;
+	overflow: hidden;
+	position: relative;
+}
+
+.movie a {
+	display: block;
+}
+
+.watch {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	width: 130px;
+	height: 36px;
+	z-index: 10;
+}
+
+.gradient {
+	background: url('/assets/gradient.png') repeat-x 0 0;
+	position: absolute;
+	z-index: 1;
+	height: 100%;
+	width: 100%;
+}
+
+.movie .mini-desc {
+	width: 70%;
+}
+
+.mini-desc {
+	min-height: 80px;
+	position: absolute;
+	z-index: 10;
+	bottom: 0;
+	padding: 15px 25px 0 25px;
+	color: #fff;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+
+/*
+	frontpage - small movie
+*/
+
+.small-movie {
+	width: 233px;
+	margin: 0 25px 25px 0;
+	height: 275px;
+	float: left;
+}
+
+.small-movie.last {
+	margin-right: 0;
+}
+
+.mini-desc2 {
+	min-height: 80px;
+	position: absolute;
+	z-index: 10;
+	bottom: 0;
+	padding: 15px 15px 0 15px;
+	color: #fff;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+
+.small-movie:hover .mask {
+   position:absolute;
+   cursor:pointer;
+   display: inline-block;
+   height: 275px;
+   width: 233px;
+   border: 120px solid rgba(0, 0, 0, 0.5);
+   opacity:1;
+   visibility:visible;
+   /*transition: all 0.4s ease-in-out;*/
+}
