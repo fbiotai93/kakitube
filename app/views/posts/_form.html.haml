@@ -13,28 +13,77 @@
 			.form-group
 				= f.label :imdbID, "IMDB ID", class: "col-sm-2 control-label"
 				.col-sm-10
-					= f.text_field :imdbID, class: "form-control"
+					.input-group
+						= f.text_field :imdbID, class: "form-control"
+						%span.input-group-btn
+							= f.submit "Fetch Data", name: "preview_button", class: "btn btn-primary"
+					%p.help-block.small Leave blank if you are not fetching the data from IMDB
+			- if params[:preview_button]
+				.form-group
+					%center= image_tag("http://img.omdbapi.com/?i=#{@result['imdbID']}&apikey=#{Settings.imdb_api}", class: "img-circle")
 			.form-group
 				= f.label :title, "Title", class: "col-sm-2 control-label"
 				.col-sm-10
 					= f.text_field :title, class: "form-control"
+			.row
+				.col-md-6
+					.form-group
+						= f.label :year, "Year", class: "col-sm-4 control-label"
+						.col-sm-8
+							= f.text_field :year, class: "form-control"
+				.col-md-6
+					.form-group
+						= f.label :rated, "Rated", class: "col-sm-4 control-label"
+						.col-sm-8
+							= f.text_field :rated, class: "form-control"
+			.row
+				.col-md-6
+					.form-group
+						= f.label :released, "Released", class: "col-sm-4 control-label"
+						.col-sm-8
+							= f.text_field :released, class: "form-control"
+				.col-md-6
+					.form-group
+						= f.label :runtime, "Runtime", class: "col-sm-4 control-label"
+						.col-sm-8
+							= f.text_field :runtime, class: "form-control"
+			.form-group
+				= f.label :director, "Director", class: "col-sm-2 control-label"
+				.col-sm-10
+					= f.text_field :director, class: "form-control"
+			.form-group
+				= f.label :writer, "Writer", class: "col-sm-2 control-label"
+				.col-sm-10
+					= f.text_field :writer, class: "form-control"
+			.form-group
+				= f.label :actors, "Actors", class: "col-sm-2 control-label"
+				.col-sm-10
+					= f.text_field :actors, class: "form-control"
 			.form-group
 				= f.label :description, "Description", class: "col-sm-2 control-label"
 				.col-sm-10
-					= f.text_area :description, class: "form-control", rows: 6
+					= f.text_area :description, class: "form-control", rows: 8
+			.form-group
+				= f.label :language, "Language", class: "col-sm-2 control-label"
+				.col-sm-10
+					= f.text_field :language, class: "form-control"
+			.form-group
+				= f.label :country, "Country", class: "col-sm-2 control-label"
+				.col-sm-10
+					= f.text_field :country, class: "form-control"
 			.form-group
 				= f.label :embed, "Embed Code", class: "col-sm-2 control-label"
 				.col-sm-10
 					= f.text_area :embed, class: "form-control", rows: 12, placeholder: "Insert your embed code here"
 		- if params[:preview_button]
 			#preview.col-md-6
-				.form-group
-					%strong Title
-					= @result['Title']
-				.form-group
-					%strong Year
-					= @result['Year']
+				/ .form-group
+				/ 	%strong Title
+				/ 	= @result['Title']
+				/ .form-group
+				/ 	%strong Year
+				/ 	= @result['Year']
+				%pre= JSON.pretty_generate(@result)
 .panel-footer
-	= f.submit "Submit", class: "btn btn-primary"
-	= f.submit "Preview", name: "preview_button", class: "btn btn-default"
+	= f.submit "Submit", name: "submit", class: "btn btn-primary"
 	= link_to "Cancel", posts_path, class: "btn btn-link"

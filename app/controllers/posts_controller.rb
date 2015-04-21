@@ -16,13 +16,26 @@ class PostsController < ApplicationController
 
   def create
   	@post = @user.posts.new(post_params)
-  	if params[:preview_button] || @post.save
-      @response = HTTParty.get("http://www.omdbapi.com/?i=#{@post.imdbID}&plot=full&r=json")
+  	if params[:preview_button]
+      url = "http://www.omdbapi.com/?i=#{@post.imdbID}&plot=full&r=json"
+      @response = HTTParty.get(URI.encode(url))
       @result = JSON.parse(@response.body)
+      @post.title = @result["Title"]
+      @post.description = @result["Plot"]
+      @post.year = @result["Year"]
+      @post.rated = @result["Rated"]
+      @post.released = @result["Released"]
+      @post.runtime = @result["Runtime"]
+      @post.director = @result["Director"]
+      @post.writer = @result["Writer"]
+      @post.actors = @result["Actors"]
+      @post.language = @result["Language"]
+      @post.country = @result["Country"]
       render 'new'
-    else
-  		redirect_to posts_path, notice: "Good! Post has been publish"
-  	end
+    elsif params[:submit]
+      @post.save
+      redirect_to posts_path, notice: "Good! Post has been publish"
+    end
   end
 
   def show
@@ -69,6 +82,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-  	params.require(:post).permit(:user_id, :title, :description, :embed, :imdbID)
+  	params.require(:post).permit(:user_id, :title, :description, :embed, :imdbID, :year, :rated, :released, :runtime, :director, :writer, :actors, :plot, :language, :country, :awards, :poster, :metascore, :imdbrating, :imdbvotes)
   end
 end
