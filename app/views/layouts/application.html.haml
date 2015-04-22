@@ -12,7 +12,7 @@
 		= javascript_include_tag 'application', 'data-turbolinks-track' => true
 		= csrf_meta_tags
 		= yield :meta_tags
-	%body{class: "#{body_class}"}
+	%body{class: "#{body_class}", data: {no_turbolink: true}}
 		= render partial: "analytics"
 		= render partial: "alert"
 		= render partial: "navbar"

@@ -21,12 +21,4 @@
 					.mini-desc2
 						%h4= p.title
 	.col-md-4
-		%center
-			%img.img-responsive{src: "http://placehold.it/336x280"}
-		%hr
-		.fb-page{"data-href" => "https://www.facebook.com/osemnetwork", "data-width" => "360", "data-hide-cover" => "false", "data-show-facepile" => "true", "data-show-posts" => "false"}
-			.fb-xfbml-parse-ignore
-				%blockquote{ cite: "https://www.facebook.com/osemnetwork"}
-					%a{href: "https://www.facebook.com/osemnetwork"} Osem Network
-		%hr
-		%a.twitter-timeline{href: "https://twitter.com/osemnetwork", "data-widget-id" => "270974553793110016"} Tweets by @osemnetwork
+		= render partial: "sidebar_right"
