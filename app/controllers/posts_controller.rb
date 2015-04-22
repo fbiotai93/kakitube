@@ -31,6 +31,9 @@ class PostsController < ApplicationController
       @post.actors = @result["Actors"]
       @post.language = @result["Language"]
       @post.country = @result["Country"]
+      @post.metascore = @result["Metascore"]
+      @post.imdbrating = @result["imdbRating"]
+      @post.imdbvotes = @result["imdbVotes"]
       render 'new'
     elsif params[:submit]
       @post.save
@@ -82,6 +85,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-  	params.require(:post).permit(:user_id, :title, :description, :embed, :imdbID, :year, :rated, :released, :runtime, :director, :writer, :actors, :plot, :language, :country, :awards, :poster, :metascore, :imdbrating, :imdbvotes)
+  	params.require(:post).permit(:user_id, :genre_id, :poster, :poster_cache, :title, :description, :embed, :imdbID, :year, :rated, :released, :runtime, :director, :writer, :actors, :plot, :language, :country, :awards, :poster, :metascore, :imdbrating, :imdbvotes, :header_image, :header_image_cache, :featured)
   end
 end

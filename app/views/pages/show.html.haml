@@ -1,0 +1,90 @@
+.row
+	.col-md-8
+		.page-header
+			%h2= @post.title
+		.row
+			.col-md-4
+				= image_tag(@post.poster_url(:standard), class: "img-responsive")
+			.col-md-8
+				%p= @post.description
+				.row
+					.col-md-6
+						%p
+							%strong Director
+							%p= @post.director
+					.col-md-6
+						%p
+							%strong Actors
+							%p= @post.actors
+				.row
+					.col-md-6
+						%p
+							%strong Language
+							%p= @post.language
+					.col-md-6
+						%p
+							%strong Country
+							%p= @post.country
+				.row
+					.col-md-4
+						%p
+							%strong Metascore
+							%p= @post.metascore
+					.col-md-4
+						%p
+							%strong IMDB Rating
+							%p= @post.imdbrating
+					.col-md-4
+						%p
+							%strong IMDB Votes
+							%p= @post.imdbvotes
+				%table.table.table-bordered
+					%tbody
+						%tr
+							%td.col-md-3
+								%center
+									%strong Year
+									%br/
+									%span.label.label-default= @post.year
+							%td.col-md-3
+								%center
+									%strong Rated
+									%br/
+									%span.label.label-default= @post.rated
+							%td.col-md-3
+								%center
+									%strong Released
+									%br/
+									%span.label.label-default= @post.released
+							%td.col-md-3
+								%center
+									%strong Runtime
+									%br/
+									%span.label.label-default= @post.runtime
+			.btn-group.btn-group-justified
+				.btn-group.btn-group-lg
+					%button{"data-toggle" => "modal", "data-target" => "#trailer", class: "btn btn-default"} Watch Trailer
+				.btn-group.btn-group-lg
+					%button{class: "btn btn-primary"} Watch Full Video
+		#trailer.modal.fade{tabindex: 1, role: "dialog", "aria-labelledby" => "Trailer", "aria-hidden" => true}
+			.modal-dialog{style: "width:670px;"}
+				.modal-content
+					.modal-header
+						%button.close{type: "button", "data-dismiss" => "modal", "aria-label" => "Close"}
+							%span{"aria-hidden" => true} &times;
+						%h4.modal-title{id: "trailer"} Trailer of #{@post.title}
+					.modal-body
+						.embed-responsive.embed-responsive-16by9
+							= @post.embed.html_safe
+					.modal-footer
+						%button.btn.btn-default{"data-dismiss" => "modal"} Close
+	.col-md-4
+		%center
+			%img.img-responsive{src: "http://placehold.it/336x280"}
+		%hr
+		.fb-page{"data-href" => "https://www.facebook.com/osemnetwork", "data-width" => "360", "data-hide-cover" => "false", "data-show-facepile" => "true", "data-show-posts" => "false"}
+			.fb-xfbml-parse-ignore
+				%blockquote{ cite: "https://www.facebook.com/osemnetwork"}
+					%a{href: "https://www.facebook.com/osemnetwork"} Osem Network
+		%hr
+		%a.twitter-timeline{href: "https://twitter.com/osemnetwork", "data-widget-id" => "270974553793110016"} Tweets by @osemnetwork

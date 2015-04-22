@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
 	# For APIs, you may want to use :null_session instead.
 	protect_from_forgery with: :exception
 
+  def current_controller?(names)
+    "active" if names.include?(params[:controller]) unless params[:controller].blank? || false
+  end
+
+  helper_method :current_controller?
+
 	protected
 	
 	def configure_permitted_parameters

@@ -1,0 +1,7 @@
+.list-group
+	= link_to posts_path, class: "list-group-item #{current_controller?(['posts'])}" do
+		%span.badge= Post.all.count
+		Posts
+	= link_to "User", "#", class: "list-group-item"
+	= link_to "Comment", "#", class: "list-group-item"
+	= link_to "Configuration", "#", class: "list-group-item"

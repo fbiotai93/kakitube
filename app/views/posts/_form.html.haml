@@ -18,9 +18,26 @@
 						%span.input-group-btn
 							= f.submit "Fetch Data", name: "preview_button", class: "btn btn-primary"
 					%p.help-block.small Leave blank if you are not fetching the data from IMDB
-			- if params[:preview_button]
-				.form-group
-					%center= image_tag("http://img.omdbapi.com/?i=#{@result['imdbID']}&apikey=#{Settings.imdb_api}", class: "img-circle")
+			.form-group
+				= f.label :poster, "Poster", class: "col-sm-2 control-label"
+				.col-sm-10
+					- if @post.try(:poster?)
+						= image_tag(@post.poster_url(:standard), class: "img-responsive")
+					- else
+						= image_tag('poster-default.png', class: "img-responsive")
+					%h6 Replace current image
+					= f.file_field :poster, class: "form-control"
+					= f.hidden_field :poster_cache
+			.form-group
+				= f.label :header_image, "Header Image", class: "col-sm-2 control-label"
+				.col-sm-10
+					- if @post.try(:header_image?)
+						= image_tag(@post.header_image_url(:standard), class: "img-responsive")
+					- else
+						= image_tag('poster-latest.png', class: "img-responsive")
+					%h6 Replace current image
+					= f.file_field :header_image, class: "form-control"
+					= f.hidden_field :header_image_cache
 			.form-group
 				= f.label :title, "Title", class: "col-sm-2 control-label"
 				.col-sm-10
@@ -72,17 +89,22 @@
 				.col-sm-10
 					= f.text_field :country, class: "form-control"
 			.form-group
+				= f.label :genre_id, "Genre", class: "col-md-2 control-label"
+				.col-md-10
+					= f.collection_select :genre_id, Genre.order(:name), :id, :name, {}, :class => "form-control"
+			.form-group
 				= f.label :embed, "Embed Code", class: "col-sm-2 control-label"
 				.col-sm-10
 					= f.text_area :embed, class: "form-control", rows: 12, placeholder: "Insert your embed code here"
+			.checkbox.pull-right
+				%label
+					= f.check_box :featured, :type => 'checkbox'
+					%strong Mark as featured video
+			= f.hidden_field :metascore, class: "form-control"
+			= f.hidden_field :imdbrating, class: "form-control"
+			= f.hidden_field :imdbvotes, class: "form-control"
 		- if params[:preview_button]
 			#preview.col-md-6
-				/ .form-group
-				/ 	%strong Title
-				/ 	= @result['Title']
-				/ .form-group
-				/ 	%strong Year
-				/ 	= @result['Year']
 				%pre= JSON.pretty_generate(@result)
 .panel-footer
 	= f.submit "Submit", name: "submit", class: "btn btn-primary"

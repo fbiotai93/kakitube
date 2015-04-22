@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   get '/dashboard' => 'dashboards#index'
 
+  get '/:sort/' => 'pages#index', as: 'genre_index'
+  get '/:sort/:id' => 'pages#show', as: 'genre_show'
+
   # You can have the root of your site routed with "root"
   root 'pages#index'
 

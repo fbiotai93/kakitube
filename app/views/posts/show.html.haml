@@ -1,1 +1,76 @@
-= @post.title
+- content_for :title do
+	KakiTube | Post List
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | Post List", :url => request.url, :description => "KakiTube", :canonical => request.url, :og_title => "KakiTube | Post List", :og_description => "KakiTube" }
+	
+/ Page Content
+.container
+	.row
+		.col-lg-12
+			.page-header
+				%h1 Post List
+	.row
+		.col-md-4
+			= render partial: "sidebar"
+		.col-md-8
+			.embed-responsive.embed-responsive-16by9
+				.embed-responsive-item= @post.embed.html_safe
+			%h4
+				= @post.title
+				%span.badge= @post.genre.name
+			%p= @post.description
+			%table.table.table-bordered
+				%tbody
+					%tr
+						%td.col-md-3
+							%center
+								%strong Year
+								%br/
+								%span.label.label-default= @post.year
+						%td.col-md-3
+							%center
+								%strong Rated
+								%br/
+								%span.label.label-default= @post.rated
+						%td.col-md-3
+							%center
+								%strong Released
+								%br/
+								%span.label.label-default= @post.released
+						%td.col-md-3
+							%center
+								%strong Runtime
+								%br/
+								%span.label.label-default= @post.runtime
+			.row
+				.col-md-6
+					%p
+						%strong Director
+						%p= @post.director
+				.col-md-6
+					%p
+						%strong Actors
+						%p= @post.actors
+			.row
+				.col-md-6
+					%p
+						%strong Language
+						%p= @post.language
+				.col-md-6
+					%p
+						%strong Country
+						%p= @post.country
+			.row
+				.col-md-4
+					%p
+						%strong Metascore
+						%p= @post.metascore
+				.col-md-4
+					%p
+						%strong IMDB Rating
+						%p= @post.imdbrating
+				.col-md-4
+					%p
+						%strong IMDB Votes
+						%p= @post.imdbvotes
+

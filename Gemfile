@@ -17,6 +17,9 @@ gem 'rails_config'
 gem 'haml-rails', '~> 0.9'
 gem 'devise'
 gem 'httparty'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fastimage'
 
 group :development do
 	gem 'letter_opener'

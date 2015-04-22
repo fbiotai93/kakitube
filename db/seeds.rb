@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Genre.find_or_create_by(name: "Action", slug: "action")
+Genre.find_or_create_by(name: "Adventure", slug: "adventure")
+Genre.find_or_create_by(name: "Comedy", slug: "comedy")
+Genre.find_or_create_by(name: "Documentary", slug: "documentary")
+Genre.find_or_create_by(name: "Drama", slug: "drama")
+Genre.find_or_create_by(name: "Family", slug: "family")
+Genre.find_or_create_by(name: "Fantasy", slug: "fantasy")
+Genre.find_or_create_by(name: "Horror", slug: "horror")
+Genre.find_or_create_by(name: "Musical", slug: "musical")
+Genre.find_or_create_by(name: "Romance", slug: "romance")
+Genre.find_or_create_by(name: "Sci Fi", slug: "sci-fi")
+Genre.find_or_create_by(name: "Thriller", slug: "thriller")

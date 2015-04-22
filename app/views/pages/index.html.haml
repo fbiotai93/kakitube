@@ -1,100 +1,25 @@
 .row
 	.col-md-8
 		.movie.latest
-			%a{href: "#"}
-				.gradient
-				%img.img-responsive{src: "http://placehold.it/750x250"}
-				.watch
-					%a.btn.btn-sm.btn-primary{href: "#"} Watch Now
-				.mini-desc
-					%h4 Avengers: Age of Ultron Angel Union
-					%p.hidden-sm.hidden-xs When Tony Stark jumpstarts a dormant peacekeeping program, things go awry and Earth's Mightiest Heroes, including Iron Man, Captain America, Thor, The Incredible Hulk, Black Wid...
+			- @featured.each do |f|
+				= link_to genre_show_path(f, sort: f.genre.slug) do
+					.gradient
+					= image_tag(f.header_image_url(:standard), class: "img-responsive")
+					.watch
+						= link_to "Watch Now", genre_show_path(f, sort: f.genre.slug), class: "btn btn-sm btn-primary"
+					.mini-desc
+						%h4= f.title
+						%p=h truncate(f.description, length: 200)
 		%hr
 		%h4 Latest Movie
-		.movie.small-movie.effect
-			.mask
-			%a{href: "#"}
-				.gradient
-				%img.img-responsive{src: "http://placehold.it/233x290"}
-				.mini-desc2
-					%h4 Avengers: Age of Ultron Angel Union
-		.movie.small-movie.effect
-			.mask
-			%a{href: "#"}
-				.gradient
-				%img.img-responsive{src: "http://placehold.it/233x290"}
-				.mini-desc2
-					%h4 Avengers: Age of Ultron Angel Union
-		.movie.small-movie.effect.last
-			.mask
-			%a{href: "#"}
-				.gradient
-				%img.img-responsive{src: "http://placehold.it/233x290"}
-				.mini-desc2
-					%h4 Avengers: Age of Ultron Angel Union
-		.movie.small-movie.effect
-			.mask
-			%a{href: "#"}
-				.gradient
-				%img.img-responsive{src: "http://placehold.it/233x290"}
-				.mini-desc2
-					%h4 Avengers: Age of Ultron Angel Union
-		.movie.small-movie.effect
-			.mask
-			%a{href: "#"}
-				.gradient
-				%img.img-responsive{src: "http://placehold.it/233x290"}
-				.mini-desc2
-					%h4 Avengers: Age of Ultron Angel Union
-		.movie.small-movie.effect.last
-			.mask
-			%a{href: "#"}
-				.gradient
-				%img.img-responsive{src: "http://placehold.it/233x290"}
-				.mini-desc2
-					%h4 Avengers: Age of Ultron Angel Union
-		.movie.small-movie.effect
-			.mask
-			%a{href: "#"}
-				.gradient
-				%img.img-responsive{src: "http://placehold.it/233x290"}
-				.mini-desc2
-					%h4 Avengers: Age of Ultron Angel Union
-		.movie.small-movie.effect
-			.mask
-			%a{href: "#"}
-				.gradient
-				%img.img-responsive{src: "http://placehold.it/233x290"}
-				.mini-desc2
-					%h4 Avengers: Age of Ultron Angel Union
-		.movie.small-movie.effect.last
-			.mask
-			%a{href: "#"}
-				.gradient
-				%img.img-responsive{src: "http://placehold.it/233x290"}
-				.mini-desc2
-					%h4 Avengers: Age of Ultron Angel Union
-		.movie.small-movie.effect
-			.mask
-			%a{href: "#"}
-				.gradient
-				%img.img-responsive{src: "http://placehold.it/233x290"}
-				.mini-desc2
-					%h4 Avengers: Age of Ultron Angel Union
-		.movie.small-movie.effect
-			.mask
-			%a{href: "#"}
-				.gradient
-				%img.img-responsive{src: "http://placehold.it/233x290"}
-				.mini-desc2
-					%h4 Avengers: Age of Ultron Angel Union
-		.movie.small-movie.effect.last
-			.mask
-			%a{href: "#"}
-				.gradient
-				%img.img-responsive{src: "http://placehold.it/233x290"}
-				.mini-desc2
-					%h4 Avengers: Age of Ultron Angel Union
+		- @published_only.each do |p|
+			.movie.small-movie.effect{class: cycle('', '', 'last')}
+				.mask
+				= link_to genre_show_path(p, sort: p.genre.slug) do
+					.gradient
+					= image_tag(p.poster_url(:thumb), class: "img-responsive")
+					.mini-desc2
+						%h4= p.title
 	.col-md-4
 		%center
 			%img.img-responsive{src: "http://placehold.it/336x280"}

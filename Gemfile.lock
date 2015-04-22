@@ -53,6 +53,11 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     codeclimate-test-reporter (0.4.7)
       simplecov (>= 0.7.1, < 1.0.0)
     coffee-rails (4.1.0)
@@ -80,6 +85,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    fastimage (1.6.8)
+      addressable (~> 2.3, >= 2.3.5)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     haml (4.0.6)
@@ -120,6 +127,7 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
+    mini_magick (4.2.1)
     mini_portile (0.6.2)
     minitest (5.6.0)
     multi_json (1.11.0)
@@ -236,17 +244,20 @@ DEPENDENCIES
   annotate (~> 2.6.6)
   byebug
   capybara
+  carrierwave
   codeclimate-test-reporter
   coffee-rails (~> 4.1.0)
   devise
   factory_girl
   factory_girl_rails
+  fastimage
   haml-rails (~> 0.9)
   httparty
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
   letter_opener
+  mini_magick
   mysql2
   quiet_assets
   rails (= 4.2.1)
