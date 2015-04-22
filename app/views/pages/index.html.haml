@@ -29,7 +29,9 @@
 						%h4= f.title
 						%p=h truncate(f.description, length: 200)
 		%hr
-		%h4 Latest Movie
+		%h4{style: "margin-bottom:20px;"}
+			%span.glyphicon.glyphicon-th-list
+			Latest Movie
 		- @published_only.each do |p|
 			.movie.small-movie.effect{class: cycle('', '', 'last')}
 				.mask

@@ -46,15 +46,24 @@
 					.col-md-4
 						%p
 							%strong Metascore
-							%p= @post.metascore? ? @post.metascore : "N/A"
+							%p
+								%span.label.label-default
+									%span.glyphicon.glyphicon-stats
+									= @post.metascore? ? @post.metascore : "N/A"
 					.col-md-4
 						%p
 							%strong IMDB Rating
-							%p= @post.imdbrating? ? @post.imdbrating : "N/A"
+							%p
+								%span.label.label-default
+									%span.glyphicon.glyphicon-heart
+									= @post.imdbrating? ? @post.imdbrating : "N/A"
 					.col-md-4
 						%p
 							%strong IMDB Votes
-							%p= @post.imdbvotes? ? @post.imdbvotes : "N/A"
+							%p
+								%span.label.label-default
+									%span.glyphicon.glyphicon-thumbs-up
+									= @post.imdbvotes? ? @post.imdbvotes : "N/A"
 				%table.table.table-bordered
 					%tbody
 						%tr
