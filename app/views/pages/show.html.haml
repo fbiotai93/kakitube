@@ -1,3 +1,18 @@
+- content_for :title do
+	KakiTube | #{@post.title}
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags',       |
+       :locals => {                                     |
+         :type => "website",                            |
+         :title => "#{@post.title}",          |
+         :url => request.url,                           |
+         :description => "#{@post.description}",    |
+         :canonical => request.url,                     |
+         :og_title => "#{@post.title}",       |
+         :og_description => "#{@post.description}", |
+         :og_image => "#{image_url(@post.try(:poster))}"        |
+      }                                                 |
+
 .row
 	.col-md-8
 		.page-header
