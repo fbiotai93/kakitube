@@ -22,7 +22,9 @@
 					.gradient
 					= image_tag(f.header_image_url(:standard), class: "img-responsive")
 					.watch
-						= link_to "Watch Now", genre_show_path(f, sort: f.genre.slug), class: "btn btn-sm btn-primary"
+						= link_to genre_show_path(f, sort: f.genre.slug), class: "btn btn-sm btn-primary" do
+							%span.glyphicon.glyphicon-play-circle
+							Watch Now
 					.mini-desc
 						%h4= f.title
 						%p=h truncate(f.description, length: 200)
