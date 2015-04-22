@@ -27,6 +27,12 @@ group :development do
 	gem 'letter_opener'
 	gem 'annotate', '~> 2.6.6'
   gem 'quiet_assets'
+  gem 'capistrano', '~> 3.1.0'
+  gem 'capistrano-rbenv', github: "capistrano/rbenv"
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-gitflow', git: 'git@github.com:YotpoLtd/capistrano-gitflow.git'
+  gem 'capistrano-faster-assets', '~> 1.0'
 end
 
 group :test do
