@@ -20,5 +20,6 @@
 					= image_tag(p.poster_url(:thumb), class: "img-responsive")
 					.mini-desc2
 						%h4= p.title
+		= will_paginate @published_only
 	.col-md-4
 		= render partial: "sidebar_right"

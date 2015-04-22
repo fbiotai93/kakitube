@@ -29,10 +29,12 @@
 #  header_image :string(255)
 #  featured     :boolean
 #  trailer      :string(255)
+#  slug         :string(255)
 #
 # Indexes
 #
 #  index_posts_on_genre_id  (genre_id)
+#  index_posts_on_slug      (slug) UNIQUE
 #  index_posts_on_user_id   (user_id)
 #
 

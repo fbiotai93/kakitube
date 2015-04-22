@@ -2,10 +2,10 @@
 	= link_to posts_path, class: "list-group-item" do
 		%span.badge= Post.all.count
 		Posts
-	= link_to users_path, class: "list-group-item" do
+	= link_to users_path, class: "list-group-item #{current_controller?(['users'])}" do
 		%span.badge= User.all.count
 		User
 	= link_to "Comment", "#", class: "list-group-item"
-	= link_to genres_path, class: "list-group-item #{current_controller?(['genres'])}" do
+	= link_to genres_path, class: "list-group-item" do
 		%span.badge= Genre.all.count
 		Genre

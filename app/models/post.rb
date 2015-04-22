@@ -29,16 +29,21 @@
 #  header_image :string(255)
 #  featured     :boolean
 #  trailer      :string(255)
+#  slug         :string(255)
 #
 # Indexes
 #
 #  index_posts_on_genre_id  (genre_id)
+#  index_posts_on_slug      (slug) UNIQUE
 #  index_posts_on_user_id   (user_id)
 #
 
 class Post < ActiveRecord::Base
 	mount_uploader :poster, PosterUploader
 	mount_uploader :header_image, HeaderImageUploader
+
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :finders, :history]
 
   belongs_to :user
   belongs_to :genre

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422140724) do
+ActiveRecord::Schema.define(version: 20150422163244) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",           limit: 255, null: false
@@ -60,9 +60,11 @@ ActiveRecord::Schema.define(version: 20150422140724) do
     t.string   "header_image", limit: 255
     t.boolean  "featured",     limit: 1
     t.string   "trailer",      limit: 255
+    t.string   "slug",         limit: 255
   end
 
   add_index "posts", ["genre_id"], name: "index_posts_on_genre_id", using: :btree
+  add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|

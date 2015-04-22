@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'users/index'
+
   devise_for :users
   devise_scope :user do
     delete 'sign_out', :to => 'devise/sessions#destroy'
@@ -12,6 +14,12 @@ Rails.application.routes.draw do
 
   resources :posts
   resources :genres, except: [:show, :edit, :post]
+  resources :users, except: [:show, :edit, :post, :destroy, :new, :create] do
+    member do
+      patch :revoke
+      patch :grant
+    end
+  end
 
   get '/dashboard' => 'dashboards#index'
 

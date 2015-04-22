@@ -4,12 +4,17 @@
 	%strong Welcome, #{current_user.username}
 	%p Have something to post? Great! Let's go!
 .row
-	.col-md-6
+	.col-md-4
 		%center
 			%p= image_tag('Clipboard@2x.png', class: "img-responsive")
 			%p Add/Edit/Delete your posts
 			= link_to "Manage My Post", posts_path, class: "btn btn-primary btn-lg"
-	.col-md-6
+	.col-md-4
+		%center
+			%p= image_tag('Dude@2x.png', class: "img-responsive")
+			%p Manage your user
+			= link_to "Manage User", users_path, class: "btn btn-primary btn-lg"
+	.col-md-4
 		%center
 			%p= image_tag('Pensils@2x.png', class: "img-responsive")
 			%p Manage your movie genre
