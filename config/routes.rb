@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   devise_scope :user do
     delete 'sign_out', :to => 'devise/sessions#destroy'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   resources :posts
+  resources :genres, except: [:show, :edit, :post]
 
   get '/dashboard' => 'dashboards#index'
 

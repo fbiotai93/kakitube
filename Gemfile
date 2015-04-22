@@ -20,6 +20,7 @@ gem 'httparty'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fastimage'
+gem 'friendly_id', '~> 5.1.0'
 
 group :development do
 	gem 'letter_opener'

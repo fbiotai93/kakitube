@@ -10,5 +10,8 @@
 #
 
 class Genre < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders, :history]
+  
 	has_many :posts
 end

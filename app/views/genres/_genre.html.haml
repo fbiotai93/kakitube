@@ -1,0 +1,3 @@
+%td= genre.name
+%td= genre.created_at.strftime("%d %B %Y")
+%td= link_to "(remove)", genre, method: :delete, data: {confirm: "Are you sure?"}
