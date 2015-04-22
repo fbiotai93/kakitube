@@ -1,7 +1,11 @@
 var ready;
 ready = function() {
 
-	
+	$('.display').DataTable({
+    "aaSorting": []
+  });
+
+  oTable = $('#postLists').DataTable();
 
 };
 

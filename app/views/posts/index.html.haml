@@ -18,11 +18,11 @@
           %h3.panel-title
             Post List #{link_to "Add new post", new_post_path, class: "btn btn-xs btn-primary pull-right", style: "color:#FFFFFF;"}
         .panel-body
-          %table.table.table-bordered.table-hovered
+          %table.table.table-bordered.table-hovered.display{id: "postLists"}
             %thead
               %tr
                 %th Type
-                %th.col-md-2 Date Added
+                %th.col-md-3 Date Added
                 %th.col-md-2 Action
             %tbody
               - @posts.each do |post|
