@@ -1,2 +1,16 @@
-%h1 Dashboards#index
-%p Find me in app/views/dashboards/index.html.haml
+.alert.alert-info.alert-dismissible.fade.in
+	%button.close{"data-dismiss" => "alert", "aria-label" => "Close"}
+		%span{"aria-hidden" => "true"} &times;
+	%strong Welcome, #{current_user.username}
+	%p Have something to post? Great! Let's go!
+.row
+	.col-md-6
+		%center
+			%p= image_tag('Clipboard@2x.png', class: "img-responsive")
+			%p Add/Edit/Delete your posts
+			= link_to "Manage My Post", posts_path, class: "btn btn-primary btn-lg"
+	.col-md-6
+		%center
+			%p= image_tag('Pensils@2x.png', class: "img-responsive")
+			%p Customize your setting
+			= link_to "Customize Setting", posts_path, class: "btn btn-primary btn-lg"

@@ -48,5 +48,18 @@ class Post < ActiveRecord::Base
   scope :published_only, -> { where(featured: false) }
   scope :by_genre, -> (genre_id) { where(genre_id: genre_id) }
 
-  # validates :embed, presence: true
+  validates_presence_of :embed
+  validates_presence_of :title
+  validates_presence_of :year
+  validates_presence_of :released
+  validates_presence_of :runtime
+  validates_presence_of :director
+  validates_presence_of :writer
+  validates_presence_of :actors
+  validates_presence_of :description
+  validates_presence_of :language
+  validates_presence_of :country
+  validates_presence_of :trailer
+  validates_presence_of :poster
+  validates_presence_of :header_image
 end

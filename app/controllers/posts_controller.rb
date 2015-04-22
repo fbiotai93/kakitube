@@ -36,8 +36,11 @@ class PostsController < ApplicationController
       @post.imdbvotes = @result["imdbVotes"]
       render 'new'
     elsif params[:submit]
-      @post.save
-      redirect_to posts_path, notice: "Good! Post has been publish"
+      if @post.save
+        redirect_to posts_path, notice: "Good! Post has been publish"
+      else
+        render 'new'
+      end
     end
   end
 

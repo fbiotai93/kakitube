@@ -29,15 +29,15 @@
 					.col-md-4
 						%p
 							%strong Metascore
-							%p= @post.metascore
+							%p= @post.metascore? ? @post.metascore : "N/A"
 					.col-md-4
 						%p
 							%strong IMDB Rating
-							%p= @post.imdbrating
+							%p= @post.imdbrating? ? @post.imdbrating : "N/A"
 					.col-md-4
 						%p
 							%strong IMDB Votes
-							%p= @post.imdbvotes
+							%p= @post.imdbvotes? ? @post.imdbvotes : "N/A"
 				%table.table.table-bordered
 					%tbody
 						%tr
@@ -61,11 +61,12 @@
 									%strong Runtime
 									%br/
 									%span.label.label-default= @post.runtime
-			.btn-group.btn-group-justified
-				.btn-group.btn-group-lg
-					%button{"data-toggle" => "modal", "data-target" => ".trailer", class: "btn btn-default"} Watch Trailer
-				.btn-group.btn-group-lg
-					%button{"data-toggle" => "modal", "data-target" => ".video", class: "btn btn-primary"} Watch Full Video
+		%hr
+		.btn-group.btn-group-justified
+			.btn-group.btn-group-lg
+				%button{"data-toggle" => "modal", "data-target" => ".trailer", class: "btn btn-default"} Watch Trailer
+			.btn-group.btn-group-lg
+				%button{"data-toggle" => "modal", "data-target" => ".video", class: "btn btn-primary"} Watch Full Video
 		.video.modal.fade{tabindex: -1, role: "dialog", "aria-labelledby" => "Video", "aria-hidden" => true}
 			.modal-dialog{style: "width:670px;"}
 				.modal-content

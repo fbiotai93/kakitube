@@ -1,6 +1,6 @@
 .panel-body
 	- if post.errors.any?
-		.alert.alert.danger.alert-dismissable
+		.alert.alert-danger.alert-dismissable
 			%button.close{type: "button", 'data-dismiss' => 'alert', 'alert-hidden' => 'true'} &times;
 			%strong
 				= pluralize(post.errors.count, "error")
@@ -47,23 +47,23 @@
 					.form-group
 						= f.label :year, "Year", class: "col-sm-4 control-label"
 						.col-sm-8
-							= f.text_field :year, class: "form-control"
+							= f.text_field :year, class: "form-control", placeholder: "1999"
 				.col-md-6
 					.form-group
 						= f.label :rated, "Rated", class: "col-sm-4 control-label"
 						.col-sm-8
-							= f.text_field :rated, class: "form-control"
+							= f.select(:rated, options_for_select([['G - General Audiences', 'G'], ['PG - Parental Guidance Suggested', 'PG'], ['PG-13 - Parents Strongly Cautioned', 'PG-13'], ['R - Restricted', 'R'], ['NC-17 - No One 17 & Under Admitted', 'NC-17']], @post.rated), {}, {:class => "form-control"})
 			.row
 				.col-md-6
 					.form-group
 						= f.label :released, "Released", class: "col-sm-4 control-label"
 						.col-sm-8
-							= f.text_field :released, class: "form-control"
+							= f.text_field :released, class: "form-control", placeholder: "01 Sept 1999"
 				.col-md-6
 					.form-group
 						= f.label :runtime, "Runtime", class: "col-sm-4 control-label"
 						.col-sm-8
-							= f.text_field :runtime, class: "form-control"
+							= f.text_field :runtime, class: "form-control", placeholder: "120 min"
 			.form-group
 				= f.label :director, "Director", class: "col-sm-2 control-label"
 				.col-sm-10
@@ -83,11 +83,11 @@
 			.form-group
 				= f.label :language, "Language", class: "col-sm-2 control-label"
 				.col-sm-10
-					= f.text_field :language, class: "form-control"
+					= f.text_field :language, class: "form-control", placeholder: "English, Chinese"
 			.form-group
 				= f.label :country, "Country", class: "col-sm-2 control-label"
 				.col-sm-10
-					= f.text_field :country, class: "form-control"
+					= f.text_field :country, class: "form-control", placeholder: "USA"
 			.form-group
 				= f.label :genre_id, "Genre", class: "col-md-2 control-label"
 				.col-md-10
@@ -99,7 +99,7 @@
 			.form-group
 				= f.label :trailer, "Trailer Video", class: "col-sm-2 control-label"
 				.col-sm-10
-					= f.text_field :trailer, class: "form-control"
+					= f.text_field :trailer, class: "form-control", placeholder: "4g_MPJkXFJU"
 					%p.help-block.small
 						Currently, we only support trailer from Youtube
 						%br/
