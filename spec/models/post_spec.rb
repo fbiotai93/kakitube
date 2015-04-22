@@ -28,6 +28,7 @@
 #  genre_id     :integer
 #  header_image :string(255)
 #  featured     :boolean
+#  trailer      :string(255)
 #
 # Indexes
 #

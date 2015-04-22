@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422080216) do
+ActiveRecord::Schema.define(version: 20150422123628) do
 
   create_table "genres", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150422080216) do
     t.integer  "genre_id",     limit: 4
     t.string   "header_image", limit: 255
     t.boolean  "featured",     limit: 1
+    t.string   "trailer",      limit: 255
   end
 
   add_index "posts", ["genre_id"], name: "index_posts_on_genre_id", using: :btree

@@ -85,6 +85,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-  	params.require(:post).permit(:user_id, :genre_id, :poster, :poster_cache, :title, :description, :embed, :imdbID, :year, :rated, :released, :runtime, :director, :writer, :actors, :plot, :language, :country, :awards, :poster, :metascore, :imdbrating, :imdbvotes, :header_image, :header_image_cache, :featured)
+  	params.require(:post).permit(:user_id, :genre_id, :poster, :poster_cache, :title, :description, :embed, :imdbID, :year, :rated, :released, :runtime, :director, :writer, :actors, :plot, :language, :country, :awards, :poster, :metascore, :imdbrating, :imdbvotes, :header_image, :header_image_cache, :featured, :trailer)
   end
 end

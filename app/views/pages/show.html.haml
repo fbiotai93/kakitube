@@ -63,10 +63,22 @@
 									%span.label.label-default= @post.runtime
 			.btn-group.btn-group-justified
 				.btn-group.btn-group-lg
-					%button{"data-toggle" => "modal", "data-target" => "#trailer", class: "btn btn-default"} Watch Trailer
+					%button{"data-toggle" => "modal", "data-target" => ".trailer", class: "btn btn-default"} Watch Trailer
 				.btn-group.btn-group-lg
-					%button{class: "btn btn-primary"} Watch Full Video
-		#trailer.modal.fade{tabindex: 1, role: "dialog", "aria-labelledby" => "Trailer", "aria-hidden" => true}
+					%button{"data-toggle" => "modal", "data-target" => ".video", class: "btn btn-primary"} Watch Full Video
+		.video.modal.fade{tabindex: -1, role: "dialog", "aria-labelledby" => "Video", "aria-hidden" => true}
+			.modal-dialog{style: "width:670px;"}
+				.modal-content
+					.modal-header
+						%button.close{type: "button", "data-dismiss" => "modal", "aria-label" => "Close"}
+							%span{"aria-hidden" => true} &times;
+						%h4.modal-title{id: "trailer"} #{@post.title}
+					.modal-body
+						.embed-responsive.embed-responsive-16by9
+							.embed-responsive-item= @post.embed.html_safe
+					.modal-footer
+						%button.btn.btn-default{"data-dismiss" => "modal"} Close
+		.trailer.modal.fade{tabindex: -1, role: "dialog", "aria-labelledby" => "Trailer", "aria-hidden" => true}
 			.modal-dialog{style: "width:670px;"}
 				.modal-content
 					.modal-header
@@ -75,7 +87,7 @@
 						%h4.modal-title{id: "trailer"} Trailer of #{@post.title}
 					.modal-body
 						.embed-responsive.embed-responsive-16by9
-							= @post.embed.html_safe
+							%iframe.embed-responsive-item{width: 640, height: 360, src: "http://www.youtube.com/embed/#{@post.trailer}?rel=0&showinfo=0&iv_load_policy=3&autoplay=0", frameborder: 0, allowfullscreen: "allowfullscreen"}
 					.modal-footer
 						%button.btn.btn-default{"data-dismiss" => "modal"} Close
 	.col-md-4

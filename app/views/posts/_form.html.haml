@@ -96,6 +96,14 @@
 				= f.label :embed, "Embed Code", class: "col-sm-2 control-label"
 				.col-sm-10
 					= f.text_area :embed, class: "form-control", rows: 12, placeholder: "Insert your embed code here"
+			.form-group
+				= f.label :trailer, "Trailer Video", class: "col-sm-2 control-label"
+				.col-sm-10
+					= f.text_field :trailer, class: "form-control"
+					%p.help-block.small
+						Currently, we only support trailer from Youtube
+						%br/
+						Make sure you just copy the Youtube ID
 			.checkbox.pull-right
 				%label
 					= f.check_box :featured, :type => 'checkbox'
