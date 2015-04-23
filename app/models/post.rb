@@ -67,4 +67,5 @@ class Post < ActiveRecord::Base
   validates_presence_of :trailer
   validates_presence_of :poster
   validates_presence_of :header_image
+  
 end
