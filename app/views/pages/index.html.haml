@@ -17,17 +17,18 @@
 .row
 	.col-md-8
 		.movie.latest
-			- @featured.each do |f|
-				= link_to genre_show_path(f, sort: f.genre.slug) do
-					.gradient
-					= image_tag(f.header_image_url(:standard), class: "img-responsive")
-					.watch
-						= link_to genre_show_path(f, sort: f.genre.slug), class: "btn btn-sm btn-primary" do
-							%span.glyphicon.glyphicon-play-circle
-							Watch Now
-					.mini-desc
-						%h4= f.title
-						%p=h truncate(f.description, length: 200)
+			- cache "featured_articles" do
+				- @featured.each do |f|
+					= link_to genre_show_path(f, sort: f.genre.slug) do
+						.gradient
+						= image_tag(f.header_image_url(:standard), class: "img-responsive")
+						.watch
+							= link_to genre_show_path(f, sort: f.genre.slug), class: "btn btn-sm btn-primary" do
+								%span.glyphicon.glyphicon-play-circle
+								Watch Now
+						.mini-desc
+							%h4= f.title
+							%p=h truncate(f.description, length: 200)
 		%hr
 		%h4{style: "margin-bottom:20px;"}
 			%span.glyphicon.glyphicon-th-list

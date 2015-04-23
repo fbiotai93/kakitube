@@ -36,6 +36,11 @@ group :development do
   gem 'capistrano-faster-assets', '~> 1.0'
 end
 
+group :production do
+  gem 'memcachier'
+  gem 'dalli'
+end
+
 group :test do
   gem "codeclimate-test-reporter", require: nil
 end
