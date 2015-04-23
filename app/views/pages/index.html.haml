@@ -17,7 +17,7 @@
 .row
 	.col-md-8
 		.movie.latest
-			- cache "featured_articles" do
+			- cache "featured_articles", expires_in: 24.hours do
 				- @featured.each do |f|
 					= link_to genre_show_path(f, sort: f.genre.slug) do
 						.gradient
