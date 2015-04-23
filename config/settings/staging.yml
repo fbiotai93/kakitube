@@ -1,3 +1,6 @@
 site_domain: staging.kakitube.com
 imdb_api: 5648389e
-fb_app_id: 367753823253755
+fb_app_id: 367753823253755s3:
+  bucket: kakitube-staging
+  region: ap-southeast-1
+image_host: https://kakitube-staging.s3.amazonaws.com

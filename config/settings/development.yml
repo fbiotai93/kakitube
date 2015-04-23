@@ -1,3 +1,7 @@
 site_domain: kakitube.dev
 imdb_api: 5648389e
 fb_app_id: 367753823253755
+s3:
+  bucket: kakitube-dev
+  region: ap-southeast-1
+image_host: https://kakitube-dev.s3.amazonaws.com
