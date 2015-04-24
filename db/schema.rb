@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424140121) do
+ActiveRecord::Schema.define(version: 20150424155802) do
 
   create_table "episodes", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -44,33 +44,36 @@ ActiveRecord::Schema.define(version: 20150424140121) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string   "title",        limit: 255
-    t.text     "description",  limit: 65535
-    t.text     "embed",        limit: 65535
-    t.integer  "user_id",      limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.string   "imdbID",       limit: 255
-    t.integer  "year",         limit: 4
-    t.string   "rated",        limit: 255
-    t.string   "released",     limit: 255
-    t.string   "runtime",      limit: 255
-    t.string   "director",     limit: 255
-    t.string   "writer",       limit: 255
-    t.string   "actors",       limit: 255
-    t.string   "plot",         limit: 255
-    t.string   "language",     limit: 255
-    t.string   "country",      limit: 255
-    t.string   "awards",       limit: 255
-    t.string   "poster",       limit: 255
-    t.string   "metascore",    limit: 255
-    t.string   "imdbrating",   limit: 255
-    t.string   "imdbvotes",    limit: 255
-    t.integer  "genre_id",     limit: 4
-    t.string   "header_image", limit: 255
-    t.boolean  "featured",     limit: 1
-    t.string   "trailer",      limit: 255
-    t.string   "slug",         limit: 255
+    t.string   "title",           limit: 255
+    t.text     "description",     limit: 65535
+    t.text     "embed",           limit: 65535
+    t.integer  "user_id",         limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "imdbID",          limit: 255
+    t.integer  "year",            limit: 4
+    t.string   "rated",           limit: 255
+    t.string   "released",        limit: 255
+    t.string   "runtime",         limit: 255
+    t.string   "director",        limit: 255
+    t.string   "writer",          limit: 255
+    t.string   "actors",          limit: 255
+    t.string   "plot",            limit: 255
+    t.string   "language",        limit: 255
+    t.string   "country",         limit: 255
+    t.string   "awards",          limit: 255
+    t.string   "poster",          limit: 255
+    t.string   "metascore",       limit: 255
+    t.string   "imdbrating",      limit: 255
+    t.string   "imdbvotes",       limit: 255
+    t.integer  "genre_id",        limit: 4
+    t.string   "header_image",    limit: 255
+    t.boolean  "featured",        limit: 1
+    t.string   "trailer",         limit: 255
+    t.string   "slug",            limit: 255
+    t.string   "gallery_image_1", limit: 255
+    t.string   "gallery_image_2", limit: 255
+    t.string   "gallery_image_3", limit: 255
   end
 
   add_index "posts", ["genre_id"], name: "index_posts_on_genre_id", using: :btree
@@ -95,29 +98,32 @@ ActiveRecord::Schema.define(version: 20150424140121) do
   end
 
   create_table "siris", force: :cascade do |t|
-    t.string   "name",          limit: 255
-    t.string   "slug",          limit: 255
-    t.string   "status",        limit: 255
-    t.integer  "user_id",       limit: 4
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.string   "imdbID",        limit: 255
-    t.integer  "year",          limit: 4
-    t.string   "rated",         limit: 255
-    t.string   "released",      limit: 255
-    t.string   "runtime",       limit: 255
-    t.string   "director",      limit: 255
-    t.string   "writer",        limit: 255
-    t.string   "actors",        limit: 255
-    t.string   "language",      limit: 255
-    t.string   "country",       limit: 255
-    t.string   "awards",        limit: 255
-    t.string   "poster",        limit: 255
-    t.string   "metascore",     limit: 255
-    t.string   "imdbrating",    limit: 255
-    t.string   "imdbvotes",     limit: 255
-    t.text     "plot",          limit: 65535
-    t.integer  "siri_genre_id", limit: 4
+    t.string   "name",            limit: 255
+    t.string   "slug",            limit: 255
+    t.string   "status",          limit: 255
+    t.integer  "user_id",         limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "imdbID",          limit: 255
+    t.integer  "year",            limit: 4
+    t.string   "rated",           limit: 255
+    t.string   "released",        limit: 255
+    t.string   "runtime",         limit: 255
+    t.string   "director",        limit: 255
+    t.string   "writer",          limit: 255
+    t.string   "actors",          limit: 255
+    t.string   "language",        limit: 255
+    t.string   "country",         limit: 255
+    t.string   "awards",          limit: 255
+    t.string   "poster",          limit: 255
+    t.string   "metascore",       limit: 255
+    t.string   "imdbrating",      limit: 255
+    t.string   "imdbvotes",       limit: 255
+    t.text     "plot",            limit: 65535
+    t.integer  "siri_genre_id",   limit: 4
+    t.string   "gallery_image_1", limit: 255
+    t.string   "gallery_image_2", limit: 255
+    t.string   "gallery_image_3", limit: 255
   end
 
   add_index "siris", ["siri_genre_id"], name: "index_siris_on_siri_genre_id", using: :btree

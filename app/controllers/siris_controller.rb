@@ -87,6 +87,6 @@ class SirisController < ApplicationController
   end
 
   def siri_params
-  	params.require(:siri).permit(:name, :status, :imdbID, :poster, :poster_cache, :year, :rated, :released, :runtime, :plot, :director, :writer, :actors, :language, :country, :siri_genre_id, :awards, :metascore, :imdbrating, :imdbvotes, seasons_attributes: [:id, :siri_id, :title, :poster, :poster_cache, :_destroy, episodes_attributes: [:id, :season_id, :title, :embed, :_destroy]])
+  	params.require(:siri).permit(:name, :status, :imdbID, :poster, :poster_cache, :year, :rated, :released, :runtime, :plot, :director, :writer, :actors, :language, :country, :siri_genre_id, :awards, :metascore, :imdbrating, :imdbvotes, :gallery_image_1, :gallery_image_1_cache, :gallery_image_2, :gallery_image_2_cache, :gallery_image_3, :gallery_image_3_cache, seasons_attributes: [:id, :siri_id, :title, :poster, :poster_cache, :_destroy, episodes_attributes: [:id, :season_id, :title, :embed, :_destroy]])
   end
 end

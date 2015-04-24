@@ -91,6 +91,42 @@
 					= f.label :status, "Status", class: "col-sm-2 control-label"
 					.col-sm-10
 						= f.select(:status, options_for_select([['On-Going', 'On-Going'], ['Completed', 'Completed']], @siri.status), {}, {:class => "form-control"})
+				.row
+					%h3.col-md-12
+						%strong Gallery Image
+					.col-md-4
+						.form-group
+							= f.label :gallery_image_1, "Image 1", class: "col-sm-4 control-label"
+							.col-sm-8
+								- if @post.try(:gallery_image_1?)
+									= image_tag(@post.gallery_image_1_url(:standard), class: "img-responsive")
+								- else
+									= image_tag('poster-default.png', class: "img-responsive")
+								%h6 Replace current image
+								= f.file_field :gallery_image_1, class: "form-control"
+								= f.hidden_field :gallery_image_1_cache
+					.col-md-4
+						.form-group
+							= f.label :gallery_image_2, "Image 2", class: "col-sm-4 control-label"
+							.col-sm-8
+								- if @post.try(:gallery_image_2?)
+									= image_tag(@post.gallery_image_2_url(:standard), class: "img-responsive")
+								- else
+									= image_tag('poster-default.png', class: "img-responsive")
+								%h6 Replace current image
+								= f.file_field :gallery_image_2, class: "form-control"
+								= f.hidden_field :gallery_image_2_cache
+					.col-md-4
+						.form-group
+							= f.label :gallery_image_3, "Image 3", class: "col-sm-4 control-label"
+							.col-sm-8
+								- if @post.try(:gallery_image_3?)
+									= image_tag(@post.gallery_image_3_url(:standard), class: "img-responsive")
+								- else
+									= image_tag('poster-default.png', class: "img-responsive")
+								%h6 Replace current image
+								= f.file_field :gallery_image_3, class: "form-control"
+								= f.hidden_field :gallery_image_3_cache
 				= f.fields_for :seasons do |builder|
 					= render 'season_fields', f: builder
 				= link_to_add_fields "Add Seasons", f, :seasons
