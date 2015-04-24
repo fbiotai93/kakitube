@@ -1,0 +1,70 @@
+class SirisController < ApplicationController
+	before_action :authenticate_user!
+	before_filter :set_user, only: [:new, :create]
+	before_filter :set_siri, only: [:show, :edit, :update, :destroy]
+  before_filter :admin_only
+
+  def index
+  	@siris = Siri.all
+  end
+
+  def show
+  	if @siri
+      respond_to do |format|
+        format.html { @siri }
+        format.json { render json: @siri.to_json(include: [:user]) }
+      end
+    else
+      redirect_to siris_path, notice: "Sorry! Siri not found"
+    end
+  end
+
+  def new
+  	@siri ||= Siri.new
+  	render
+  end
+
+  def create
+  	@siri = @user.siris.new(siri_params)
+  	if @siri.save
+      redirect_to siris_path, notice: "Successfully created siri."
+    else
+      render 'new'
+    end
+  end
+
+  def edit
+    if @siri
+      render
+    else
+      redirect_to siris_path, notice: "Sorry! Siri not found"
+    end
+  end
+
+  def update
+    if @siri.update_attributes(siri_params)
+      redirect_to @siri, notice: "Successfully updated siri."
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @siri.destroy
+    redirect_to siris_path, notice: "Successfully destroyed siri."
+  end
+
+  private
+
+  def set_user
+  	@user = current_user
+  end
+
+  def set_siri
+    @siri = Siri.find(params[:id])
+  end
+
+  def siri_params
+  	params.require(:siri).permit(:name, :status, seasons_attributes: [:id, :siri_id, :title, :description, episodes_attributes: [:id, :season_id, :title, :description]])
+  end
+end

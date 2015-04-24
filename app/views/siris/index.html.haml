@@ -1,0 +1,6 @@
+%h1 Siri
+- @siris.each do |siri|
+	.article
+		%h2= link_to siri.name, siri
+		= pluralize(siri.seasons.size, "Season")
+= link_to "New Siri", new_siri_path

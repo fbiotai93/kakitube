@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422163244) do
+ActiveRecord::Schema.define(version: 20150424054730) do
+
+  create_table "episodes", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.text     "description", limit: 65535
+    t.integer  "season_id",   limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "episodes", ["season_id"], name: "index_episodes_on_season_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",           limit: 255, null: false
@@ -67,6 +77,28 @@ ActiveRecord::Schema.define(version: 20150422163244) do
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
+  create_table "seasons", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.text     "description", limit: 65535
+    t.integer  "siri_id",     limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "seasons", ["siri_id"], name: "index_seasons_on_siri_id", using: :btree
+
+  create_table "siris", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "slug",       limit: 255
+    t.string   "status",     limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "siris", ["slug"], name: "index_siris_on_slug", unique: true, using: :btree
+  add_index "siris", ["user_id"], name: "index_siris_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
     t.string   "encrypted_password",     limit: 255, default: "",    null: false
@@ -93,6 +125,9 @@ ActiveRecord::Schema.define(version: 20150422163244) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "episodes", "seasons"
   add_foreign_key "posts", "genres"
   add_foreign_key "posts", "users"
+  add_foreign_key "seasons", "siris"
+  add_foreign_key "siris", "users"
 end

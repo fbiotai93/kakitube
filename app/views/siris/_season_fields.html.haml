@@ -1,0 +1,14 @@
+%fieldset
+	= f.label :title, "Season Title"
+	%br
+	= f.text_field :title
+	%br
+	= f.label :description, "Season Description"
+	%br
+	= f.text_field :description
+	%br
+	= f.check_box :_destroy
+	= f.label :_destroy, "Remove Season"
+	= f.fields_for :episodes do |builder|
+		= render 'episode_fields', f: builder
+	= link_to_add_fields "Add Episodes", f, :episodes

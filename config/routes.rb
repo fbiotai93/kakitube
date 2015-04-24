@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'siris/index'
+
   get 'users/index'
 
   devise_for :users
@@ -20,6 +22,7 @@ Rails.application.routes.draw do
       patch :grant
     end
   end
+  resources :siris
 
   get '/dashboard' => 'dashboards#index'
 

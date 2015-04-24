@@ -1,0 +1,17 @@
+= form_for @siri do |f|
+	= if @siri.errors.any?
+		.error_messages
+			%h2
+				= pluralize(@siri.errors.count, "error")
+				prohibited this siri from being saved:
+			%ul
+				- @siri.errors.full_messages.each do |msg|
+					%li= msg
+	.field
+		= f.label :name
+		= f.text_field :name
+	= f.fields_for :seasons do |builder|
+		= render 'season_fields', f: builder
+	= link_to_add_fields "Add Seasons", f, :seasons
+	.actions
+		= f.submit

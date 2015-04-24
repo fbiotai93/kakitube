@@ -4,17 +4,22 @@
 	%strong Welcome, #{current_user.username}
 	%p Have something to post? Great! Let's go!
 .row
-	.col-md-4
+	.col-md-3
 		%center
 			%p= image_tag('Clipboard@2x.png', class: "img-responsive")
-			%p Add/Edit/Delete your posts
-			= link_to "Manage My Post", posts_path, class: "btn btn-primary btn-lg"
-	.col-md-4
+			%p Add/Edit/Delete your movie
+			= link_to "Manage My Movie", posts_path, class: "btn btn-primary btn-lg"
+	.col-md-3
+		%center
+			%p= image_tag('Camera@2x.png', class: "img-responsive")
+			%p Add/Edit/Delete your series
+			= link_to "Manage My Series", siris_path, class: "btn btn-primary btn-lg"
+	.col-md-3
 		%center
 			%p= image_tag('Dude@2x.png', class: "img-responsive")
 			%p Manage your user
 			= link_to "Manage User", users_path, class: "btn btn-primary btn-lg"
-	.col-md-4
+	.col-md-3
 		%center
 			%p= image_tag('Pensils@2x.png', class: "img-responsive")
 			%p Manage your movie genre
