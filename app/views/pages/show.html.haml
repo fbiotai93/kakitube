@@ -17,12 +17,14 @@
 	.col-md-8
 		.page-header
 			%h2= @post.title
+			%p
+				Genre
+				%span.label.label-primary #{@post.genre.name}
 		.row
 			.col-md-4
 				= image_tag(@post.poster_url(:standard), class: "img-responsive")
 			.col-md-8
 				%p
-					%span.label.label-primary #{@post.genre.name}
 					= @post.description
 				.row
 					.col-md-6
