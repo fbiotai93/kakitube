@@ -34,13 +34,13 @@
 			%span.glyphicon.glyphicon-th-list
 			Latest Movie
 		- @published_only.each do |p|
-			.movie.small-movie.effect{class: cycle('', '', 'last')}
+			.movie.small-movie.effect{class: cycle('', '', '', '','last')}
 				.mask
 				= link_to genre_show_path(p, sort: p.genre.slug) do
 					.gradient
 					= image_tag(p.poster_url(:thumb), class: "img-responsive")
 					.mini-desc2
-						%h4= p.title
+						%h5= p.title
 		= will_paginate @published_only
 	.col-md-4
 		= render partial: "sidebar_right"

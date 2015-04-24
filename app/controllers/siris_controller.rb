@@ -32,6 +32,19 @@ class SirisController < ApplicationController
       @response = HTTParty.get(URI.encode(url))
       @result = JSON.parse(@response.body)
       @siri.name = @result["Title"]
+      @siri.year = @result["Year"]
+      @siri.rated = @result["Rated"]
+      @siri.released = @result["Released"]
+      @siri.runtime = @result["Runtime"]
+      @siri.director = @result["Director"]
+      @siri.writer = @result["Writer"]
+      @siri.actors = @result["Actors"]
+      @siri.plot = @result["Plot"]
+      @siri.language = @result["Language"]
+      @siri.country = @result["Country"]
+      @siri.metascore = @result["Metascore"]
+      @siri.imdbrating = @result["imdbRating"]
+      @siri.imdbvotes = @result["imdbVotes"]
       render 'new'
     elsif params[:submit]
     	if @siri.save
@@ -74,6 +87,6 @@ class SirisController < ApplicationController
   end
 
   def siri_params
-  	params.require(:siri).permit(:name, :status, :imdbID, seasons_attributes: [:id, :siri_id, :title, :poster, :poster_cache, :_destroy, episodes_attributes: [:id, :season_id, :title, :_destroy]])
+  	params.require(:siri).permit(:name, :status, :imdbID, :poster, :poster_cache, :year, :rated, :released, :runtime, :plot, :director, :writer, :actors, :language, :country, :awards, :metascore, :imdbrating, :imdbvotes, seasons_attributes: [:id, :siri_id, :title, :poster, :poster_cache, :_destroy, episodes_attributes: [:id, :season_id, :title, :embed, :_destroy]])
   end
 end

@@ -21,9 +21,68 @@
 						%p.help-block.small Leave blank if you are not fetching the data from IMDB
 				%hr
 				.form-group
+					= f.label :poster, "Poster", class: "col-sm-2 control-label"
+					.col-sm-10
+						- if @post.try(:poster?)
+							= image_tag(@post.poster_url(:standard), class: "img-responsive")
+						- else
+							= image_tag('poster-default.png', class: "img-responsive")
+						%h6 Replace current image
+						= f.file_field :poster, class: "form-control"
+						= f.hidden_field :poster_cache
+				.form-group
 					= f.label :name, "Series Name", class: "col-sm-2 control-label"
 					.col-sm-10
 						= f.text_field :name, class: "form-control", placeholder: "Series Name"
+				.row
+					.col-md-6
+						.form-group
+							= f.label :year, "Year", class: "col-sm-4 control-label"
+							.col-sm-8
+								= f.text_field :year, class: "form-control", placeholder: "1999"
+					.col-md-6
+						.form-group
+							= f.label :rated, "Rated", class: "col-sm-4 control-label"
+							.col-sm-8
+								= f.select(:rated, options_for_select([['TV-Y - All Chidren', 'TV-Y'], ['TV-Y7 - Directed to Older Children', 'TV-Y7'], ['TV-Y7-FV - Directed to Older Children - Fantasy Violence', 'TV-Y7-FV'], ['TV-G - General Audience', 'TV-G'], ['TV-PG Parental Guidance Suggested', 'TV-PG'], ['TV-14 - Parents Strongly Cautioned', 'TV-14'], ['TV-MA - Mature Audience Only', 'TV-MA']], @siri.rated), {}, {:class => "form-control"})
+				.row
+					.col-md-6
+						.form-group
+							= f.label :released, "Released", class: "col-sm-4 control-label"
+							.col-sm-8
+								= f.text_field :released, class: "form-control", placeholder: "01 Sept 1999"
+					.col-md-6
+						.form-group
+							= f.label :runtime, "Runtime", class: "col-sm-4 control-label"
+							.col-sm-8
+								= f.text_field :runtime, class: "form-control", placeholder: "120 min"
+				.form-group
+					= f.label :director, "Director", class: "col-sm-2 control-label"
+					.col-sm-10
+						= f.text_field :director, class: "form-control"
+				.form-group
+					= f.label :writer, "Writer", class: "col-sm-2 control-label"
+					.col-sm-10
+						= f.text_field :writer, class: "form-control"
+				.form-group
+					= f.label :actors, "Actors", class: "col-sm-2 control-label"
+					.col-sm-10
+						= f.text_field :actors, class: "form-control"
+				.form-group
+					= f.label :plot, "Description", class: "col-sm-2 control-label"
+					.col-sm-10
+						= f.text_area :plot, class: "form-control", rows: 8
+				.row
+					.col-md-6
+						.form-group
+							= f.label :language, "Language", class: "col-sm-4 control-label"
+							.col-sm-8
+								= f.text_field :language, class: "form-control", placeholder: "English, Chinese"
+					.col-md-6
+						.form-group
+							= f.label :country, "Country", class: "col-sm-4 control-label"
+							.col-sm-8
+								= f.text_field :country, class: "form-control", placeholder: "USA"
 				.form-group
 					= f.label :status, "Status", class: "col-sm-2 control-label"
 					.col-sm-10
@@ -31,6 +90,9 @@
 				= f.fields_for :seasons do |builder|
 					= render 'season_fields', f: builder
 				= link_to_add_fields "Add Seasons", f, :seasons
+			= f.hidden_field :metascore, class: "form-control"
+			= f.hidden_field :imdbrating, class: "form-control"
+			= f.hidden_field :imdbvotes, class: "form-control"
 			.col-md-6
 				- if params[:preview_button]
 					#preview

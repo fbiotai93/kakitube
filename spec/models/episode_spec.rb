@@ -7,6 +7,7 @@
 #  season_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  embed      :text(65535)
 #
 # Indexes
 #

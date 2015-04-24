@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424102449) do
+ActiveRecord::Schema.define(version: 20150424132250) do
 
   create_table "episodes", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.integer  "season_id",  limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.text     "embed",      limit: 65535
   end
 
   add_index "episodes", ["season_id"], name: "index_episodes_on_season_id", using: :btree
@@ -91,9 +92,24 @@ ActiveRecord::Schema.define(version: 20150424102449) do
     t.string   "slug",       limit: 255
     t.string   "status",     limit: 255
     t.integer  "user_id",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "imdbID",     limit: 255
+    t.integer  "year",       limit: 4
+    t.string   "rated",      limit: 255
+    t.string   "released",   limit: 255
+    t.string   "runtime",    limit: 255
+    t.string   "director",   limit: 255
+    t.string   "writer",     limit: 255
+    t.string   "actors",     limit: 255
+    t.string   "language",   limit: 255
+    t.string   "country",    limit: 255
+    t.string   "awards",     limit: 255
+    t.string   "poster",     limit: 255
+    t.string   "metascore",  limit: 255
+    t.string   "imdbrating", limit: 255
+    t.string   "imdbvotes",  limit: 255
+    t.text     "plot",       limit: 65535
   end
 
   add_index "siris", ["slug"], name: "index_siris_on_slug", unique: true, using: :btree

@@ -10,11 +10,11 @@ class PagesController < ApplicationController
   	if @genre
   		@posts = Post.by_genre(@genre.id)
   		@featured = @posts.featured.by_genre(@genre.id).take(1)
-  		@published_only = @posts.published_only.by_genre(@genre.id).paginate(:page => params[:page], :per_page => 12)
+  		@published_only = @posts.published_only.by_genre(@genre.id).paginate(:page => params[:page], :per_page => 10)
   	else
   		@posts = Post.all
   		@featured = @posts.featured.take(1)
-  		@published_only = @posts.published_only.paginate(:page => params[:page], :per_page => 12)
+  		@published_only = @posts.published_only.paginate(:page => params[:page], :per_page => 10)
   		flash.now[:notice] = "No posts found for '#{params[:sort]}'." if !params[:sort].blank?
   	end
   end

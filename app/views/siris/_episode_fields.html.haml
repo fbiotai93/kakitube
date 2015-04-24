@@ -5,6 +5,10 @@
 		.col-sm-10
 			= f.text_field :title, class: "form-control", placeholder: "Episode Title"
 	.form-group
+		= f.label :embed, "Embed Code", class: "col-sm-2 control-label"
+		.col-sm-10
+			= f.text_area :embed, class: "form-control", rows: 6
+	.form-group
 		.col-sm-12
 			= f.hidden_field :_destroy
 			= link_to "Remove Episode", '#', class: "remove_fields btn btn-danger btn-xs pull-right"

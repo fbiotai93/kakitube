@@ -10,6 +10,21 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  imdbID     :string(255)
+#  year       :integer
+#  rated      :string(255)
+#  released   :string(255)
+#  runtime    :string(255)
+#  director   :string(255)
+#  writer     :string(255)
+#  actors     :string(255)
+#  language   :string(255)
+#  country    :string(255)
+#  awards     :string(255)
+#  poster     :string(255)
+#  metascore  :string(255)
+#  imdbrating :string(255)
+#  imdbvotes  :string(255)
+#  plot       :text(65535)
 #
 # Indexes
 #
@@ -18,6 +33,8 @@
 #
 
 class Siri < ActiveRecord::Base
+  mount_uploader :poster, PosterUploader
+  
   belongs_to :user
   has_many :seasons, dependent: :destroy
 
@@ -27,6 +44,18 @@ class Siri < ActiveRecord::Base
   accepts_nested_attributes_for :seasons, allow_destroy: true
 
   default_scope -> { order('siris.id DESC') }
+
+  validates_presence_of :name
+  validates_presence_of :year
+  validates_presence_of :released
+  validates_presence_of :runtime
+  validates_presence_of :director
+  validates_presence_of :writer
+  validates_presence_of :actors
+  validates_presence_of :plot
+  validates_presence_of :language
+  validates_presence_of :country
+  validates_presence_of :poster
 
   def is_on_going?
     status === "On-Going"
