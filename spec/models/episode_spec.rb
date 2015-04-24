@@ -2,12 +2,11 @@
 #
 # Table name: episodes
 #
-#  id          :integer          not null, primary key
-#  title       :string(255)
-#  description :text(65535)
-#  season_id   :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id         :integer          not null, primary key
+#  title      :string(255)
+#  season_id  :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 # Indexes
 #

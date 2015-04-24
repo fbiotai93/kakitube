@@ -2,12 +2,12 @@
 #
 # Table name: seasons
 #
-#  id          :integer          not null, primary key
-#  title       :string(255)
-#  description :text(65535)
-#  siri_id     :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id         :integer          not null, primary key
+#  title      :string(255)
+#  siri_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  poster     :string(255)
 #
 # Indexes
 #
@@ -15,6 +15,8 @@
 #
 
 class Season < ActiveRecord::Base
+	mount_uploader :poster, PosterUploader
+	
   belongs_to :siri
   has_many :episodes, dependent: :destroy
 

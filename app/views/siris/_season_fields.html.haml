@@ -4,9 +4,15 @@
 	.col-md-10
 		= f.text_field :title, class: "form-control", placeholder: "Season Title"
 .form-group
-	= f.label :description, "Season Description", class: "col-sm-2 control-label"
+	= f.label :poster, "Season Poster", class: "col-sm-2 control-label"
 	.col-md-10
-		= f.text_area :description, class: "form-control", placeholder: "Season Description", rows: 6
+		- if f.object.poster?
+			= image_tag f.object.poster_url(:standard)
+		- else
+			= image_tag('poster-default.png', class: "img-responsive")
+		%h6 Replace current image
+		= f.file_field :poster, class: "form-control"
+		= f.hidden_field :poster_cache
 .checkbox
 	%label
 		= f.check_box :_destroy

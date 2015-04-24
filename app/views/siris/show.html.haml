@@ -2,11 +2,10 @@
 %ol.seasons
 	- @siri.seasons.each do |season|
 		%li= season.title
-		%li= season.description
+		%li= season.poster_url
 		%ol.episodes
 			- season.episodes.each do |episode|
 				%li= episode.title
-				%li= episode.description
 = link_to 'Edit', edit_siri_path(@siri)
 %br
 = link_to 'Back to Siri list', siris_path

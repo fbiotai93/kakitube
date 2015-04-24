@@ -1,4 +1,4 @@
-= form_for @siri, html: { class: "form-horizontal" } do |f|
+= form_for @siri, multipart: true, html: { class: "form-horizontal" } do |f|
 	.panel-body
 		- if @siri.errors.any?
 			.alert.alert-danger.alert-dismissable
@@ -12,12 +12,28 @@
 		.row
 			.col-md-6
 				.form-group
+					= f.label :imdbID, "IMDB ID", class: "col-sm-2 control-label"
+					.col-sm-10
+						.input-group
+							= f.text_field :imdbID, class: "form-control"
+							%span.input-group-btn
+								= f.submit "Fetch Data", name: "preview_button", class: "btn btn-primary"
+						%p.help-block.small Leave blank if you are not fetching the data from IMDB
+				%hr
+				.form-group
 					= f.label :name, "Series Name", class: "col-sm-2 control-label"
 					.col-sm-10
 						= f.text_field :name, class: "form-control", placeholder: "Series Name"
+				.form-group
+					= f.label :status, "Status", class: "col-sm-2 control-label"
+					.col-sm-10
+						= f.select(:status, options_for_select([['On-Going', 'On-Going'], ['Completed', 'Completed']], @siri.status), {}, {:class => "form-control"})
 				= f.fields_for :seasons do |builder|
 					= render 'season_fields', f: builder
 				= link_to_add_fields "Add Seasons", f, :seasons
 			.col-md-6
+				- if params[:preview_button]
+					#preview
+						%pre= JSON.pretty_generate(@result)
 	.panel-footer
-		= f.submit "Submit", class: "btn btn-primary"
+		= f.submit "Submit", name: "submit", class: "btn btn-primary"

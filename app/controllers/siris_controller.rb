@@ -3,6 +3,7 @@ class SirisController < ApplicationController
 	before_filter :set_user, only: [:new, :create]
 	before_filter :set_siri, only: [:show, :edit, :update, :destroy]
   before_filter :admin_only
+  include HTTParty
 
   def index
   	@siris = Siri.all
@@ -26,10 +27,18 @@ class SirisController < ApplicationController
 
   def create
   	@siri = @user.siris.new(siri_params)
-  	if @siri.save
-      redirect_to siris_path, notice: "Successfully created siri."
-    else
+    if params[:preview_button]
+      url = "http://www.omdbapi.com/?i=#{@siri.imdbID}&plot=full&r=json"
+      @response = HTTParty.get(URI.encode(url))
+      @result = JSON.parse(@response.body)
+      @siri.name = @result["Title"]
       render 'new'
+    elsif params[:submit]
+    	if @siri.save
+        redirect_to siris_path, notice: "Successfully created siri."
+      else
+        render 'new'
+      end
     end
   end
 
@@ -65,6 +74,6 @@ class SirisController < ApplicationController
   end
 
   def siri_params
-  	params.require(:siri).permit(:name, :status, seasons_attributes: [:id, :siri_id, :title, :description, episodes_attributes: [:id, :season_id, :title, :description]])
+  	params.require(:siri).permit(:name, :status, :imdbID, seasons_attributes: [:id, :siri_id, :title, :poster, :poster_cache, :_destroy, episodes_attributes: [:id, :season_id, :title, :_destroy]])
   end
 end

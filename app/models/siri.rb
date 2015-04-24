@@ -9,6 +9,7 @@
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  imdbID     :string(255)
 #
 # Indexes
 #
@@ -24,4 +25,14 @@ class Siri < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :finders, :history]
 
   accepts_nested_attributes_for :seasons, allow_destroy: true
+
+  default_scope -> { order('siris.id DESC') }
+
+  def is_on_going?
+    status === "On-Going"
+  end
+
+  def is_completed?
+    status === "Completed"
+  end
 end

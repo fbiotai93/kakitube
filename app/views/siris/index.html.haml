@@ -24,6 +24,7 @@
 								%th Series Name
 								%th Season
 								%th.col-md-3 Date Added
+								%th Status
 								%th.col-md-2 Action
 						%tbody
 							- @siris.each do |siri|
@@ -31,6 +32,13 @@
 									%td= siri.name
 									%td= pluralize(siri.seasons.size, "Season")
 									%td= siri.created_at.strftime("%d %B %Y")
+									%td
+										- if siri.is_on_going?
+											%span.label.label-warning
+												= siri.status
+										- elsif siri.is_completed?
+											%span.label.label-primary
+												= siri.status
 									%td
 										.btn-group.btn-group-justified.btn-group-xs
 											= link_to siri_path(siri), class: "btn btn-primary" do
