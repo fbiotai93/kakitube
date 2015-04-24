@@ -84,6 +84,10 @@
 							.col-sm-8
 								= f.text_field :country, class: "form-control", placeholder: "USA"
 				.form-group
+					= f.label :siri_genre_id, "Genre", class: "col-md-2 control-label"
+					.col-md-10
+						= f.collection_select :siri_genre_id, SiriGenre.order(:name), :id, :name, {}, :class => "form-control"
+				.form-group
 					= f.label :status, "Status", class: "col-sm-2 control-label"
 					.col-sm-10
 						= f.select(:status, options_for_select([['On-Going', 'On-Going'], ['Completed', 'Completed']], @siri.status), {}, {:class => "form-control"})

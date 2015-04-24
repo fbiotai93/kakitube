@@ -1,0 +1,137 @@
+- content_for :title do
+	KakiTube | #{@siri.name}
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags',       |
+       :locals => {                                     |
+         :type => "website",                            |
+         :title => "#{@siri.name}",          |
+         :url => request.url,                           |
+         :description => "#{@siri.plot}",    |
+         :canonical => request.url,                     |
+         :og_title => "#{@siri.name}",       |
+         :og_description => "#{@siri.plot}", |
+         :og_image => "#{image_url(@siri.try(:poster))}"        |
+      }                                                 |
+
+.row
+	.col-md-8
+		.page-header
+			%h2= @siri.name
+			%p
+				Genre
+				%span.label.label-primary #{@siri.siri_genre.name}
+				- if @siri.is_on_going?
+					%span.label.label-warning
+						= @siri.status
+				- elsif @siri.is_completed?
+					%span.label.label-primary
+						= @siri.status
+		.row
+			.col-md-4
+				= image_tag(@siri.poster_url(:standard), class: "img-responsive")
+			.col-md-8
+				%p
+					= @siri.plot
+				.row
+					.col-md-6
+						%p
+							%strong Director
+							%p= @siri.director
+					.col-md-6
+						%p
+							%strong Actors
+							%p= @siri.actors
+				.row
+					.col-md-6
+						%p
+							%strong Language
+							%p= @siri.language
+					.col-md-6
+						%p
+							%strong Country
+							%p= @siri.country
+				.row
+					.col-md-4
+						%p
+							%strong Metascore
+							%p
+								%span.label.label-default
+									%span.glyphicon.glyphicon-stats
+									= @siri.metascore? ? @siri.metascore : "N/A"
+					.col-md-4
+						%p
+							%strong IMDB Rating
+							%p
+								%span.label.label-default
+									%span.glyphicon.glyphicon-heart
+									= @siri.imdbrating? ? @siri.imdbrating : "N/A"
+					.col-md-4
+						%p
+							%strong IMDB Votes
+							%p
+								%span.label.label-default
+									%span.glyphicon.glyphicon-thumbs-up
+									= @siri.imdbvotes? ? @siri.imdbvotes : "N/A"
+				%table.table.table-bordered
+					%tbody
+						%tr
+							%td.col-md-3
+								%center
+									%strong Year
+									%br/
+									%span.label.label-default= @siri.year
+							%td.col-md-3
+								%center
+									%strong Rated
+									%br/
+									%span.label.label-default= @siri.rated
+							%td.col-md-3
+								%center
+									%strong Released
+									%br/
+									%span.label.label-default= @siri.released
+							%td.col-md-3
+								%center
+									%strong Runtime
+									%br/
+									%span.label.label-default= @siri.runtime
+		%hr
+		#accordian.panel-group{role: "tablist", "aria-multiselectable" => true}
+			- @siri.seasons.each do |season|
+				.panel.panel-default
+					.panel-heading{role: "tab", id: "#{season.title}"}
+						%a{"data-toggle" => "collapse", "data-parent" => "#accordion", href: "##{season.id}", "aria-expanded" => true, "aria-controls" => "#{season.id}"}
+							%h4.panel-title
+								= season.title
+								.pull-right
+									%p.small Total Episodes: #{season.episodes.count}
+					.panel-collapse.collapse{role: "tabpanel", "aria-labelledby" => "#{season.title}", id: "#{season.id}"}
+						.panel-body
+							%table.table.table-bordered.table-hovered
+								- season.episodes.each do |episode|
+									%tr
+										%td
+											= episode.title
+											.pull-right
+												%button{"data-toggle" => "modal", "data-target" => "#episode-#{episode.id}", class: "btn btn-link btn-xs"}
+													%span.glyphicon.glyphicon-play-circle
+													Watch Now
+											.modal.fade{tabindex: -1, role: "dialog", "aria-labelledby" => "Video", "aria-hidden" => true, id: "episode-#{episode.id}"}
+												.modal-dialog{style: "width:670px;"}
+													.modal-content
+														.modal-header
+															%button.close{type: "button", "data-dismiss" => "modal", "aria-label" => "Close"}
+																%span{"aria-hidden" => true} &times;
+															%h4.modal-title{id: "trailer"} #{episode.title}
+														.modal-body
+															.embed-responsive.embed-responsive-16by9
+																.embed-responsive-item= episode.embed.html_safe
+														.modal-footer
+															%button.btn.btn-default{"data-dismiss" => "modal"} Close
+		%hr
+		%h4 What people are saying:
+		%center
+			%em
+				%h5 Comment section is coming soon!
+	.col-md-4
+		= render partial: "sidebar_right"

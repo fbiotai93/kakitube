@@ -29,18 +29,35 @@
 						.mini-desc
 							%h4= f.title
 							%p=h truncate(f.description, length: 200)
-		%hr
-		%h4{style: "margin-bottom:20px;"}
-			%span.glyphicon.glyphicon-th-list
-			Latest Movie
-		- @published_only.each do |p|
-			.movie.small-movie.effect{class: cycle('', '', '', '','last')}
-				.mask
-				= link_to genre_show_path(p, sort: p.genre.slug) do
-					.gradient
-					= image_tag(p.poster_url(:thumb), class: "img-responsive")
-					.mini-desc2
-						%h5= p.title
-		= will_paginate @published_only
+		.row
+			.col-md-12
+				%hr
+				%h4{style: "margin-bottom:20px;"}
+					%span.glyphicon.glyphicon-th-list
+					Latest Movie
+				- @published_only.each do |p|
+					.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
+						.mask
+						= link_to genre_show_path(p, sort: p.genre.slug) do
+							.gradient
+							= image_tag(p.poster_url(:thumb), class: "img-responsive")
+							.mini-desc2
+								%h5= p.title
+				= will_paginate @published_only
+		.row
+			.col-md-12
+				%hr
+				%h4{style: "margin-bottom:20px;"}
+					%span.glyphicon.glyphicon-th-list
+					Latest Series
+				- @siris.each do |siri|
+					.movie.small-movie.effect{class: cycle('', '', '', '', 'last', '')}
+						.mask
+						= link_to siri_genre_show_path(siri, view: siri.siri_genre.slug) do
+							.gradient
+							= image_tag(siri.poster_url(:thumb), class: "img-responsive")
+							.mini-desc2
+								%h5= siri.name
+				= will_paginate @siris
 	.col-md-4
 		= render partial: "sidebar_right"

@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'siris/index'
-
-  get 'users/index'
-
   devise_for :users
   devise_scope :user do
     delete 'sign_out', :to => 'devise/sessions#destroy'
@@ -27,7 +22,10 @@ Rails.application.routes.draw do
   get '/dashboard' => 'dashboards#index'
 
   get '/:sort/' => 'pages#index', as: 'genre_index'
-  get '/:sort/:id' => 'pages#show', as: 'genre_show'
+  get 'movie/:sort/:id' => 'pages#show', as: 'genre_show'
+
+  get '/:view/' => 'pages#index', as: 'siri_genre_index'
+  get 'tv-series/:view/:id' => 'pages#view', as: 'siri_genre_show'
 
   # You can have the root of your site routed with "root"
   root 'pages#index'
