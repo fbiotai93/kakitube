@@ -19,6 +19,7 @@ class PagesController < ApplicationController
     @q = params[:q]
     @search = Sunspot.search [Post, Siri] do
       fulltext params[:q]
+      paginate :page => params[:page] || 1, :per_page => 30
     end
     @posts = @search.results
   end
