@@ -23,6 +23,8 @@ gem 'mini_magick'
 gem 'fastimage'
 gem 'friendly_id', '~> 5.1.0'
 gem 'will_paginate', '~> 3.0.6'
+gem 'sunspot_rails'
+gem 'progress_bar'
 
 group :development do
 	gem 'letter_opener'
@@ -34,6 +36,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1.1'
   gem 'capistrano-gitflow', git: 'git@github.com:YotpoLtd/capistrano-gitflow.git'
   gem 'capistrano-faster-assets', '~> 1.0'
+  gem 'sunspot_solr'
 end
 
 group :production do

@@ -29,7 +29,7 @@
 						%tbody
 							- @siris.each do |siri|
 								%tr
-									%td= siri.name
+									%td= siri.title
 									%td= pluralize(siri.seasons.size, "Season")
 									%td= siri.created_at.strftime("%d %B %Y")
 									%td

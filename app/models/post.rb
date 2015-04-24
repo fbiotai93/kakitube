@@ -59,6 +59,10 @@ class Post < ActiveRecord::Base
   scope :published_only, -> { where(featured: false) }
   scope :by_genre, -> (genre_id) { where(genre_id: genre_id) }
 
+  searchable do
+    text :title, boost: 5
+  end
+
   validates_presence_of :embed
   validates_presence_of :title
   validates_presence_of :year

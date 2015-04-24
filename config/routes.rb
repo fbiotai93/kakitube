@@ -27,6 +27,10 @@ Rails.application.routes.draw do
   get '/:view/' => 'pages#index', as: 'siri_genre_index'
   get 'tv-series/:view/:id' => 'pages#view', as: 'siri_genre_show'
 
+  scope :q do 
+    get 'search' => 'pages#search', as: :search
+  end
+
   # You can have the root of your site routed with "root"
   root 'pages#index'
 

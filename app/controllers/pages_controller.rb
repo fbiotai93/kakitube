@@ -35,4 +35,11 @@ class PagesController < ApplicationController
   def view
     @siri = Siri.find(params[:id])
   end
+
+  def search
+    @search = Sunspot.search [Post, Siri] do
+      fulltext params[:q]
+    end
+    @posts = @search.results
+  end
 end

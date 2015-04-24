@@ -11,11 +11,13 @@
       %ul.nav.navbar-nav
         %li
           %a{:href => "#"} About
-        %li
-          %a{:href => "#"} Help
         - if user_signed_in? && current_user.is_admin?
           %li{:class => "#{current_page(dashboard_path)}"}
             = link_to "Dashboard", dashboard_path
+      = form_tag search_path, class: "navbar-form navbar-left", :method => :get do
+        .form-group
+          = text_field_tag :q, params[:q], class: "form-control", placeholder: "Search by Movie/TV Series title"
+          = submit_tag "Search", :name => nil, class: "btn btn-default"
       %ul.nav.navbar-nav
         %li.dropdown
           = link_to "", class: "dropdown-toggle", "data-toggle" => "dropdown", role: "button", "aria-expanded" => "false" do

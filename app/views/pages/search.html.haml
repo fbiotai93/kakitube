@@ -1,0 +1,6 @@
+.row
+	.col-md-8
+		.page-header
+			%h2 Search Result
+		- @posts.each do |post|
+			%h2= post.title

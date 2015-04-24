@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424155802) do
+ActiveRecord::Schema.define(version: 20150424175059) do
 
   create_table "episodes", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20150424155802) do
   end
 
   create_table "siris", force: :cascade do |t|
-    t.string   "name",            limit: 255
+    t.string   "title",           limit: 255
     t.string   "slug",            limit: 255
     t.string   "status",          limit: 255
     t.integer  "user_id",         limit: 4
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 20150424155802) do
     t.string   "metascore",       limit: 255
     t.string   "imdbrating",      limit: 255
     t.string   "imdbvotes",       limit: 255
-    t.text     "plot",            limit: 65535
+    t.text     "description",     limit: 65535
     t.integer  "siri_genre_id",   limit: 4
     t.string   "gallery_image_1", limit: 255
     t.string   "gallery_image_2", limit: 255

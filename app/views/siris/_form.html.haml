@@ -31,9 +31,9 @@
 						= f.file_field :poster, class: "form-control"
 						= f.hidden_field :poster_cache
 				.form-group
-					= f.label :name, "Series Name", class: "col-sm-2 control-label"
+					= f.label :title, "Series Name", class: "col-sm-2 control-label"
 					.col-sm-10
-						= f.text_field :name, class: "form-control", placeholder: "Series Name"
+						= f.text_field :title, class: "form-control", placeholder: "Series Name"
 				.row
 					.col-md-6
 						.form-group
@@ -69,9 +69,9 @@
 					.col-sm-10
 						= f.text_field :actors, class: "form-control"
 				.form-group
-					= f.label :plot, "Description", class: "col-sm-2 control-label"
+					= f.label :description, "Description", class: "col-sm-2 control-label"
 					.col-sm-10
-						= f.text_area :plot, class: "form-control", rows: 8
+						= f.text_area :description, class: "form-control", rows: 8
 				.row
 					.col-md-6
 						.form-group

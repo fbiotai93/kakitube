@@ -1,22 +1,22 @@
 - content_for :title do
-	KakiTube | #{@siri.name}
+	KakiTube | #{@siri.title}
 - content_for :meta_tags do
 	= render :partial => 'application/meta_tags',       |
        :locals => {                                     |
          :type => "website",                            |
-         :title => "#{@siri.name}",          |
+         :title => "#{@siri.title}",          |
          :url => request.url,                           |
-         :description => "#{@siri.plot}",    |
+         :description => "#{@siri.description}",    |
          :canonical => request.url,                     |
-         :og_title => "#{@siri.name}",       |
-         :og_description => "#{@siri.plot}", |
+         :og_title => "#{@siri.title}",       |
+         :og_description => "#{@siri.description}", |
          :og_image => "#{image_url(@siri.try(:poster))}"        |
       }                                                 |
 
 .row
 	.col-md-8
 		.page-header
-			%h2= @siri.name
+			%h2= @siri.title
 			%p
 				Genre
 				%span.label.label-primary #{@siri.siri_genre.name}
@@ -31,7 +31,7 @@
 				= image_tag(@siri.poster_url(:standard), class: "img-responsive")
 			.col-md-8
 				%p
-					= @siri.plot
+					= @siri.description
 				.row
 					.col-md-6
 						%p

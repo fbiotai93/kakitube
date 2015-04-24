@@ -3,7 +3,7 @@
 # Table name: siris
 #
 #  id              :integer          not null, primary key
-#  name            :string(255)
+#  title           :string(255)
 #  slug            :string(255)
 #  status          :string(255)
 #  user_id         :integer
@@ -24,7 +24,7 @@
 #  metascore       :string(255)
 #  imdbrating      :string(255)
 #  imdbvotes       :string(255)
-#  plot            :text(65535)
+#  description     :text(65535)
 #  siri_genre_id   :integer
 #  gallery_image_1 :string(255)
 #  gallery_image_2 :string(255)
@@ -54,6 +54,10 @@ class Siri < ActiveRecord::Base
 
   default_scope -> { order('siris.id DESC') }
   scope :by_siri_genre, -> (siri_genre_id) { where(siri_genre_id: siri_genre_id) }
+
+  searchable do
+    text :name, boost: 5
+  end
 
   validates_presence_of :name
   validates_presence_of :year

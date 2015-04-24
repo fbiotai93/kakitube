@@ -57,7 +57,7 @@
 							.gradient
 							= image_tag(siri.poster_url(:thumb), class: "img-responsive")
 							.mini-desc2
-								%h5= siri.name
+								%h5= siri.title
 				= will_paginate @siris
 	.col-md-4
 		= render partial: "sidebar_right"
