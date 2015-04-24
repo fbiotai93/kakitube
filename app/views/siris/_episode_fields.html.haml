@@ -1,11 +1,14 @@
-%fieldset
-	= f.label :title, "Episode Title"
-	%br
-	= f.text_field :title
-	%br
-	= f.label :description, "Episode Description"
-	%br
-	= f.text_field :description
-	%br
-	= f.hidden_field :_destroy
-	= link_to "remove", '#', class: "remove_fields"
+#episode-form
+	%hr
+	.form-group
+		= f.label :title, "Episode Title", class: "col-sm-2 control-label"
+		.col-sm-10
+			= f.text_field :title, class: "form-control", placeholder: "Episode Title"
+	.form-group
+		= f.label :description, "Episode Description", class: "col-sm-2 control-label"
+		.col-sm-10
+			= f.text_area :description, class: "form-control", placeholder: "Episode Description", rows: 6
+	.form-group
+		.col-sm-6
+			= f.hidden_field :_destroy
+			= link_to "Remove Episode", '#', class: "remove_fields"

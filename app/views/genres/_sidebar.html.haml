@@ -1,7 +1,10 @@
 .list-group
 	= link_to posts_path, class: "list-group-item" do
 		%span.badge= Post.all.count
-		Posts
+		Movie
+	= link_to siris_path, class: "list-group-item" do
+		%span.badge= Siri.all.count
+		Series
 	= link_to users_path, class: "list-group-item" do
 		%span.badge= User.all.count
 		User

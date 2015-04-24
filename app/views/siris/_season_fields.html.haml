@@ -1,14 +1,16 @@
-%fieldset
-	= f.label :title, "Season Title"
-	%br
-	= f.text_field :title
-	%br
-	= f.label :description, "Season Description"
-	%br
-	= f.text_field :description
-	%br
-	= f.check_box :_destroy
-	= f.label :_destroy, "Remove Season"
+%hr
+.form-group
+	= f.label :title, "Season Title", class: "col-sm-2 control-label"
+	.col-md-10
+		= f.text_field :title, class: "form-control", placeholder: "Season Title"
+.form-group
+	= f.label :description, "Season Description", class: "col-sm-2 control-label"
+	.col-md-10
+		= f.text_area :description, class: "form-control", placeholder: "Season Description", rows: 6
+.checkbox
+	%label
+		= f.check_box :_destroy
+		Remove Season
 	= f.fields_for :episodes do |builder|
 		= render 'episode_fields', f: builder
 	= link_to_add_fields "Add Episodes", f, :episodes

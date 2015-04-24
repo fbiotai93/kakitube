@@ -18,8 +18,5 @@ class Season < ActiveRecord::Base
   belongs_to :siri
   has_many :episodes, dependent: :destroy
 
-  extend FriendlyId
-  friendly_id :name, use: [:slugged, :finders, :history]
-
   accepts_nested_attributes_for :episodes, allow_destroy: true
 end

@@ -20,5 +20,8 @@ class Siri < ActiveRecord::Base
   belongs_to :user
   has_many :seasons, dependent: :destroy
 
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders, :history]
+
   accepts_nested_attributes_for :seasons, allow_destroy: true
 end
