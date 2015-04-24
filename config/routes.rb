@@ -21,15 +21,20 @@ Rails.application.routes.draw do
 
   get '/dashboard' => 'dashboards#index'
 
-  get '/:sort/' => 'pages#index', as: 'genre_index'
-  get 'movie/:sort/:id' => 'pages#show', as: 'genre_show'
+  # get '/:sort/' => 'pages#index', as: 'genre_index'
+  get 'movies/:sort/:id' => 'pages#show', as: 'genre_show'
 
-  get '/:view/' => 'pages#index', as: 'siri_genre_index'
+  # get '/:view/' => 'pages#index', as: 'siri_genre_index'
   get 'tv-series/:view/:id' => 'pages#view', as: 'siri_genre_show'
 
   scope :q do 
     get 'search' => 'pages#search', as: :search
   end
+
+  get 'movies' => 'pages#movies'
+  get 'movies/:sort/' => 'pages#movies', as: 'genre_index'
+  get 'tv-series' => 'pages#series'
+  get 'tv-series/:view/' => 'pages#series', as: 'siri_genre_index'
 
   # You can have the root of your site routed with "root"
   root 'pages#index'

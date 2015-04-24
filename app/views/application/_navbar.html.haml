@@ -16,29 +16,29 @@
             = link_to "Dashboard", dashboard_path
       = form_tag search_path, class: "navbar-form navbar-left", :method => :get do
         .form-group
-          = text_field_tag :q, params[:q], class: "form-control", placeholder: "Search by Movie/TV Series title"
-          = submit_tag "Search", :name => nil, class: "btn btn-default"
-      %ul.nav.navbar-nav
-        %li.dropdown
-          = link_to "", class: "dropdown-toggle", "data-toggle" => "dropdown", role: "button", "aria-expanded" => "false" do
-            Genre
-            %span.caret
-          %ul.dropdown-menu{role: "menu"}
-            %li
-              = link_to "All", root_path
-            - Genre.all.each do |g|
-              %li
-                = link_to g.name, genre_index_path(sort: g.slug), class: ''
-        %li.dropdown
-          = link_to "", class: "dropdown-toggle", "data-toggle" => "dropdown", role: "button", "aria-expanded" => "false" do
-            Siri Genre
-            %span.caret
-          %ul.dropdown-menu{role: "menu"}
-            %li
-              = link_to "All", root_path
-            - SiriGenre.all.each do |sg|
-              %li
-                = link_to sg.name, siri_genre_index_path(view: sg.slug), class: ''
+          = text_field_tag :q, params[:q], class: "form-control input-sm", placeholder: "Search by Movie/TV Series title", style: "width: 250px;"
+          = submit_tag "Search", :name => nil, class: "btn btn-primary btn-sm"
+      / %ul.nav.navbar-nav
+      /   %li.dropdown
+      /     = link_to "", class: "dropdown-toggle", "data-toggle" => "dropdown", role: "button", "aria-expanded" => "false" do
+      /       Genre
+      /       %span.caret
+      /     %ul.dropdown-menu{role: "menu"}
+      /       %li
+      /         = link_to "All", root_path
+      /       - Genre.all.each do |g|
+      /         %li
+      /           = link_to g.name, genre_index_path(sort: g.slug), class: ''
+      /   %li.dropdown
+      /     = link_to "", class: "dropdown-toggle", "data-toggle" => "dropdown", role: "button", "aria-expanded" => "false" do
+      /       Siri Genre
+      /       %span.caret
+      /     %ul.dropdown-menu{role: "menu"}
+      /       %li
+      /         = link_to "All", root_path
+      /       - SiriGenre.all.each do |sg|
+      /         %li
+      /           = link_to sg.name, siri_genre_index_path(view: sg.slug), class: ''
       .nav.navbar-nav.navbar-right
         - if user_signed_in?
           %ul.nav.navbar-nav

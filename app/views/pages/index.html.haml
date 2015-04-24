@@ -2,16 +2,16 @@
 	KakiTube
 - content_for :meta_tags do
 	= render :partial => 'application/meta_tags',       |
-       :locals => {                                     |
-         :type => "website",                            |
-         :title => "KakiTube",          |
-         :url => request.url,                           |
-         :description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.",    |
-         :canonical => request.url,                     |
-         :og_title => "KakiTube",       |
-         :og_description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.", |
-         :og_image => ""        |
-      }                                                 |
+			 :locals => {                                     |
+				 :type => "website",                            |
+				 :title => "KakiTube",          |
+				 :url => request.url,                           |
+				 :description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.",    |
+				 :canonical => request.url,                     |
+				 :og_title => "KakiTube",       |
+				 :og_description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.", |
+				 :og_image => ""        |
+			}                                                 |
 
 
 .row
@@ -35,6 +35,7 @@
 				%h4{style: "margin-bottom:20px;"}
 					%span.glyphicon.glyphicon-th-list
 					Latest Movie
+					= link_to "View All", movies_path, class: 'btn btn-link btn-xs'
 				- @published_only.each do |p|
 					.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
 						.mask
@@ -49,7 +50,8 @@
 				%hr
 				%h4{style: "margin-bottom:20px;"}
 					%span.glyphicon.glyphicon-th-list
-					Latest Series
+					Latest TV Series
+					= link_to "View All", tv_series_path, class: 'btn btn-link btn-xs'
 				- @siris.each do |siri|
 					.movie.small-movie.effect{class: cycle('', '', '', '', 'last', '')}
 						.mask
