@@ -86,8 +86,6 @@
     <!-- *** This fieldType is used by Sunspot! *** -->
     <fieldType name="tdate" class="solr.TrieDateField"
                omitNorms="true"/>
-    <!-- *** Other Sunspot fieldType Definitions *** -->
-    <fieldType name="long" class="solr.TrieLongField" precisionStep="0" positionIncrementGap="0"/>
     <!-- Special field type for spell correction. Be careful about
          adding filters here, as they apply *before* your values go in
          the spellcheck. For example, the lowercase filter here means
@@ -142,8 +140,6 @@
     <field name="lat" stored="true" type="tdouble" multiValued="false" indexed="true"/>
     <!-- *** This field is used by Sunspot! *** -->
     <field name="lng" stored="true" type="tdouble" multiValued="false" indexed="true"/>
-    <!-- *** Other sunspot field definition *** -->
-    <field name="_version_" type="long" indexed="true" stored="true" multiValued="false"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="random_*" stored="false" type="rand" multiValued="false" indexed="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
@@ -255,7 +251,7 @@
     <dynamicField name="*_llms" stored="true" type="location" multiValued="true" indexed="true"/>
     <field name="textSpell" stored="false" type="textSpell" multiValued="true" indexed="true"/>
     <!-- required by Solr 4 -->
-    <!--field name="_version_" type="string" indexed="true" stored="true" multiValued="false" --/>
+    <field name="_version_" type="string" indexed="true" stored="true" multiValued="false"/>
   </fields>
 
   <!-- Field to use to determine and enforce document uniqueness.
