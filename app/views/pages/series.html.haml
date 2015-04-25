@@ -12,14 +12,17 @@
 					- SiriGenre.all.each do |sg|
 						%li
 							= link_to sg.name, siri_genre_index_path(view: sg.slug), class: ''
-		- @siris.each do |siri|
-			.movie.small-movie.effect{class: cycle('', '', '', '', 'last', '')}
-				.mask
-				= link_to siri_genre_show_path(siri, view: siri.siri_genre.slug) do
-					.gradient
-					= image_tag(siri.poster_url(:thumb), class: "img-responsive")
-					.mini-desc2
-						%h5= siri.title
+		- if @siris.any?
+			- @siris.each do |siri|
+				.movie.small-movie.effect{class: cycle('', '', '', '', 'last', '')}
+					.mask
+					= link_to siri_genre_show_path(siri, view: siri.siri_genre.slug) do
+						.gradient
+						= image_tag(siri.poster_url(:thumb), class: "img-responsive")
+						.mini-desc2
+							%h5= siri.title
+		- else
+			%h4 Ops! There is no tv series yet for this genre
 		= will_paginate @siris
 	.col-md-4
 		= render partial: "sidebar_right"

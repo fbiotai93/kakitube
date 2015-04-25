@@ -12,14 +12,17 @@
 					- Genre.all.each do |g|
 						%li
 							= link_to g.name, genre_index_path(sort: g.slug), class: ''
-		- @posts.each do |p|
-			.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
-				.mask
-				= link_to genre_show_path(p, sort: p.genre.slug) do
-					.gradient
-					= image_tag(p.poster_url(:thumb), class: "img-responsive")
-					.mini-desc2
-						%h5= p.title
+		- if @posts.any?
+			- @posts.each do |p|
+				.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
+					.mask
+					= link_to genre_show_path(p, sort: p.genre.slug) do
+						.gradient
+						= image_tag(p.poster_url(:thumb), class: "img-responsive")
+						.mini-desc2
+							%h5= p.title
+		- else
+			%h4 Ops! There is no movie yet for this genre
 		= will_paginate @posts
 	.col-md-4
 		= render partial: "sidebar_right"
