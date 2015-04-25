@@ -266,3 +266,17 @@ section#password-form p a {
   padding-right: 15px;
   padding-left: 15px;
 }
+
+/*
+	Responsive
+*/
+
+@media (min-width: 321px) and (max-width: 800px) {
+	.small-movie.last {
+		margin: 0 25px 25px 0;
+	}
+
+	.movie .mini-desc h4 {
+		font-size: 24px;
+	}
+}
