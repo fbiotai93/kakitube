@@ -54,7 +54,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :genre
 
-  default_scope -> { order('posts.id DESC') }
+  default_scope -> { order('posts.updated_at DESC') }
   scope :featured, -> { where(featured: true) }
   scope :published_only, -> { where(featured: false) }
   scope :by_genre, -> (genre_id) { where(genre_id: genre_id) }

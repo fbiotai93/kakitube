@@ -52,7 +52,7 @@ class Siri < ActiveRecord::Base
 
   accepts_nested_attributes_for :seasons, allow_destroy: true
 
-  default_scope -> { order('siris.id DESC') }
+  default_scope -> { order('siris.updated_at DESC') }
   scope :by_siri_genre, -> (siri_genre_id) { where(siri_genre_id: siri_genre_id) }
   scope :latest_update, -> { unscope(:order).order('`siris`.updated_at DESC') }
 
