@@ -96,6 +96,15 @@
 									%br/
 									%span.label.label-default= @siri.runtime
 		%hr
+		%h4 Gallery Image
+		.row
+			.col-md-4
+				= image_tag(@siri.gallery_image_1_url(:standard), class: "thumbnail img-responsive")
+			.col-md-4
+				= image_tag(@siri.gallery_image_2_url(:standard), class: "thumbnail img-responsive")
+			.col-md-4
+				= image_tag(@siri.gallery_image_3_url(:standard), class: "thumbnail img-responsive")
+		%hr
 		#accordian.panel-group{role: "tablist", "aria-multiselectable" => true}
 			- @siri.seasons.each do |season|
 				.panel.panel-default
@@ -128,15 +137,6 @@
 																.embed-responsive-item= episode.embed.html_safe
 														.modal-footer
 															%button.btn.btn-default{"data-dismiss" => "modal"} Close
-		%hr
-		%h4 Gallery Image
-		.row
-			.col-md-4
-				= image_tag(@siri.gallery_image_1_url(:standard), class: "thumbnail img-responsive")
-			.col-md-4
-				= image_tag(@siri.gallery_image_2_url(:standard), class: "thumbnail img-responsive")
-			.col-md-4
-				= image_tag(@siri.gallery_image_3_url(:standard), class: "thumbnail img-responsive")
 		%hr
 		%h4 What people are saying:
 		%center
