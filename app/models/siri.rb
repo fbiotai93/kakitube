@@ -54,6 +54,7 @@ class Siri < ActiveRecord::Base
 
   default_scope -> { order('siris.id DESC') }
   scope :by_siri_genre, -> (siri_genre_id) { where(siri_genre_id: siri_genre_id) }
+  scope :latest_update, -> { unscope(:order).order('`siris`.updated_at DESC') }
 
   searchable do
     text :title, boost: 5

@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_filter :latest_update, only: [:index, :show, :view, :search, :movies, :series]
+
   def index
 		@posts = Post.all
 		@featured = @posts.featured.take(1)
@@ -42,5 +44,12 @@ class PagesController < ApplicationController
       @siris = Siri.all.paginate(:page => params[:page], :per_page => 30)
       flash.now[:notice] = "No posts found for '#{params[:view]}'." if !params[:view].blank?
     end
+  end
+
+  private
+
+  def latest_update
+    @siris = Siri.all.paginate(:page => params[:page], :per_page => 10)
+    @latest_update = @siris.latest_update.limit(5)
   end
 end
