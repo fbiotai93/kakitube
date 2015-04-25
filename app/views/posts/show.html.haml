@@ -73,4 +73,6 @@
 					%p
 						%strong IMDB Votes
 						%p= @post.imdbvotes
+			%hr
+			= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary"
 

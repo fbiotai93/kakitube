@@ -1,14 +1,14 @@
 - content_for :title do
-  KakiTube | Post List
+  KakiTube | Movie List
 - content_for :meta_tags do
-  = render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | Post List", :url => request.url, :description => "KakiTube", :canonical => request.url, :og_title => "KakiTube | Post List", :og_description => "KakiTube" }
+  = render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | Movie List", :url => request.url, :description => "KakiTube", :canonical => request.url, :og_title => "KakiTube | Movie List", :og_description => "KakiTube" }
   
 / Page Content
 .container
   .row
     .col-lg-12
       .page-header
-        %h1 Post List
+        %h1 Movie List
   .row
     .col-md-4
       = render partial: "sidebar"
@@ -16,7 +16,7 @@
       .panel.panel-default
         .panel-heading
           %h3.panel-title
-            Post List #{link_to "Add new post", new_post_path, class: "btn btn-xs btn-primary pull-right", style: "color:#FFFFFF;"}
+            Movie List #{link_to "Add new movie", new_post_path, class: "btn btn-xs btn-primary pull-right", style: "color:#FFFFFF;"}
         .panel-body
           %table.table.table-bordered.table-hovered.display{id: "postLists"}
             %thead

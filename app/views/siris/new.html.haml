@@ -1,17 +1,15 @@
 - content_for :title do
-	KakiTube | Add New Series
+	KakiTube | Add New TV Series
 - content_for :meta_tags do
-	= render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | New Series", :url => request.url, :description => "KakiTube", :canonical => request.url, :og_title => "KakiTube | New Series", :og_description => "KakiTube" }
+	= render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | New TV Series", :url => request.url, :description => "KakiTube", :canonical => request.url, :og_title => "KakiTube | New TV Series", :og_description => "KakiTube" }
 	
 / Page Content
 .container
 	.row
 		.col-lg-12
 			.page-header
-				%h1
-					Add New Series
-					%small Subtext for header
+				%h1 Add New TV Series
 			.panel.panel-default
 				.panel-heading
-					%h3.panel-title New Series Form
+					%h3.panel-title New TV Series Form
 				= render "form"

@@ -1,2 +1,15 @@
-%h1 Editing Siri
-= render "form"
+- content_for :title do
+	KakiTube | Edit TV Series
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | Edit TV Series", :url => request.url, :description => "KakiTube", :canonical => request.url, :og_title => "KakiTube | Edit TV Series", :og_description => "KakiTube" }
+	
+/ Page Content
+.container
+	.row
+		.col-lg-12
+			.page-header
+				%h1 Edit TV Series
+			.panel.panel-default
+				.panel-heading
+					%h3.panel-title Edit TV Series Form
+				= render "form"

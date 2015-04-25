@@ -1,11 +1,139 @@
-%h1= @siri.title
-%ol.seasons
-	- @siri.seasons.each do |season|
-		%li= season.title
-		%li= season.poster_url
-		%ol.episodes
-			- season.episodes.each do |episode|
-				%li= episode.title
-= link_to 'Edit', edit_siri_path(@siri)
-%br
-= link_to 'Back to Siri list', siris_path
+- content_for :title do
+	KakiTube | TV Series List
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | TV Series List", :url => request.url, :description => "KakiTube", :canonical => request.url, :og_title => "KakiTube | TV Series List", :og_description => "KakiTube" }
+
+/ Page Content
+.container
+	.row
+		.col-lg-12
+			.page-header
+				%h1 Post List
+	.row
+		.col-md-4
+			= render partial: "sidebar"
+		.col-md-8
+			%h2= @siri.title
+			%p
+				Genre
+				%span.label.label-primary #{@siri.siri_genre.name}
+				- if @siri.is_on_going?
+					%span.label.label-warning
+						= @siri.status
+				- elsif @siri.is_completed?
+					%span.label.label-primary
+						= @siri.status
+			.row
+				.col-md-4
+					= image_tag(@siri.poster_url(:standard), class: "img-responsive")
+				.col-md-8
+					%p
+						= @siri.description
+					.row
+						.col-md-6
+							%p
+								%strong Director
+								%p= @siri.director
+						.col-md-6
+							%p
+								%strong Actors
+								%p= @siri.actors
+					.row
+						.col-md-6
+							%p
+								%strong Language
+								%p= @siri.language
+						.col-md-6
+							%p
+								%strong Country
+								%p= @siri.country
+					.row
+						.col-md-4
+							%p
+								%strong Metascore
+								%p
+									%span.label.label-default
+										%span.glyphicon.glyphicon-stats
+										= @siri.metascore? ? @siri.metascore : "N/A"
+						.col-md-4
+							%p
+								%strong IMDB Rating
+								%p
+									%span.label.label-default
+										%span.glyphicon.glyphicon-heart
+										= @siri.imdbrating? ? @siri.imdbrating : "N/A"
+						.col-md-4
+							%p
+								%strong IMDB Votes
+								%p
+									%span.label.label-default
+										%span.glyphicon.glyphicon-thumbs-up
+										= @siri.imdbvotes? ? @siri.imdbvotes : "N/A"
+					%table.table.table-bordered
+						%tbody
+							%tr
+								%td.col-md-3
+									%center
+										%strong Year
+										%br/
+										%span.label.label-default= @siri.year
+								%td.col-md-3
+									%center
+										%strong Rated
+										%br/
+										%span.label.label-default= @siri.rated
+								%td.col-md-3
+									%center
+										%strong Released
+										%br/
+										%span.label.label-default= @siri.released
+								%td.col-md-3
+									%center
+										%strong Runtime
+										%br/
+										%span.label.label-default= @siri.runtime
+			%hr
+			%h4 Gallery Image
+			.row
+				.col-md-4
+					= image_tag(@siri.gallery_image_1_url(:standard), class: "thumbnail img-responsive")
+				.col-md-4
+					= image_tag(@siri.gallery_image_2_url(:standard), class: "thumbnail img-responsive")
+				.col-md-4
+					= image_tag(@siri.gallery_image_3_url(:standard), class: "thumbnail img-responsive")
+			%hr
+			#accordian.panel-group{role: "tablist", "aria-multiselectable" => true}
+				- @siri.seasons.each do |season|
+					.panel.panel-default
+						.panel-heading{role: "tab", id: "#{season.title}"}
+							%a{"data-toggle" => "collapse", "data-parent" => "#accordion", href: "##{season.id}", "aria-expanded" => true, "aria-controls" => "#{season.id}"}
+								%h4.panel-title
+									= season.title
+									.pull-right
+										%p.small Total Episodes: #{season.episodes.count}
+						.panel-collapse.collapse{role: "tabpanel", "aria-labelledby" => "#{season.title}", id: "#{season.id}"}
+							.panel-body
+								%table.table.table-bordered.table-hovered
+									- season.episodes.each do |episode|
+										%tr
+											%td
+												= episode.title
+												.pull-right
+													%button{"data-toggle" => "modal", "data-target" => "#episode-#{episode.id}", class: "btn btn-link btn-xs"}
+														%span.glyphicon.glyphicon-play-circle
+														Watch Now
+												.modal.fade{tabindex: -1, role: "dialog", "aria-labelledby" => "Video", "aria-hidden" => true, id: "episode-#{episode.id}"}
+													.modal-dialog{style: "width:670px;"}
+														.modal-content
+															.modal-header
+																%button.close{type: "button", "data-dismiss" => "modal", "aria-label" => "Close"}
+																	%span{"aria-hidden" => true} &times;
+																%h4.modal-title{id: "trailer"} #{episode.title}
+															.modal-body
+																.embed-responsive.embed-responsive-16by9
+																	.embed-responsive-item= episode.embed.html_safe
+															.modal-footer
+																%button.btn.btn-default{"data-dismiss" => "modal"} Close
+			%hr
+				= link_to 'Edit', edit_siri_path(@siri), class: "btn btn-primary"
+				= link_to 'Back to Siri list', siris_path, class: "btn btn-default"
