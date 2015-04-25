@@ -48,7 +48,7 @@ class Siri < ActiveRecord::Base
   belongs_to :siri_genre
 
   extend FriendlyId
-  friendly_id :name, use: [:slugged, :finders, :history]
+  friendly_id :title, use: [:slugged, :finders, :history]
 
   accepts_nested_attributes_for :seasons, allow_destroy: true
 
@@ -56,10 +56,10 @@ class Siri < ActiveRecord::Base
   scope :by_siri_genre, -> (siri_genre_id) { where(siri_genre_id: siri_genre_id) }
 
   searchable do
-    text :name, boost: 5
+    text :title, boost: 5
   end
 
-  validates_presence_of :name
+  validates_presence_of :title
   validates_presence_of :year
   validates_presence_of :released
   validates_presence_of :runtime
