@@ -58,6 +58,13 @@
 						= link_to siri_genre_show_path(siri, view: siri.siri_genre.slug) do
 							.gradient
 							= image_tag(siri.poster_url(:thumb), class: "img-responsive")
+							.status
+								- if siri.is_on_going?
+									%span.label.label-warning
+										= siri.status
+								- elsif siri.is_completed?
+									%span.label.label-primary
+										= siri.status
 							.mini-desc2
 								%h5= siri.title
 				= will_paginate @siris
