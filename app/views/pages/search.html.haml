@@ -4,13 +4,22 @@
 			%h2 Search result for '#{@q}'
 		- if @posts.any?
 			- @posts.each do |p|
-				.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
-					.mask
-					= link_to genre_show_path(p, sort: p.genre.slug) do
-						.gradient
-						= image_tag(p.poster_url(:thumb), class: "img-responsive")
-						.mini-desc2
-							%h5= p.title
+				- if p.is_a? Post
+					.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
+						.mask
+						= link_to genre_show_path(p, sort: p.genre.slug) do
+							.gradient
+							= image_tag(p.poster_url(:thumb), class: "img-responsive")
+							.mini-desc2
+								%h5= p.title
+				- if p.is_a? Siri
+					.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
+						.mask
+						= link_to siri_genre_show_path(p, view: p.siri_genre.slug) do
+							.gradient
+							= image_tag(p.poster_url(:thumb), class: "img-responsive")
+							.mini-desc2
+								%h5= p.title
 		- else
 			%h4 No search result found for '#{@q}'
 		.row
