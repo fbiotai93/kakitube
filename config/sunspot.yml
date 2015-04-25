@@ -3,7 +3,7 @@ production:
     hostname: localhost
     port: 8080
     log_level: WARNING
-    path: /solr
+    path: /solr/web/WEB-INF/web.xml
     # read_timeout: 2
     # open_timeout: 0.5
 
@@ -29,4 +29,3 @@ test:
     port: 8981
     log_level: WARNING
     path: /solr/test
-    
