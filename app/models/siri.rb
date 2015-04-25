@@ -66,7 +66,7 @@ class Siri < ActiveRecord::Base
   validates_presence_of :director
   validates_presence_of :writer
   validates_presence_of :actors
-  validates_presence_of :plot
+  validates_presence_of :description
   validates_presence_of :language
   validates_presence_of :country
   validates_presence_of :poster
