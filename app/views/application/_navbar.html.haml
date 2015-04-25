@@ -14,10 +14,6 @@
         - if user_signed_in? && current_user.is_admin?
           %li{:class => "#{current_page(dashboard_path)}"}
             = link_to "Dashboard", dashboard_path
-      = form_tag search_path, class: "navbar-form navbar-left", :method => :get do
-        .form-group
-          = text_field_tag :q, params[:q], class: "form-control input-sm", placeholder: "Search by Movie/TV Series title", style: "width: 250px;"
-          = submit_tag "Search", :name => nil, class: "btn btn-primary btn-sm"
       .nav.navbar-nav.navbar-right
         - if user_signed_in?
           %ul.nav.navbar-nav

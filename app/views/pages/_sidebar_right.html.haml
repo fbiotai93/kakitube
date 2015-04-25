@@ -1,3 +1,10 @@
+.col-md-12
+	= form_tag search_path, class: "", :method => :get do
+		.input-group
+			= text_field_tag :q, params[:q], class: "form-control input-sm", placeholder: "Search by Movie/TV Series title"
+			%span.input-group-btn
+				= submit_tag "Search", :name => nil, class: "btn btn-primary btn-sm"
+%hr
 %center
 	%img.img-responsive{src: "http://placehold.it/336x280"}
 %hr
