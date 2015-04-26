@@ -25,6 +25,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'will_paginate', '~> 3.0.6'
 gem 'sunspot_rails'
 gem 'progress_bar'
+gem 'newrelic_rpm'
 
 group :development do
 	gem 'letter_opener'
