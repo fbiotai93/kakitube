@@ -60,6 +60,9 @@ class Post < ActiveRecord::Base
   scope :by_genre, -> (genre_id) { where(genre_id: genre_id) }
   scope :random, -> { unscope(:order).order('RAND()') }
 
+  after_create :flush_cache
+  after_update :flush_cache
+
   searchable do
     text :title, boost: 5
   end
@@ -78,6 +81,28 @@ class Post < ActiveRecord::Base
   validates_presence_of :trailer
   validates_presence_of :poster
   validates_presence_of :header_image
+
+  def self.cached_find(id)
+    Rails.cache.fetch([name, id]) { find(id) }
+  end
+
+  def self.cached_featured
+    Rails.cache.fetch([name, "featured"]) do
+      featured.to_a
+    end
+  end
+
+  def self.cached_random
+    Rails.cache.fetch([name, "random"]) do
+      random.to_a
+    end
+  end
+
+  def flush_cache
+    Rails.cache.delete([self.class.name, id])
+    Rails.cache.delete([self.class.name, "featured"])
+    Rails.cache.delete([self.class.name, "random"])
+  end
 
   def is_featured?
     featured == true
