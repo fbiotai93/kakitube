@@ -3,22 +3,22 @@ class PagesController < ApplicationController
 
   def index
 		@posts = Post.all
-		@featured = @posts.cached_featured.take(1)
+		@featured = @posts.featured.take(1)
 		@published_only = @posts.published_only.paginate(:page => params[:page], :per_page => 10)
-    @random_movie = @posts.cached_random.take(3)
+    @random_movie = @posts.random.take(3)
     @carousel_movie = @random_movie.shift(4)
 
     @siris = Siri.all.paginate(:page => params[:page], :per_page => 10)
-    @random_siri = @siris.cached_random.take(3)
+    @random_siri = @siris.random.take(3)
     @carousel_siri = @random_siri.shift(4)
   end
 
   def show
-    @post = Post.cached_find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def view
-    @siri = Siri.cached_find(params[:id])
+    @siri = Siri.find(params[:id])
   end
 
   def search
@@ -38,7 +38,7 @@ class PagesController < ApplicationController
       @posts = Post.all.paginate(:page => params[:page], :per_page => 30)
       flash.now[:notice] = "No posts found for '#{params[:sort]}'." if !params[:sort].blank?
     end
-    @random_movie = @posts.cached_random.take(3)
+    @random_movie = @posts.random.take(3)
     @carousel_movie = @random_movie.shift(4)
   end
 
@@ -50,7 +50,7 @@ class PagesController < ApplicationController
       @siris = Siri.all.paginate(:page => params[:page], :per_page => 30)
       flash.now[:notice] = "No posts found for '#{params[:view]}'." if !params[:view].blank?
     end
-    @random_siri = @siris.cached_random.take(3)
+    @random_siri = @siris.random.take(3)
     @carousel_siri = @random_siri.shift(4)
   end
 
@@ -58,6 +58,6 @@ class PagesController < ApplicationController
 
   def latest_update
     @siris = Siri.all.paginate(:page => params[:page], :per_page => 10)
-    @latest_update = @siris.cached_latest_update.take(5)
+    @latest_update = @siris.latest_update.limit(5)
   end
 end

@@ -59,8 +59,6 @@ class Siri < ActiveRecord::Base
   scope :latest_update, -> { unscope(:order).order('`siris`.updated_at DESC') }
   scope :random, -> { unscope(:order).order('RAND()') }
 
-  after_commit :flush_cache
-
   searchable do
     text :title, boost: 5
   end
@@ -77,28 +75,6 @@ class Siri < ActiveRecord::Base
   validates_presence_of :country
   validates_presence_of :poster
   validates_presence_of :header_image
-
-  def self.cached_find(id)
-    Rails.cache.fetch([name, id]) { find(id) }
-  end
-
-  def self.cached_latest_update
-    Rails.cache.fetch([name, "latest_update"]) do
-      latest_update.to_a
-    end
-  end
-
-  def self.cached_random
-    Rails.cache.fetch([name, "random"]) do
-      random.to_a
-    end
-  end
-
-  def flush_cache
-    Rails.cache.delete([self.class.name, id])
-    Rails.cache.delete([self.class.name, "latest_update"])
-    Rails.cache.delete([self.class.name, "random"])
-  end
 
   def is_on_going?
     status === "On-Going"

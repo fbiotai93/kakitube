@@ -17,22 +17,22 @@
 .row
 	.col-md-8
 		.movie.latest
-			-# cache "featured_articles", expires_in: 24.hours do
-			- @featured.each do |f|
-				= link_to genre_show_path(f, sort: f.genre.slug) do
-					.gradient
-					= image_tag(f.header_image_url(:standard), class: "img-responsive")
-					.status
-						- if f.is_featured?
-							%span.label.label-danger
-								FEATURED MOVIE
-					.watch
-						= link_to genre_show_path(f, sort: f.genre.slug), class: "btn btn-sm btn-primary" do
-							%span.glyphicon.glyphicon-play-circle
-							Watch Now
-					.mini-desc
-						%h4= f.title
-						%p.hidden-xs=h truncate(f.description, length: 200)
+			- cache "featured_articles", expires_in: 24.hours do
+				- @featured.each do |f|
+					= link_to genre_show_path(f, sort: f.genre.slug) do
+						.gradient
+						= image_tag(f.header_image_url(:standard), class: "img-responsive")
+						.status
+							- if f.is_featured?
+								%span.label.label-danger
+									FEATURED MOVIE
+						.watch
+							= link_to genre_show_path(f, sort: f.genre.slug), class: "btn btn-sm btn-primary" do
+								%span.glyphicon.glyphicon-play-circle
+								Watch Now
+						.mini-desc
+							%h4= f.title
+							%p.hidden-xs=h truncate(f.description, length: 200)
 		.row
 			.col-md-12
 				%hr
