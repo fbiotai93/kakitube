@@ -14,7 +14,7 @@
 							= link_to sg.name, siri_genre_index_path(view: sg.slug), class: ''
 		- if @siris.any?
 			- @siris.each do |siri|
-				.movie.small-movie.effect{class: cycle('', '', '', '', 'last', '')}
+				.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
 					.mask
 					= link_to siri_genre_show_path(siri, view: siri.siri_genre.slug) do
 						.gradient
