@@ -53,7 +53,7 @@
 					Latest TV Series
 					= link_to "View All", tv_series_path, class: 'btn btn-link btn-xs'
 				- @siris.each do |siri|
-					.movie.small-movie.effect{class: cycle('', '', '', '', 'last', '')}
+					.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
 						.mask
 						= link_to siri_genre_show_path(siri, view: siri.siri_genre.slug) do
 							.gradient
