@@ -10,4 +10,14 @@
 #
 
 class SiriGenre < ActiveRecord::Base
+  after_create :clear_cache
+  after_update :clear_cache
+
+	def self.all_cached
+		Rails.cache.fetch('SiriGenre.all') { all }
+	end
+
+	def clear_cache
+		Rails.cache.delete('SiriGenre.all')
+	end
 end

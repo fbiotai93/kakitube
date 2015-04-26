@@ -12,6 +12,16 @@
 class Genre < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders, :history]
+  after_create :clear_cache
+  after_update :clear_cache
   
 	has_many :posts
+
+	def self.all_cached
+		Rails.cache.fetch('Genre.all') { all }
+	end
+
+	def clear_cache
+		Rails.cache.delete('Genre.all')
+	end
 end
