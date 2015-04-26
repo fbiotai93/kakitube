@@ -12,6 +12,15 @@
 					- SiriGenre.all.each do |sg|
 						%li
 							= link_to sg.name, siri_genre_index_path(view: sg.slug), class: ''
+			.carousel
+				- @carousel_siri.each do |c|
+					.movie.latest
+						= link_to siri_genre_show_path(c, view: c.siri_genre.slug) do
+							.gradient
+							= image_tag(c.header_image_url(:standard), class: "img-responsive")
+							.mini-desc
+								%h4= c.title
+								%p.hidden-xs=h truncate(c.description, length: 200)
 		- if @siris.any?
 			- @siris.each do |siri|
 				.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}

@@ -38,6 +38,8 @@ class PagesController < ApplicationController
       @posts = Post.all.paginate(:page => params[:page], :per_page => 30)
       flash.now[:notice] = "No posts found for '#{params[:sort]}'." if !params[:sort].blank?
     end
+    @random_movie = @posts.random.take(3)
+    @carousel_movie = @random_movie.shift(4)
   end
 
   def series
@@ -48,6 +50,8 @@ class PagesController < ApplicationController
       @siris = Siri.all.paginate(:page => params[:page], :per_page => 30)
       flash.now[:notice] = "No posts found for '#{params[:view]}'." if !params[:view].blank?
     end
+    @random_siri = @siris.random.take(3)
+    @carousel_siri = @random_siri.shift(4)
   end
 
   private
