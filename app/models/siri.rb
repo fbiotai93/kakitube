@@ -29,6 +29,7 @@
 #  gallery_image_1 :string(255)
 #  gallery_image_2 :string(255)
 #  gallery_image_3 :string(255)
+#  header_image    :string(255)
 #
 # Indexes
 #
@@ -39,6 +40,7 @@
 
 class Siri < ActiveRecord::Base
   mount_uploader :poster, PosterUploader
+  mount_uploader :header_image, HeaderImageUploader
   mount_uploader :gallery_image_1, GalleryImage1Uploader
   mount_uploader :gallery_image_2, GalleryImage2Uploader
   mount_uploader :gallery_image_3, GalleryImage3Uploader
@@ -55,6 +57,7 @@ class Siri < ActiveRecord::Base
   default_scope -> { order('siris.updated_at DESC') }
   scope :by_siri_genre, -> (siri_genre_id) { where(siri_genre_id: siri_genre_id) }
   scope :latest_update, -> { unscope(:order).order('`siris`.updated_at DESC') }
+  scope :random, -> { unscope(:order).order('RAND()') }
 
   searchable do
     text :title, boost: 5
@@ -71,6 +74,7 @@ class Siri < ActiveRecord::Base
   validates_presence_of :language
   validates_presence_of :country
   validates_presence_of :poster
+  validates_presence_of :header_image
 
   def is_on_going?
     status === "On-Going"

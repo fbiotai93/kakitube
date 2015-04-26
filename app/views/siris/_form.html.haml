@@ -23,13 +23,23 @@
 				.form-group
 					= f.label :poster, "Poster", class: "col-sm-2 control-label"
 					.col-sm-10
-						- if @post.try(:poster?)
-							= image_tag(@post.poster_url(:standard), class: "img-responsive")
+						- if @siri.try(:poster?)
+							= image_tag(@siri.poster_url(:standard), class: "img-responsive")
 						- else
 							= image_tag('poster-default.png', class: "img-responsive")
 						%h6 Replace current image
 						= f.file_field :poster, class: "form-control"
 						= f.hidden_field :poster_cache
+				.form-group
+					= f.label :header_image, "Header Image", class: "col-sm-2 control-label"
+					.col-sm-10
+						- if @siri.try(:header_image?)
+							= image_tag(@siri.header_image_url(:standard), class: "img-responsive")
+						- else
+							= image_tag('poster-latest.png', class: "img-responsive")
+						%h6 Replace current image
+						= f.file_field :header_image, class: "form-control"
+						= f.hidden_field :header_image_cache
 				.form-group
 					= f.label :title, "Series Name", class: "col-sm-2 control-label"
 					.col-sm-10

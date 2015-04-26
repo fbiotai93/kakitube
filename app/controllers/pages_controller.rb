@@ -5,10 +5,12 @@ class PagesController < ApplicationController
 		@posts = Post.all
 		@featured = @posts.featured.take(1)
 		@published_only = @posts.published_only.paginate(:page => params[:page], :per_page => 10)
-    @random = @posts.random.take(3)
-    @carousel = @random.shift(4)
+    @random_movie = @posts.random.take(3)
+    @carousel_movie = @random_movie.shift(4)
 
     @siris = Siri.all.paginate(:page => params[:page], :per_page => 10)
+    @random_siri = @siris.random.take(3)
+    @carousel_siri = @random_siri.shift(4)
   end
 
   def show
