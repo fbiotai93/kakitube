@@ -1,5 +1,6 @@
 site_domain: kakitube.dev
 imdb_api: 5648389e
+google_analytics_tracker: UA-60500928-1
 fb_app_id: 367753823253755
 s3:
   bucket: kakitube-dev
