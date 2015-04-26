@@ -48,6 +48,7 @@ class SirisController < ApplicationController
       render 'new'
     elsif params[:submit]
     	if @siri.save
+        expire_fragment("featured_articles")
         redirect_to siris_path, notice: "Successfully created siri."
       else
         render 'new'
@@ -65,6 +66,7 @@ class SirisController < ApplicationController
 
   def update
     if @siri.update_attributes(siri_params)
+      expire_fragment("featured_articles")
       redirect_to @siri, notice: "Successfully updated siri."
     else
       render 'edit'
