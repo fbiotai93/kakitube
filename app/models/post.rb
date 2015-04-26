@@ -58,6 +58,7 @@ class Post < ActiveRecord::Base
   scope :featured, -> { where(featured: true) }
   scope :published_only, -> { where(featured: false) }
   scope :by_genre, -> (genre_id) { where(genre_id: genre_id) }
+  scope :random, -> { unscope(:order).order('RAND()') }
 
   searchable do
     text :title, boost: 5

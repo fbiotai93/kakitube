@@ -17,4 +17,5 @@
 //= require bootstrap
 //= require jquery.dataTables.min
 //= require dataTables.bootstrap
+//= require slick
 //= require_tree .

@@ -200,6 +200,24 @@ section#password-form p a {
 }
 
 /*
+	frontpage - random carousel
+*/
+
+.carousel {
+	margin-top: 20px;
+}
+
+.carousel .movie .mini-desc {
+	width: 100%;
+}
+
+.carousel .mini-desc p {
+	font-size: 14px;
+	line-height: 1.4;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+
+/*
 	frontpage - small movie
 */
 
