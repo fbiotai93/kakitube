@@ -99,7 +99,7 @@
 				%button{"data-toggle" => "modal", "data-target" => ".video", class: "btn btn-primary"}
 					%span.glyphicon.glyphicon-play-circle
 					Watch Full Video
-		.video.modal.fade{tabindex: -1, role: "dialog", "aria-labelledby" => "Video", "aria-hidden" => true}
+		.video.modal.fade.cls{tabindex: -1, role: "dialog", "aria-labelledby" => "Video", "aria-hidden" => true}
 			.modal-dialog{style: "width:670px;"}
 				.modal-content
 					.modal-header
@@ -111,7 +111,7 @@
 							.embed-responsive-item= @post.embed.html_safe
 					.modal-footer
 						%button.btn.btn-default{"data-dismiss" => "modal"} Close
-		.trailer.modal.fade{tabindex: -1, role: "dialog", "aria-labelledby" => "Trailer", "aria-hidden" => true}
+		.trailer.modal.fade.cls{tabindex: -1, role: "dialog", "aria-labelledby" => "Trailer", "aria-hidden" => true}
 			.modal-dialog{style: "width:670px;"}
 				.modal-content
 					.modal-header

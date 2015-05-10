@@ -19,6 +19,23 @@
 				= @post.title
 				%span.badge= @post.genre.name
 			%p= @post.description
+			%hr
+			%button{"data-toggle" => "modal", "data-target" => ".trailer", class: "btn btn-primary btn-block"}
+				%span.glyphicon.glyphicon-play
+				Watch Trailer
+			.trailer.modal.fade.cls{tabindex: -1, role: "dialog", "aria-labelledby" => "Trailer", "aria-hidden" => true}
+				.modal-dialog{style: "width:670px;"}
+					.modal-content
+						.modal-header
+							%button.close{type: "button", "data-dismiss" => "modal", "aria-label" => "Close"}
+								%span{"aria-hidden" => true} &times;
+							%h4.modal-title{id: "trailer"} Trailer of #{@post.title}
+						.modal-body
+							.embed-responsive.embed-responsive-16by9
+								%iframe.embed-responsive-item{width: 640, height: 360, src: "http://www.youtube.com/embed/#{@post.trailer}?rel=0&showinfo=0&iv_load_policy=3&autoplay=0", frameborder: 0, allowfullscreen: "allowfullscreen"}
+						.modal-footer
+							%button.btn.btn-default{"data-dismiss" => "modal"} Close
+			%hr
 			%table.table.table-bordered
 				%tbody
 					%tr

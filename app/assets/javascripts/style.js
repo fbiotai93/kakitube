@@ -1,6 +1,10 @@
 var ready;
 ready = function() {
 
+  $(".cls").on('hidden.bs.modal', function (e) {
+    $(".cls iframe").attr("src", $(".cls iframe").attr("src"));
+  });
+
 	// dataTable
 	$('.display').DataTable({
     "aaSorting": []
