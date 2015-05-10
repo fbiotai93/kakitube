@@ -22,4 +22,4 @@ solr/development
 solr/pids
 solr/test
 /log/*.log.lck
-solr/conf/*
+# solr/conf/*
