@@ -17,7 +17,9 @@ Rails.application.routes.draw do
       patch :grant
     end
   end
-  resources :siris
+  resources :siris do
+    resources :seasons
+  end
 
   get '/dashboard' => 'dashboards#index'
 

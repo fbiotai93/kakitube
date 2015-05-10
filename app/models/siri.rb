@@ -52,7 +52,7 @@ class Siri < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders, :history]
 
-  accepts_nested_attributes_for :seasons, allow_destroy: true
+  # accepts_nested_attributes_for :seasons, allow_destroy: true
 
   default_scope -> { order('siris.updated_at DESC') }
   scope :by_siri_genre, -> (siri_genre_id) { where(siri_genre_id: siri_genre_id) }
