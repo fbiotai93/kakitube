@@ -12,8 +12,14 @@
 				 :og_description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.", |
 				 :og_image => ""        |
 			}                                                 |
-
-
+.row
+	.col-md-12.hidden-lg.hidden-md
+		= form_tag search_path, class: "", :method => :get do
+			.input-group
+				= text_field_tag :q, params[:q], class: "form-control input-sm", placeholder: "Search by Movie/TV Series title"
+				%span.input-group-btn
+					= submit_tag "Search", :name => nil, class: "btn btn-primary btn-sm"
+		%hr
 .row
 	.col-md-8
 		.movie.latest
