@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'episodes/index'
+
   devise_for :users
   devise_scope :user do
     delete 'sign_out', :to => 'devise/sessions#destroy'
@@ -18,7 +20,9 @@ Rails.application.routes.draw do
     end
   end
   resources :siris do
-    resources :seasons
+    resources :seasons do
+      resources :episodes
+    end
   end
 
   get '/dashboard' => 'dashboards#index'

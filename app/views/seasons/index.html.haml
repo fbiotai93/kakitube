@@ -22,16 +22,18 @@
 						%thead
 							%tr
 								%th Season Title
+								%th Episode
 								%th.col-md-3 Date Added
 								%th.col-md-2 Action
 						%tbody
 							- @seasons.each do |season|
 								%tr
 									%td= season.title
+									%td= link_to pluralize(season.episodes.size, "Episode"), siri_season_episodes_path(@siri, season), class: "btn btn-link"
 									%td= season.created_at.strftime("%d %B %Y")
 									%td
 										.btn-group.btn-group-justified.btn-group-xs
-											= link_to siri_seasons_path(season), class: "btn btn-primary" do
+											= link_to siri_season_episodes_path(@siri, season), class: "btn btn-primary" do
 												%span.glyphicon.glyphicon-eye-open{"aria-hidden" => true}
 											/ = link_to edit_siri_url(season), class: "btn btn-default" do
 											/ 	%span.glyphicon.glyphicon-edit{"aria-hidden" => true}
