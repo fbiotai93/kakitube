@@ -137,9 +137,6 @@
 								%h6 Replace current image
 								= f.file_field :gallery_image_3, class: "form-control"
 								= f.hidden_field :gallery_image_3_cache
-				= f.fields_for :seasons do |builder|
-					= render 'season_fields', f: builder
-				= link_to_add_fields "Add Seasons", f, :seasons
 			= f.hidden_field :metascore, class: "form-control"
 			= f.hidden_field :imdbrating, class: "form-control"
 			= f.hidden_field :imdbvotes, class: "form-control"
