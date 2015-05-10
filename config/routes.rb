@@ -20,17 +20,15 @@ Rails.application.routes.draw do
     end
   end
   resources :siris do
-    resources :seasons do
+    resources :seasons, except: [:show] do
       resources :episodes
     end
   end
 
   get '/dashboard' => 'dashboards#index'
 
-  # get '/:sort/' => 'pages#index', as: 'genre_index'
   get 'movies/:sort/:id' => 'pages#show', as: 'genre_show'
 
-  # get '/:view/' => 'pages#index', as: 'siri_genre_index'
   get 'tv-series/:view/:id' => 'pages#view', as: 'siri_genre_show'
 
   scope :q do 

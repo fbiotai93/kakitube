@@ -1,6 +1,7 @@
 class SeasonsController < ApplicationController
 	before_action :authenticate_user!
-	before_filter :set_siri, only: [:index, :new, :create]
+	before_filter :set_siri, only: [:index, :new, :create, :edit, :update, :destroy]
+  before_filter :set_season, only: [:edit, :update, :destroy]
   before_filter :admin_only
 
   def index
@@ -19,6 +20,27 @@ class SeasonsController < ApplicationController
   	else
   		render 'new'
   	end
+  end
+
+  def edit
+    if @season
+      render
+    else
+      redirect_to siri_seasons_path, notice: "Sorry! Season not found"
+    end
+  end
+
+  def update
+    if @season.update_attributes(season_params)
+      redirect_to siri_seasons_path, notice: "Successfully updated season."
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @season.destroy
+    redirect_to siri_seasons_path, notice: "Successfully destroyed season."
   end
 
   private

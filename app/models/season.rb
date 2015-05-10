@@ -20,4 +20,8 @@ class Season < ActiveRecord::Base
   belongs_to :siri
   has_many :episodes, dependent: :destroy
 
+  validates_presence_of :title
+
+  default_scope -> { includes(:episodes).order("episodes.updated_at DESC") }
+
 end

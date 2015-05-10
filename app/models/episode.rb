@@ -16,4 +16,9 @@
 
 class Episode < ActiveRecord::Base
   belongs_to :season
+
+  validates_presence_of :title
+  validates_presence_of :embed
+
+  default_scope -> { order('episodes.updated_at DESC') }
 end

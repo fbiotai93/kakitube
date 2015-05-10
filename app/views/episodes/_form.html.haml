@@ -1,4 +1,4 @@
-= form_for @episode, url: siri_season_episodes_path, multipart: true, html: { class: "form-horizontal" } do |f|
+= form_for @episode, url: siri_season_episodes_path, html: { class: "form-horizontal" } do |f|
 	.panel-body
 		- if @episode.errors.any?
 			.alert.alert-danger.alert-dismissable
@@ -15,5 +15,10 @@
 					= f.label :title, "Episode Title", class: "col-sm-2 control-label"
 					.col-sm-10
 						= f.text_field :title, :class => "form-control"
+				.form-group
+					= f.label :embed, "Embed Code", class: "col-sm-2 control-label"
+					.col-sm-10
+						= f.text_area :embed, :class => "form-control", rows: 6
 	.panel-footer
 		= f.submit "Save", :class => "btn btn-primary"
+		= link_to "Cancel", siri_season_episodes_path, class: "btn btn-default"

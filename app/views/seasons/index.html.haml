@@ -33,9 +33,9 @@
 									%td= season.created_at.strftime("%d %B %Y")
 									%td
 										.btn-group.btn-group-justified.btn-group-xs
-											= link_to siri_season_episodes_path(@siri, season), class: "btn btn-primary" do
-												%span.glyphicon.glyphicon-eye-open{"aria-hidden" => true}
-											/ = link_to edit_siri_url(season), class: "btn btn-default" do
-											/ 	%span.glyphicon.glyphicon-edit{"aria-hidden" => true}
-											/ = link_to siri_path(season), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do
-											/ 	%span.glyphicon.glyphicon-remove{"aria-hidden" => true}
+											= link_to edit_siri_season_path(@siri, season), class: "btn btn-default" do
+												%span.glyphicon.glyphicon-edit{"aria-hidden" => true}
+											= link_to siri_season_path(@siri, season), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do
+												%span.glyphicon.glyphicon-remove{"aria-hidden" => true}
+				.panel-footer
+					= link_to "Back", siris_path, class: "btn btn-default"

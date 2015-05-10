@@ -1,6 +1,7 @@
 class EpisodesController < ApplicationController
   before_action :authenticate_user!
-	before_filter :set_season, only: [:index, :new, :create]
+	before_filter :set_season, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  before_filter :set_episode, only: [:show, :edit, :update, :destroy]
   before_filter :admin_only
 
   def index
@@ -19,6 +20,35 @@ class EpisodesController < ApplicationController
   	else
   		render 'new'
   	end
+  end
+
+  def show
+    if @episode
+      render
+    else
+      redirect_to siri_season_episodes_path, notice: "Sorry! Episode not found"
+    end
+  end
+
+  def edit
+    if @episode
+      render
+    else
+      redirect_to siri_season_episodes_path, notice: "Sorry! Season not found"
+    end
+  end
+
+  def update
+    if @episode.update_attributes(episode_params)
+      redirect_to siri_season_episodes_path, notice: "Successfully updated episode."
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @episode.destroy
+    redirect_to siri_season_episodes_path, notice: "Successfully destroyed episode."
   end
 
   private

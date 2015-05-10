@@ -52,7 +52,7 @@ class Siri < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders, :history]
 
-  default_scope -> { order('siris.updated_at DESC') }
+  default_scope -> { includes(:seasons).order("seasons.updated_at DESC") }
   scope :by_siri_genre, -> (siri_genre_id) { where(siri_genre_id: siri_genre_id) }
   scope :latest_update, -> { unscope(:order).order('`siris`.updated_at DESC') }
   scope :random, -> { unscope(:order).order('RAND()') }
