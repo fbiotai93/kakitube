@@ -1,0 +1,14 @@
+.list-group
+	= link_to posts_path, class: "list-group-item" do
+		%span.badge= Post.all.count
+		Movie
+	= link_to siris_path, class: "list-group-item #{current_controller?(['seasons'])}" do
+		%span.badge= Siri.all.count
+		Series
+	= link_to users_path, class: "list-group-item" do
+		%span.badge= User.all.count
+		User
+	= link_to "Comment", "#", class: "list-group-item"
+	= link_to genres_path, class: "list-group-item" do
+		%span.badge= Genre.all.count
+		Genre

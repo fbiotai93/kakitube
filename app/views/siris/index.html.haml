@@ -30,7 +30,7 @@
 							- @siris.each do |siri|
 								%tr
 									%td= siri.title
-									%td= pluralize(siri.seasons.size, "Season")
+									%td= link_to pluralize(siri.seasons.size, "Season"), siri_seasons_path(siri), class: "btn btn-link"
 									%td= siri.created_at.strftime("%d %B %Y")
 									%td
 										- if siri.is_on_going?

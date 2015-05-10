@@ -1,2 +1,39 @@
-- @seasons.each do |season|
-	= season.title
+- content_for :title do
+	KakiTube | Season List for #{@siri.title}
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | Season List for #{@siri.title}", :url => request.url, :description => "KakiTube | Season List for #{@siri.title}", :canonical => request.url, :og_title => "KakiTube | Season List for #{@siri.title}", :og_description => "KakiTube | Season List for #{@siri.title}" }
+	
+/ Page Content
+.container
+	.row
+		.col-lg-12
+			.page-header
+				%h1 Seasons List for #{@siri.title}
+	.row
+		.col-md-4
+			= render partial: "sidebar"
+		.col-md-8
+			.panel.panel-default
+				.panel-heading
+					%h3.panel-title
+						Season list for #{@siri.title} #{link_to "Add new season", new_siri_season_path, class: "btn btn-xs btn-primary pull-right", style: "color:#FFFFFF;"}
+				.panel-body
+					%table.table.table-bordered.table-hovered.display{id: "postLists"}
+						%thead
+							%tr
+								%th Season Title
+								%th.col-md-3 Date Added
+								%th.col-md-2 Action
+						%tbody
+							- @seasons.each do |season|
+								%tr
+									%td= season.title
+									%td= season.created_at.strftime("%d %B %Y")
+									%td
+										.btn-group.btn-group-justified.btn-group-xs
+											= link_to siri_seasons_path(season), class: "btn btn-primary" do
+												%span.glyphicon.glyphicon-eye-open{"aria-hidden" => true}
+											/ = link_to edit_siri_url(season), class: "btn btn-default" do
+											/ 	%span.glyphicon.glyphicon-edit{"aria-hidden" => true}
+											/ = link_to siri_path(season), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do
+											/ 	%span.glyphicon.glyphicon-remove{"aria-hidden" => true}
