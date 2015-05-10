@@ -5,6 +5,10 @@ ready = function() {
     $(".cls iframe").attr("src", $(".cls iframe").attr("src"));
   });
 
+  $(".cls-you").on('hidden.bs.modal', function (e) {
+    $(".cls-you iframe").attr("src", $(".cls-you iframe").attr("src"));
+  });
+
 	// dataTable
 	$('.display').DataTable({
     "aaSorting": []

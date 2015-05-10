@@ -303,3 +303,9 @@ section#password-form p a {
 		font-size: 24px;
 	}
 }
+
+@media (min-width: 992px) {
+	.modal-md {
+	  width: 670px;
+	}
+}
