@@ -1,6 +1,5 @@
 class EpisodesController < ApplicationController
   before_action :authenticate_user!
-  # before_filter :set_siri, only: [:index, :new, :create]
 	before_filter :set_season, only: [:index, :new, :create]
   before_filter :admin_only
 
@@ -16,17 +15,13 @@ class EpisodesController < ApplicationController
   def create
   	@episode = @season.episodes.new(episode_params)
   	if @episode.save
-  		redirect_to season_episodes_path, notice: "New episode has been created."
+  		redirect_to siri_season_episodes_path, notice: "New episode has been created."
   	else
   		render 'new'
   	end
   end
 
   private
-
-  # def set_siri
-  #   @siri = Siri.find(params[:siri_id])
-  # end
 
   def set_season
   	@season = Season.find(params[:season_id])
