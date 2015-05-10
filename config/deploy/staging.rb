@@ -2,6 +2,7 @@ set :application, 'kakitube_staging'
 set :stage, :staging
 set :rails_env, :staging
 set :deploy_to, '/home/deploy/kakitube_staging'
+set :release_note_url, 'http://staging.kakitube.com/release_note.txt'
 
 # Simple Role Syntax
 # ==================
