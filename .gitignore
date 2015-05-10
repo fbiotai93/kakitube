@@ -16,10 +16,10 @@ config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
 
-solr/data
-solr/default/data
-solr/development
-solr/pids
-solr/test
-/log/*.log.lck
+# solr/data
+# solr/default/data
+# solr/development
+# solr/pids
+# solr/test
+# /log/*.log.lck
 # solr/conf/*
