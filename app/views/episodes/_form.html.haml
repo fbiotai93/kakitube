@@ -16,9 +16,17 @@
 					.col-sm-10
 						= f.text_field :title, :class => "form-control"
 				.form-group
-					= f.label :embed, "Embed Code", class: "col-sm-2 control-label"
+					= f.label :embed, "Embed Code (source 1)", class: "col-sm-2 control-label"
 					.col-sm-10
-						= f.text_area :embed, :class => "form-control", rows: 6
+						= f.text_area :embed, :class => "form-control", rows: 5
+				.form-group
+					= f.label :embed2, "Embed Code (source 2)", class: "col-sm-2 control-label"
+					.col-sm-10
+						= f.text_area :embed2, :class => "form-control", rows: 5
+				.form-group
+					= f.label :embed3, "Embed Code (source 2)", class: "col-sm-2 control-label"
+					.col-sm-10
+						= f.text_area :embed3, :class => "form-control", rows: 5
 	.panel-footer
 		= f.submit "Save", :class => "btn btn-primary"
 		= link_to "Cancel", siri_season_episodes_path, class: "btn btn-default"

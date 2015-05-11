@@ -8,6 +8,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  embed      :text(65535)
+#  embed2     :text(65535)
+#  embed3     :text(65535)
 #
 # Indexes
 #

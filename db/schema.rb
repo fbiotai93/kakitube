@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511150114) do
+ActiveRecord::Schema.define(version: 20150511152149) do
 
   create_table "episodes", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20150511150114) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.text     "embed",      limit: 65535
+    t.text     "embed2",     limit: 65535
+    t.text     "embed3",     limit: 65535
   end
 
   add_index "episodes", ["season_id"], name: "index_episodes_on_season_id", using: :btree

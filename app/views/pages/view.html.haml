@@ -133,8 +133,30 @@
 																%span{"aria-hidden" => true} &times;
 															%h4.modal-title{id: "trailer"} #{episode.title}
 														.modal-body
-															.embed-responsive.embed-responsive-16by9
-																.embed-responsive-item= episode.embed.html_safe
+															%ul.nav.nav-pills.nav-justified
+																%li.active{role: "episode"}
+																	%a{href: "#source1", role: "tab", "data-toggle" => "tab", "aria-controls" => "source1", "aria-expanded" => "true"} Source 1
+																- if !episode.embed2.blank?
+																	%li{role: "episode"}
+																		%a{href: "#source2", role: "tab", "data-toggle" => "tab", "aria-controls" => "source2", "aria-expanded" => "true"} Source 2
+																- if !episode.embed3.blank?
+																	%li{role: "episode"}
+																		%a{href: "#source3", role: "tab", "data-toggle" => "tab", "aria-controls" => "source3", "aria-expanded" => "true"} Source 3
+															.tab-content
+																#source1.tab-pane.fade.active.in{role: "tabpanel", "aria-labelledby" => "source1-tab"}
+																	%hr
+																	.embed-responsive.embed-responsive-16by9
+																		.embed-responsive-item= episode.embed.html_safe
+																- if !episode.embed2.blank?
+																	#source2.tab-pane.fade{role: "tabpanel", "aria-labelledby" => "source2-tab"}
+																		%hr
+																		.embed-responsive.embed-responsive-16by9
+																			.embed-responsive-item= episode.embed2.html_safe
+																- if !episode.embed3.blank?
+																	#source3.tab-pane.fade{role: "tabpanel", "aria-labelledby" => "source3-tab"}
+																		%hr
+																		.embed-responsive.embed-responsive-16by9
+																			.embed-responsive-item= episode.embed3.html_safe
 														.modal-footer
 															%button.btn.btn-default{"data-dismiss" => "modal"} Close
 		%hr
