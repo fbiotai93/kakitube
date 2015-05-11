@@ -33,6 +33,8 @@
 #  gallery_image_1 :string(255)
 #  gallery_image_2 :string(255)
 #  gallery_image_3 :string(255)
+#  embed2          :text(65535)
+#  embed3          :text(65535)
 #
 # Indexes
 #

@@ -96,9 +96,17 @@
 				.col-md-10
 					= f.collection_select :genre_id, Genre.order(:name), :id, :name, {}, :class => "form-control"
 			.form-group
-				= f.label :embed, "Embed Code", class: "col-sm-2 control-label"
+				= f.label :embed, "Embed Code (source 1)", class: "col-sm-2 control-label"
 				.col-sm-10
-					= f.text_area :embed, class: "form-control", rows: 12, placeholder: "Insert your embed code here"
+					= f.text_area :embed, class: "form-control", rows: 5, placeholder: "Insert your embed code here"
+			.form-group
+				= f.label :embed2, "Embed Code (source 2)", class: "col-sm-2 control-label"
+				.col-sm-10
+					= f.text_area :embed2, class: "form-control", rows: 5, placeholder: "Insert your embed code here"
+			.form-group
+				= f.label :embed3, "Embed Code (source 3)", class: "col-sm-2 control-label"
+				.col-sm-10
+					= f.text_area :embed3, class: "form-control", rows: 5, placeholder: "Insert your embed code here"
 			.form-group
 				= f.label :trailer, "Trailer Video", class: "col-sm-2 control-label"
 				.col-sm-10

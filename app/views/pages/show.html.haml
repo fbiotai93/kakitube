@@ -107,8 +107,30 @@
 							%span{"aria-hidden" => true} &times;
 						%h4.modal-title{id: "trailer"} #{@post.title}
 					.modal-body
-						.embed-responsive.embed-responsive-16by9
-							.embed-responsive-item= @post.embed.html_safe
+						%ul.nav.nav-pills.nav-justified
+							%li.active{role: "video"}
+								%a{href: "#source1", role: "tab", "data-toggle" => "tab", "aria-controls" => "source1", "aria-expanded" => "true"} Source 1
+							- if !@post.embed2.blank?
+								%li{role: "video"}
+									%a{href: "#source2", role: "tab", "data-toggle" => "tab", "aria-controls" => "source2", "aria-expanded" => "true"} Source 2
+							- if !@post.embed3.blank?
+								%li{role: "video"}
+									%a{href: "#source3", role: "tab", "data-toggle" => "tab", "aria-controls" => "source3", "aria-expanded" => "true"} Source 3
+						.tab-content
+							#source1.tab-pane.fade.active.in{role: "tabpanel", "aria-labelledby" => "source1-tab"}
+								%hr
+								.embed-responsive.embed-responsive-16by9
+									.embed-responsive-item= @post.embed.html_safe
+							- if !@post.embed2.blank?
+								#source2.tab-pane.fade{role: "tabpanel", "aria-labelledby" => "source2-tab"}
+									%hr
+									.embed-responsive.embed-responsive-16by9
+										.embed-responsive-item= @post.embed2.html_safe
+							- if !@post.embed3.blank?
+								#source3.tab-pane.fade{role: "tabpanel", "aria-labelledby" => "source3-tab"}
+									%hr
+									.embed-responsive.embed-responsive-16by9
+										.embed-responsive-item= @post.embed3.html_safe
 					.modal-footer
 						%button.btn.btn-default{"data-dismiss" => "modal"} Close
 		.trailer.modal.fade.cls-you{tabindex: -1, role: "dialog", "aria-labelledby" => "Trailer", "aria-hidden" => true}
