@@ -10,4 +10,8 @@
 #
 
 class SiriGenre < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders, :history]
+  
+	has_many :siris
 end

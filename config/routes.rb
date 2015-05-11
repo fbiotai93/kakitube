@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'episodes/index'
 
   devise_for :users
   devise_scope :user do
@@ -13,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :posts
   resources :genres, except: [:show, :edit, :post]
+  resources :siri_genres, except: [:show, :edit, :post]
   resources :users, except: [:show, :edit, :post, :destroy, :new, :create] do
     member do
       patch :revoke

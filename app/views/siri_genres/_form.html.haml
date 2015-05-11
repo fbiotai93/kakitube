@@ -1,12 +1,12 @@
-= form_for @genre, remote: true, html: { class: "form-inline" } do |f|
-	- if @genre.errors.any?
+= form_for @siri_genre, remote: true, html: { class: "form-inline" } do |f|
+	- if @siri_genre.errors.any?
 		.alert.alert-danger.alert-dismissable
 			%button.close{type: "button", 'data-dismiss' => 'alert', 'alert-hidden' => 'true'} &times;
 			%strong
-				= pluralize(@genre.errors.count, "error")
+				= pluralize(@siri_genre.errors.count, "error")
 				prohibited this page from being saved:
 			%ul
-				- @genre.errors.full_messages.each do |msg|
+				- @siri_genre.errors.full_messages.each do |msg|
 					%li= msg
 	.form-group
 		%label Name
