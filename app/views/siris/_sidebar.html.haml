@@ -4,11 +4,14 @@
 		Movie
 	= link_to siris_path, class: "list-group-item #{current_controller?(['siris'])}" do
 		%span.badge= Siri.all.count
-		Series
+		TV Series
 	= link_to users_path, class: "list-group-item" do
 		%span.badge= User.all.count
 		User
 	= link_to "Comment", "#", class: "list-group-item"
 	= link_to genres_path, class: "list-group-item" do
 		%span.badge= Genre.all.count
-		Genre
+		Movie Genre
+	= link_to siri_genres_path, class: "list-group-item" do
+		%span.badge= SiriGenre.all.count
+		TV Series Genre

@@ -1,14 +1,14 @@
 - content_for :title do
-	KakiTube | Series List
+	KakiTube | TV Series List
 - content_for :meta_tags do
-	= render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | Series List", :url => request.url, :description => "KakiTube", :canonical => request.url, :og_title => "KakiTube | Series List", :og_description => "KakiTube" }
+	= render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | TV Series List", :url => request.url, :description => "KakiTube", :canonical => request.url, :og_title => "KakiTube | TV Series List", :og_description => "KakiTube" }
 	
 / Page Content
 .container
 	.row
 		.col-lg-12
 			.page-header
-				%h1 Series List
+				%h1 TV Series List
 	.row
 		.col-md-4
 			= render partial: "sidebar"
@@ -16,7 +16,7 @@
 			.panel.panel-default
 				.panel-heading
 					%h3.panel-title
-						Series List #{link_to "Add new series", new_siri_path, class: "btn btn-xs btn-primary pull-right", style: "color:#FFFFFF;"}
+						TV Series List #{link_to "Add new tv series", new_siri_path, class: "btn btn-xs btn-primary pull-right", style: "color:#FFFFFF;"}
 				.panel-body
 					%table.table.table-bordered.table-hovered.display{id: "postLists"}
 						%thead
