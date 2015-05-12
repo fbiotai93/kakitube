@@ -328,7 +328,8 @@ section#password-form p a {
 }
 
 .white-bg .panel table,
-.white-bg .media-body {
+.white-bg .media-body,
+.white-bg .modal-content {
 	color: #333333;
 }
 
