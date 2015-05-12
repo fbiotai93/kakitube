@@ -95,13 +95,14 @@
 										%br/
 										%span.label.label-default= @post.runtime
 			%hr
-			.btn-group.btn-group-justified
-				.btn-group.btn-group-lg
-					%button{"data-toggle" => "modal", "data-target" => ".trailer", class: "btn btn-default"}
+			.row
+				/ .container
+				.col-md-6
+					%button.btn.btn-default.btn-block.btn-lg{"data-toggle" => "modal", "data-target" => ".trailer"}
 						%span.glyphicon.glyphicon-play
 						Watch Trailer
-				.btn-group.btn-group-lg
-					%button{"data-toggle" => "modal", "data-target" => ".video", class: "btn btn-primary"}
+				.col-md-6
+					%button.btn.btn-primary.btn-block.btn-lg{"data-toggle" => "modal", "data-target" => ".video"}
 						%span.glyphicon.glyphicon-play-circle
 						Watch Full Video
 			.video.modal.fade.cls{tabindex: -1, role: "dialog", "aria-labelledby" => "Video", "aria-hidden" => true}
