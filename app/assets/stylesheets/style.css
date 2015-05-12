@@ -321,6 +321,11 @@ section#password-form p a {
 	color: #ffffff;
 }
 
+.white-bg .panel table,
+.white-bg .media-body {
+	color: #333333;
+}
+
 /*
 	Responsive
 */
