@@ -67,7 +67,7 @@ body {
 	font-family: 'ProximaNovaRegular', arial, helvetica, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	/*margin-bottom: 100px;*/
-	padding-top: 60px;
+	/*padding-top: 60px;*/
 }
 
 /*
@@ -84,6 +84,7 @@ body {
 }
 
 .navbar {
+	z-index: 1;
 	border-radius: 0;
 }
 
