@@ -12,11 +12,11 @@
          :og_description => "#{@siri.description}", |
          :og_image => "#{image_url(@siri.try(:header_image))}"        |
       }                                                 |
-- if @siri.try(:bg_image?)
-	%img.background.img-responsive{src: "#{@siri.bg_image}"}
-- else
-	%img.background.img-responsive{src: "#{@siri.header_image}"}
-.overlay
+/ - if @siri.try(:bg_image?)
+/ 	%img.background.img-responsive{src: "#{@siri.bg_image}"}
+/ - else
+/ 	%img.background.img-responsive{src: "#{@siri.header_image}"}
+/ .overlay
 .white-bg
 	.row
 		.col-md-8
