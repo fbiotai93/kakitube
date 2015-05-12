@@ -313,6 +313,7 @@ section#password-form p a {
   margin-top: 51px;
   min-width: 100%;
   min-height: 100%;
+  -webkit-filter: blur(10px);
 }
 
 .white-bg {
