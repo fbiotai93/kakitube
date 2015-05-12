@@ -9,8 +9,6 @@
         %span.icon-bar
     #navbar-collapse.collapse.navbar-collapse
       %ul.nav.navbar-nav
-        %li
-          %a{:href => "#"} About
         - if user_signed_in? && current_user.is_admin?
           %li{:class => "#{current_page(dashboard_path)}"}
             = link_to "Dashboard", dashboard_path
