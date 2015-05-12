@@ -67,6 +67,7 @@ body {
 	font-family: 'ProximaNovaRegular', arial, helvetica, sans-serif !important;
 	-webkit-font-smoothing: antialiased;
 	margin-bottom: 100px;
+	padding-top: 60px;
 }
 
 /*
@@ -190,6 +191,17 @@ section#password-form p a {
 	width: 100%;
 }
 
+.overlay {
+	z-index: 0;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  overflow: auto;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.7); /*can be anything, of course*/
+}
+
 .movie .mini-desc {
 	width: 70%;
 }
@@ -288,6 +300,25 @@ section#password-form p a {
 .footer > .container {
   padding-right: 15px;
   padding-left: 15px;
+}
+
+/*
+	Movie Show Page
+*/
+
+.background {
+	position: fixed; 
+  top: 0; 
+  left: 0; 
+  margin-top: 51px;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.white-bg {
+	/*background-color: #ffffff;*/
+	padding: 20px;
+	color: #ffffff;
 }
 
 /*

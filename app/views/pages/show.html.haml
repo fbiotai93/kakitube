@@ -2,162 +2,165 @@
 	KakiTube | #{@post.title}
 - content_for :meta_tags do
 	= render :partial => 'application/meta_tags',       |
-       :locals => {                                     |
-         :type => "website",                            |
-         :title => "#{@post.title}",          |
-         :url => request.url,                           |
-         :description => "#{@post.description}",    |
-         :canonical => request.url,                     |
-         :og_title => "#{@post.title}",       |
-         :og_description => "#{@post.description}", |
-         :og_image => "#{image_url(@post.try(:poster))}"        |
-      }                                                 |
+			 :locals => {                                     |
+				 :type => "website",                            |
+				 :title => "#{@post.title}",          |
+				 :url => request.url,                           |
+				 :description => "#{@post.description}",    |
+				 :canonical => request.url,                     |
+				 :og_title => "#{@post.title}",       |
+				 :og_description => "#{@post.description}", |
+				 :og_image => "#{image_url(@post.try(:poster))}"        |
+			}                                                 |
 
-.row
-	.col-md-8
-		.page-header
-			%h2= @post.title
-			%p
-				Genre
-				%span.label.label-primary #{@post.genre.name}
-		.row
-			.col-md-4
-				= image_tag(@post.poster_url(:standard), class: "img-responsive")
-			.col-md-8
+%img.background.img-responsive{src: "#{@post.poster}"}
+.overlay
+.white-bg
+	.row
+		.col-md-8
+			.page-header
+				%h2= @post.title
 				%p
-					= @post.description
-				.row
-					.col-md-6
-						%p
-							%strong Director
-							%p= @post.director
-					.col-md-6
-						%p
-							%strong Actors
-							%p= @post.actors
-				.row
-					.col-md-6
-						%p
-							%strong Language
-							%p= @post.language
-					.col-md-6
-						%p
-							%strong Country
-							%p= @post.country
-				.row
-					.col-md-4
-						%p
-							%strong Metascore
+					Genre
+					%span.label.label-primary #{@post.genre.name}
+			.row
+				.col-md-4
+					= image_tag(@post.poster_url(:standard), class: "img-responsive")
+				.col-md-8
+					%p
+						= @post.description
+					.row
+						.col-md-6
 							%p
-								%span.label.label-default
-									%span.glyphicon.glyphicon-stats
-									= @post.metascore? ? @post.metascore : "N/A"
-					.col-md-4
-						%p
-							%strong IMDB Rating
+								%strong Director
+								%p= @post.director
+						.col-md-6
 							%p
-								%span.label.label-default
-									%span.glyphicon.glyphicon-heart
-									= @post.imdbrating? ? @post.imdbrating : "N/A"
-					.col-md-4
-						%p
-							%strong IMDB Votes
+								%strong Actors
+								%p= @post.actors
+					.row
+						.col-md-6
 							%p
-								%span.label.label-default
-									%span.glyphicon.glyphicon-thumbs-up
-									= @post.imdbvotes? ? @post.imdbvotes : "N/A"
-				%table.table.table-bordered
-					%tbody
-						%tr
-							%td.col-md-3
-								%center
-									%strong Year
-									%br/
-									%span.label.label-default= @post.year
-							%td.col-md-3
-								%center
-									%strong Rated
-									%br/
-									%span.label.label-default= @post.rated
-							%td.col-md-3
-								%center
-									%strong Released
-									%br/
-									%span.label.label-default= @post.released
-							%td.col-md-3
-								%center
-									%strong Runtime
-									%br/
-									%span.label.label-default= @post.runtime
-		%hr
-		.btn-group.btn-group-justified
-			.btn-group.btn-group-lg
-				%button{"data-toggle" => "modal", "data-target" => ".trailer", class: "btn btn-default"}
-					%span.glyphicon.glyphicon-play
-					Watch Trailer
-			.btn-group.btn-group-lg
-				%button{"data-toggle" => "modal", "data-target" => ".video", class: "btn btn-primary"}
-					%span.glyphicon.glyphicon-play-circle
-					Watch Full Video
-		.video.modal.fade.cls{tabindex: -1, role: "dialog", "aria-labelledby" => "Video", "aria-hidden" => true}
-			.modal-dialog.modal-md
-				.modal-content
-					.modal-header
-						%button.close{type: "button", "data-dismiss" => "modal", "aria-label" => "Close"}
-							%span{"aria-hidden" => true} &times;
-						%h4.modal-title{id: "trailer"} #{@post.title}
-					.modal-body
-						%ul.nav.nav-pills.nav-justified
-							%li.active{role: "video"}
-								%a{href: "#source1", role: "tab", "data-toggle" => "tab", "aria-controls" => "source1", "aria-expanded" => "true"} Source 1
-							- if !@post.embed2.blank?
-								%li{role: "video"}
-									%a{href: "#source2", role: "tab", "data-toggle" => "tab", "aria-controls" => "source2", "aria-expanded" => "true"} Source 2
-							- if !@post.embed3.blank?
-								%li{role: "video"}
-									%a{href: "#source3", role: "tab", "data-toggle" => "tab", "aria-controls" => "source3", "aria-expanded" => "true"} Source 3
-						.tab-content
-							#source1.tab-pane.fade.active.in{role: "tabpanel", "aria-labelledby" => "source1-tab"}
-								%hr
-								.embed-responsive.embed-responsive-16by9
-									.embed-responsive-item= @post.embed.html_safe
-							- if !@post.embed2.blank?
-								#source2.tab-pane.fade{role: "tabpanel", "aria-labelledby" => "source2-tab"}
+								%strong Language
+								%p= @post.language
+						.col-md-6
+							%p
+								%strong Country
+								%p= @post.country
+					.row
+						.col-md-4
+							%p
+								%strong Metascore
+								%p
+									%span.label.label-default
+										%span.glyphicon.glyphicon-stats
+										= @post.metascore? ? @post.metascore : "N/A"
+						.col-md-4
+							%p
+								%strong IMDB Rating
+								%p
+									%span.label.label-default
+										%span.glyphicon.glyphicon-heart
+										= @post.imdbrating? ? @post.imdbrating : "N/A"
+						.col-md-4
+							%p
+								%strong IMDB Votes
+								%p
+									%span.label.label-default
+										%span.glyphicon.glyphicon-thumbs-up
+										= @post.imdbvotes? ? @post.imdbvotes : "N/A"
+					%table.table.table-bordered
+						%tbody
+							%tr
+								%td.col-md-3
+									%center
+										%strong Year
+										%br/
+										%span.label.label-default= @post.year
+								%td.col-md-3
+									%center
+										%strong Rated
+										%br/
+										%span.label.label-default= @post.rated
+								%td.col-md-3
+									%center
+										%strong Released
+										%br/
+										%span.label.label-default= @post.released
+								%td.col-md-3
+									%center
+										%strong Runtime
+										%br/
+										%span.label.label-default= @post.runtime
+			%hr
+			.btn-group.btn-group-justified
+				.btn-group.btn-group-lg
+					%button{"data-toggle" => "modal", "data-target" => ".trailer", class: "btn btn-default"}
+						%span.glyphicon.glyphicon-play
+						Watch Trailer
+				.btn-group.btn-group-lg
+					%button{"data-toggle" => "modal", "data-target" => ".video", class: "btn btn-primary"}
+						%span.glyphicon.glyphicon-play-circle
+						Watch Full Video
+			.video.modal.fade.cls{tabindex: -1, role: "dialog", "aria-labelledby" => "Video", "aria-hidden" => true}
+				.modal-dialog.modal-md
+					.modal-content
+						.modal-header
+							%button.close{type: "button", "data-dismiss" => "modal", "aria-label" => "Close"}
+								%span{"aria-hidden" => true} &times;
+							%h4.modal-title{id: "trailer"} #{@post.title}
+						.modal-body
+							%ul.nav.nav-pills.nav-justified
+								%li.active{role: "video"}
+									%a{href: "#source1", role: "tab", "data-toggle" => "tab", "aria-controls" => "source1", "aria-expanded" => "true"} Source 1
+								- if !@post.embed2.blank?
+									%li{role: "video"}
+										%a{href: "#source2", role: "tab", "data-toggle" => "tab", "aria-controls" => "source2", "aria-expanded" => "true"} Source 2
+								- if !@post.embed3.blank?
+									%li{role: "video"}
+										%a{href: "#source3", role: "tab", "data-toggle" => "tab", "aria-controls" => "source3", "aria-expanded" => "true"} Source 3
+							.tab-content
+								#source1.tab-pane.fade.active.in{role: "tabpanel", "aria-labelledby" => "source1-tab"}
 									%hr
 									.embed-responsive.embed-responsive-16by9
-										.embed-responsive-item= @post.embed2.html_safe
-							- if !@post.embed3.blank?
-								#source3.tab-pane.fade{role: "tabpanel", "aria-labelledby" => "source3-tab"}
-									%hr
-									.embed-responsive.embed-responsive-16by9
-										.embed-responsive-item= @post.embed3.html_safe
-					.modal-footer
-						%button.btn.btn-default{"data-dismiss" => "modal"} Close
-		.trailer.modal.fade.cls-you{tabindex: -1, role: "dialog", "aria-labelledby" => "Trailer", "aria-hidden" => true}
-			.modal-dialog
-				.modal-content
-					.modal-header
-						%button.close{type: "button", "data-dismiss" => "modal", "aria-label" => "Close"}
-							%span{"aria-hidden" => true} &times;
-						%h4.modal-title{id: "trailer"} Trailer of #{@post.title}
-					.modal-body
-						.embed-responsive.embed-responsive-16by9
-							%iframe.embed-responsive-item{src: "http://www.youtube.com/embed/#{@post.trailer}?rel=0&showinfo=0&iv_load_policy=3&autoplay=0", allowfullscreen: "allowfullscreen"}
-					.modal-footer
-						%button.btn.btn-default{"data-dismiss" => "modal"} Close
-		%hr
-		%h4 Gallery Image
-		.row
-			.col-md-4
-				= image_tag(@post.gallery_image_1_url(:standard), class: "thumbnail img-responsive")
-			.col-md-4
-				= image_tag(@post.gallery_image_2_url(:standard), class: "thumbnail img-responsive")
-			.col-md-4
-				= image_tag(@post.gallery_image_3_url(:standard), class: "thumbnail img-responsive")
-		%hr
-		%h4 What people are saying:
-		%center
-			%em
-				%h5 Comment section is coming soon!
-	.col-md-4
-		= render partial: "sidebar_right"
+										.embed-responsive-item= @post.embed.html_safe
+								- if !@post.embed2.blank?
+									#source2.tab-pane.fade{role: "tabpanel", "aria-labelledby" => "source2-tab"}
+										%hr
+										.embed-responsive.embed-responsive-16by9
+											.embed-responsive-item= @post.embed2.html_safe
+								- if !@post.embed3.blank?
+									#source3.tab-pane.fade{role: "tabpanel", "aria-labelledby" => "source3-tab"}
+										%hr
+										.embed-responsive.embed-responsive-16by9
+											.embed-responsive-item= @post.embed3.html_safe
+						.modal-footer
+							%button.btn.btn-default{"data-dismiss" => "modal"} Close
+			.trailer.modal.fade.cls-you{tabindex: -1, role: "dialog", "aria-labelledby" => "Trailer", "aria-hidden" => true}
+				.modal-dialog
+					.modal-content
+						.modal-header
+							%button.close{type: "button", "data-dismiss" => "modal", "aria-label" => "Close"}
+								%span{"aria-hidden" => true} &times;
+							%h4.modal-title{id: "trailer"} Trailer of #{@post.title}
+						.modal-body
+							.embed-responsive.embed-responsive-16by9
+								%iframe.embed-responsive-item{src: "http://www.youtube.com/embed/#{@post.trailer}?rel=0&showinfo=0&iv_load_policy=3&autoplay=0", allowfullscreen: "allowfullscreen"}
+						.modal-footer
+							%button.btn.btn-default{"data-dismiss" => "modal"} Close
+			%hr
+			%h4 Gallery Image
+			.row
+				.col-md-4
+					= image_tag(@post.gallery_image_1_url(:standard), class: "thumbnail img-responsive")
+				.col-md-4
+					= image_tag(@post.gallery_image_2_url(:standard), class: "thumbnail img-responsive")
+				.col-md-4
+					= image_tag(@post.gallery_image_3_url(:standard), class: "thumbnail img-responsive")
+			%hr
+			%h4 What people are saying:
+			%center
+				%em
+					%h5 Comment section is coming soon!
+		.col-md-4
+			= render partial: "sidebar_right"
