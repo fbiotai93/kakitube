@@ -298,7 +298,7 @@ section#password-form p a {
 	position: fixed; 
   top: 0; 
   left: 0; 
-  margin-top: 51px;
+  /*margin-top: 51px;*/
   min-width: 100%;
   min-height: 100%;
   -webkit-filter: blur(5px);
@@ -309,7 +309,7 @@ section#password-form p a {
 }
 
 .overlay {
-	z-index: 0;
+	/*z-index: 0;*/
   height: 100%;
   width: 100%;
   position: fixed;
