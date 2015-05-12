@@ -35,6 +35,7 @@
 #  gallery_image_3 :string(255)
 #  embed2          :text(65535)
 #  embed3          :text(65535)
+#  bg_image        :string(255)
 #
 # Indexes
 #

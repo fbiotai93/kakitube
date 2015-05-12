@@ -30,6 +30,7 @@
 #  gallery_image_2 :string(255)
 #  gallery_image_3 :string(255)
 #  header_image    :string(255)
+#  bg_image        :string(255)
 #
 # Indexes
 #

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511152149) do
+ActiveRecord::Schema.define(version: 20150512151855) do
 
   create_table "episodes", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20150511152149) do
     t.string   "gallery_image_3", limit: 255
     t.text     "embed2",          limit: 65535
     t.text     "embed3",          limit: 65535
+    t.string   "bg_image",        limit: 255
   end
 
   add_index "posts", ["genre_id"], name: "index_posts_on_genre_id", using: :btree
@@ -129,6 +130,7 @@ ActiveRecord::Schema.define(version: 20150511152149) do
     t.string   "gallery_image_2", limit: 255
     t.string   "gallery_image_3", limit: 255
     t.string   "header_image",    limit: 255
+    t.string   "bg_image",        limit: 255
   end
 
   add_index "siris", ["siri_genre_id"], name: "index_siris_on_siri_genre_id", using: :btree

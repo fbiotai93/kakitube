@@ -30,6 +30,7 @@
 #  gallery_image_2 :string(255)
 #  gallery_image_3 :string(255)
 #  header_image    :string(255)
+#  bg_image        :string(255)
 #
 # Indexes
 #
@@ -44,6 +45,7 @@ class Siri < ActiveRecord::Base
   mount_uploader :gallery_image_1, GalleryImage1Uploader
   mount_uploader :gallery_image_2, GalleryImage2Uploader
   mount_uploader :gallery_image_3, GalleryImage3Uploader
+  mount_uploader :bg_image, BackgroundImageUploader
   
   belongs_to :user
   has_many :seasons, dependent: :destroy
@@ -74,6 +76,7 @@ class Siri < ActiveRecord::Base
   validates_presence_of :country
   validates_presence_of :poster
   validates_presence_of :header_image
+  validates_presence_of :bg_image
 
   def is_on_going?
     status === "On-Going"

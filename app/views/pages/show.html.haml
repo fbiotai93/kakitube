@@ -10,10 +10,12 @@
 				 :canonical => request.url,                     |
 				 :og_title => "#{@post.title}",       |
 				 :og_description => "#{@post.description}", |
-				 :og_image => "#{image_url(@post.try(:poster))}"        |
+				 :og_image => "#{image_url(@post.try(:header_image))}"        |
 			}                                                 |
-
-%img.background.img-responsive{src: "#{@post.poster}"}
+- if @post.try(:bg_image?)
+	%img.background.img-responsive{src: "#{@post.bg_image}"}
+- else
+	%img.background.img-responsive{src: "#{@post.header_image}"}
 .overlay
 .white-bg
 	.row

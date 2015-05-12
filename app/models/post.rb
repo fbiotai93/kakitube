@@ -35,6 +35,7 @@
 #  gallery_image_3 :string(255)
 #  embed2          :text(65535)
 #  embed3          :text(65535)
+#  bg_image        :string(255)
 #
 # Indexes
 #
@@ -49,6 +50,7 @@ class Post < ActiveRecord::Base
   mount_uploader :gallery_image_1, GalleryImage1Uploader
   mount_uploader :gallery_image_2, GalleryImage2Uploader
   mount_uploader :gallery_image_3, GalleryImage3Uploader
+  mount_uploader :bg_image, BackgroundImageUploader
 
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders, :history]
@@ -80,6 +82,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :trailer
   validates_presence_of :poster
   validates_presence_of :header_image
+  validates_presence_of :bg_image
 
   def is_featured?
     featured == true
