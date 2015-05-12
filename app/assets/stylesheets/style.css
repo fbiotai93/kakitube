@@ -99,7 +99,10 @@ body {
 	border-radius: 0;
 }
 
-.pages.index input[type="text"] {
+.pages.index input[type="text"],
+.pages.show input[type="text"],
+.pages.view input[type="text"],
+.pages.search input[type="text"] {
 	z-index: 0;
 }
 
@@ -276,7 +279,7 @@ section#password-form p a {
 */
 
 .footer {
-	margin-top: 30px;
+	/*margin-top: 30px;*/
   position: absolute;
   /*bottom: 0;*/
   width: 100%;
