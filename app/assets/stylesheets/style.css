@@ -191,17 +191,6 @@ section#password-form p a {
 	width: 100%;
 }
 
-.overlay {
-	z-index: 0;
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  overflow: auto;
-  top: 0px;
-  left: 0px;
-  background: rgba(0, 0, 0, 0.7); /*can be anything, of course*/
-}
-
 .movie .mini-desc {
 	width: 70%;
 }
@@ -317,9 +306,18 @@ section#password-form p a {
 }
 
 .white-bg {
-	/*background-color: #ffffff;*/
-	/*padding: 20px;*/
 	color: #ffffff;
+}
+
+.overlay {
+	z-index: 0;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  overflow: auto;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .white-bg .panel table,
