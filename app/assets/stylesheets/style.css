@@ -64,7 +64,7 @@ html {
 }
 
 body {
-	font-family: 'ProximaNovaRegular', arial, helvetica, sans-serif !important;
+	font-family: 'ProximaNovaRegular', arial, helvetica, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	margin-bottom: 100px;
 	padding-top: 60px;
@@ -75,7 +75,6 @@ body {
 */
 
 .navbar-brand {
-	/*height: 0;*/
 	padding: 5px 10px;
 }
 
@@ -85,7 +84,7 @@ body {
 }
 
 .navbar {
-	border-radius: 0 !important;
+	border-radius: 0;
 }
 
 .navbar-nav > li > a > img {
@@ -94,9 +93,9 @@ body {
 }
 
 .nomar-bot {
-	margin-bottom: 0 !important;
-	border-bottom: 1px solid transparent !important;
-	border-radius: 0 !important;
+	/*margin-bottom: 0 !important;
+	border-bottom: 1px solid transparent !important;*/
+	border-radius: 0;
 }
 
 /*
