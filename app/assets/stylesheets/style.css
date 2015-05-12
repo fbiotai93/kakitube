@@ -94,9 +94,13 @@ body {
 }
 
 .nomar-bot {
-	/*margin-bottom: 0 !important;
-	border-bottom: 1px solid transparent !important;*/
+	margin-bottom: 0;
+	border-bottom: 1px solid transparent;
 	border-radius: 0;
+}
+
+.pages.index input[type="text"] {
+	z-index: 0;
 }
 
 /*
