@@ -9,6 +9,7 @@ require 'capistrano/rails'
 require 'capistrano/gitflow'
 require 'capistrano/faster_assets'
 require 'capistrano/sitemap_generator'
+require 'whenever/capistrano'
 
 # Includes tasks from other gems included in your Gemfile
 #
