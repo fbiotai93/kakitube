@@ -115,7 +115,8 @@ body {
 .registrations.create,
 .passwords.new,
 .passwords.create {
-	background-color: #AE5D54;
+	/*background-color: #AE5D54;*/
+	background-color: #222222;
 }
 
 section#login-form {

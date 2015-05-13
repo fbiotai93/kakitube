@@ -3,11 +3,11 @@
 - og_type ||= ""
 - og_url ||= ""
 - og_image ||= ""
-- image_url ||= image_path('kakitube@2x.png')
+- image_url ||= image_path('logo-lg.png')
 %meta{:content => "#{!og_type.blank? ? og_type : 'website'}", :property => "og:type"}/
 %meta{:content => "#{!og_title.blank? ? og_title : title}", :property => "og:title"}/
 %meta{:content => "#{!og_url.blank? ? og_url : request.url}", :property => "og:url"}/
-%meta{:content => "#{!og_image.blank? ? og_image : image_url('logo2.png')}", :property => "og:image"}/
+%meta{:content => "#{!og_image.blank? ? og_image : image_url('logo-lg.png')}", :property => "og:image"}/
 %meta{:content => "#{!og_description.blank? ? og_description : description}", :property => "og:description"}/
 %meta{:content => "KakiTube", :property => "og:site_name"}/
 %meta{:content => title, :name => "title"}/
