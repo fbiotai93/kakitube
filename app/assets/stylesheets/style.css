@@ -338,10 +338,22 @@ section#password-form p a {
 	Responsive
 */
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
 	.small-movie {
-		width: 172px;
-		height: 214px;
+		width: 167px;
+		height: 209px;
+		margin: 0 5px 25px 0;
+	}
+
+	.small-movie.last {
+		margin: 0 5px 25px 0;
+	}
+}
+
+@media (min-width: 360px) and (max-width: 640px) {
+	.small-movie {
+		width: 160px;
+		height: 200px;
 		margin: 0 5px 25px 0;
 	}
 
@@ -363,10 +375,6 @@ section#password-form p a {
 }
 
 @media (min-width: 321px) and (max-width: 800px) {
-	/*.small-movie.last {
-		margin: 0 25px 25px 0;
-	}*/
-
 	.movie .mini-desc h4 {
 		font-size: 24px;
 	}
