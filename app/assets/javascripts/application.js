@@ -18,4 +18,6 @@
 //= require jquery.dataTables.min
 //= require dataTables.bootstrap
 //= require slick
+//= require zoom
+//= require transition
 //= require_tree .
