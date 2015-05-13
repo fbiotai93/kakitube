@@ -26,6 +26,8 @@ gem 'will_paginate', '~> 3.0.6'
 gem 'sunspot_rails'
 gem 'progress_bar'
 gem 'newrelic_rpm'
+gem 'sitemap_generator'
+gem 'whenever', :require => false
 
 group :development do
 	gem 'letter_opener'
