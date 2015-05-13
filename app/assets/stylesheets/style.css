@@ -339,6 +339,18 @@ section#password-form p a {
 
 @media (max-width: 600px) {
 	.small-movie {
+		width: 172px;
+		height: 214px;
+		margin: 0 5px 25px 0;
+	}
+
+	.small-movie.last {
+		margin: 0 5px 25px 0;
+	}
+}
+
+@media (max-width: 321px) {
+	.small-movie {
 		width: 140px;
 		height: 176px;
 		margin: 0 5px 25px 0;
