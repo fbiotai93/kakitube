@@ -28,6 +28,7 @@ gem 'progress_bar'
 gem 'newrelic_rpm'
 gem 'sitemap_generator'
 gem 'whenever', :require => false
+gem 'dalli'
 
 group :development do
 	gem 'letter_opener'
@@ -40,11 +41,6 @@ group :development do
   gem 'capistrano-gitflow', github: 'czhc/capistrano-gitflow'
   gem 'capistrano-faster-assets', '~> 1.0'
   gem 'sunspot_solr'
-end
-
-group :production do
-  gem 'memcachier'
-  gem 'dalli'
 end
 
 group :test do
