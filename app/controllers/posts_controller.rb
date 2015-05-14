@@ -37,7 +37,7 @@ class PostsController < ApplicationController
       render 'new'
     elsif params[:submit]
       if @post.save
-        expire_fragment("featured_articles")
+        # expire_fragment("featured_articles")
         redirect_to posts_path, notice: "Good! Post has been publish"
       else
         render 'new'
@@ -66,7 +66,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      expire_fragment("featured_articles")
+      # expire_fragment("featured_articles")
       redirect_to @post, notice: "Good! Post has been update"
     else
       render 'edit'

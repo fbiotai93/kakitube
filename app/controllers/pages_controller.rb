@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def index
 		@posts = Post.all
-		@featured = @posts.featured.take(1)
+		@featured = @posts.featured.random.take(1)
 		@published_only = @posts.published_only.paginate(:page => params[:page], :per_page => 10)
     @random_movie = @posts.random.take(3)
     @carousel_movie = @random_movie.shift(4)
