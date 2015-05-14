@@ -10,6 +10,7 @@ require 'capistrano/gitflow'
 require 'capistrano/faster_assets'
 require 'capistrano/sitemap_generator'
 require 'whenever/capistrano'
+require 'capistrano/sidekiq'
 
 # Includes tasks from other gems included in your Gemfile
 #
