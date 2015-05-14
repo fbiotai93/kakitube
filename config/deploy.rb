@@ -2,7 +2,7 @@
 # lock '3.1.0'
 
 set :application, 'kakitube'
-set :repo_url, 'git@github.com:AmirolAhmad/kakitube.git'
+set :repo_url, 'git@github.com:fbiotai93/kakitube.git'
 
 server '188.122.91.83', user: 'deploy', roles: %w{web app db job}
 
