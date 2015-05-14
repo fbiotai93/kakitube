@@ -6,6 +6,7 @@ class GalleryImage3Uploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
   include CarrierWave::MimeTypes
+  include ::CarrierWave::Backgrounder::Delay
 
   # Choose what kind of storage to use for this uploader:
   # storage :file

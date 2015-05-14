@@ -16,6 +16,7 @@
 
 class Season < ActiveRecord::Base
 	mount_uploader :poster, PosterUploader
+  process_in_background :poster
 	
   belongs_to :siri
   has_many :episodes, dependent: :destroy

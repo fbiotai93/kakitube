@@ -29,6 +29,9 @@ gem 'newrelic_rpm'
 gem 'sitemap_generator'
 gem 'whenever', :require => false
 gem 'dalli'
+gem 'carrierwave_backgrounder'
+gem 'sidekiq'
+gem 'sinatra'
 
 group :development do
 	gem 'letter_opener'

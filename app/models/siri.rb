@@ -46,6 +46,12 @@ class Siri < ActiveRecord::Base
   mount_uploader :gallery_image_2, GalleryImage2Uploader
   mount_uploader :gallery_image_3, GalleryImage3Uploader
   mount_uploader :bg_image, BackgroundImageUploader
+  process_in_background :poster
+  process_in_background :header_image
+  process_in_background :gallery_image_1
+  process_in_background :gallery_image_2
+  process_in_background :gallery_image_3
+  process_in_background :bg_image
   
   belongs_to :user
   has_many :seasons, dependent: :destroy
