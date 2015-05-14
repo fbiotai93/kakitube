@@ -30,4 +30,5 @@
           = link_to register_path, class: "btn btn-default btn-xs navbar-btn" do
             .small.glyphicon.glyphicon-user
             Create An Account
-      %p.navbar-text.navbar-right.small.hidden-xs{style: "margin-right:20px;"} Get your FREE KakiTube account
+      - if !user_signed_in?
+        %p.navbar-text.navbar-right.small.hidden-xs{style: "margin-right:20px;"} Get your FREE KakiTube account
