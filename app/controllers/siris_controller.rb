@@ -67,7 +67,7 @@ class SirisController < ApplicationController
   def update
     if @siri.update_attributes(siri_params)
       expire_fragment("featured_articles")
-      redirect_to @siri, notice: "Successfully updated siri."
+      redirect_to siris_path, notice: "Successfully updated siri."
     else
       render 'edit'
     end
