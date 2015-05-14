@@ -28,7 +28,7 @@ ReIndex Object for Sunspot Solr
 bundle exec rake sunspot:reindex # run when needed only
 ```
 
-p/s: We are using [Pwder](pow.cx/manual.html) for our development environment
+p/s: We are using [Powder](pow.cx/manual.html) for our development environment
 
 ```bash
 kakitube.dev
