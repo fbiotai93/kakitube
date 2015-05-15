@@ -3,7 +3,7 @@ imdb_api: 5648389e
 google_analytics_tracker: UA-60500928-1
 fb_app_id: 367753823253755
 s3:
-  bucket: kakitube-production
+  bucket: kakitube-prod
   region: ap-southeast-1
-image_host: https://kakitube-production.s3.amazonaws.com
+image_host: https://kakitube-prod.s3.amazonaws.com
 sidekiq: localhost
