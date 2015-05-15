@@ -1,8 +1,8 @@
 :queues:
   - [carrierwave, 6]
 development:
-  :concurrency: 10
+  :concurrency: 25
 staging:
-  :concurrency: 10
+  :concurrency: 25
 production:
-  :concurrency: 10
+  :concurrency: 25
