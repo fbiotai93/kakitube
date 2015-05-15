@@ -6,4 +6,6 @@ s3:
   bucket: kakitube-staging
   region: ap-southeast-1
 image_host: https://kakitube-staging.s3.amazonaws.com
-sidekiq: localhost
+redis:
+  server: localhost
+  namespace: kakitube_staging
