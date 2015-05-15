@@ -23,6 +23,6 @@ class Season < ActiveRecord::Base
 
   validates_presence_of :title
 
-  default_scope -> { includes(:episodes).order("episodes.updated_at DESC") }
+  default_scope -> { includes(:episodes).order("episodes.created_at DESC") }
 
 end

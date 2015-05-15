@@ -19,7 +19,7 @@
 class Episode < ActiveRecord::Base
   belongs_to :season, touch: true
 
-  after_save :updated_series
+  after_commit :updated_series
 
   validates_presence_of :title
   validates_presence_of :embed
