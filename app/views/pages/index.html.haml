@@ -61,7 +61,7 @@
 						.mask
 						= link_to genre_show_path(p, sort: p.genre.slug) do
 							.gradient
-							= image_tag(p.poster_url(:thumb), class: "img-responsive")
+							= image_tag(p.poster.thumb.url, class: "img-responsive")
 							.mini-desc2
 								%h5= p.title
 				=# will_paginate @published_only
@@ -77,7 +77,7 @@
 							.movie.latest
 								= link_to siri_genre_show_path(c, view: c.siri_genre.slug) do
 									.gradient
-									= image_tag(c.header_image_url(:standard), class: "img-responsive")
+									= image_tag(c.header_image.standard.url, class: "img-responsive")
 									.mini-desc
 										%h4= c.title
 										%p.hidden-xs=h truncate(c.description, length: 200)
@@ -87,7 +87,7 @@
 						.mask
 						= link_to siri_genre_show_path(siri, view: siri.siri_genre.slug) do
 							.gradient
-							= image_tag(siri.poster_url(:thumb), class: "img-responsive")
+							= image_tag(siri.poster.thumb.url, class: "img-responsive")
 							.status
 								- if siri.is_on_going?
 									%span.label.label-warning

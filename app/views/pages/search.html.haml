@@ -9,7 +9,7 @@
 						.mask
 						= link_to genre_show_path(p, sort: p.genre.slug) do
 							.gradient
-							= image_tag(p.poster_url(:thumb), class: "img-responsive")
+							= image_tag(p.poster.thumb.url, class: "img-responsive")
 							.mini-desc2
 								%h5= p.title
 				- if p.is_a? Siri
@@ -17,7 +17,7 @@
 						.mask
 						= link_to siri_genre_show_path(p, view: p.siri_genre.slug) do
 							.gradient
-							= image_tag(p.poster_url(:thumb), class: "img-responsive")
+							= image_tag(p.poster.thumb.url, class: "img-responsive")
 							.mini-desc2
 								%h5= p.title
 		- else

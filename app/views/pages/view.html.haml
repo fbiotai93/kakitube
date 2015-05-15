@@ -33,7 +33,7 @@
 							= @siri.status
 			.row
 				.col-md-4
-					= image_tag(@siri.poster_url(:standard), class: "img-responsive")
+					= image_tag(@siri.poster.standard.url, class: "img-responsive")
 				.col-md-8
 					%p
 						= @siri.description
@@ -104,11 +104,11 @@
 			%h4 Gallery Image
 			.row
 				.col-md-4
-					= image_tag(@siri.gallery_image_1_url(:standard), class: "thumbnail img-responsive", "data-action" => "zoom")
+					= image_tag(@siri.gallery_image_1.standard.url, class: "thumbnail img-responsive", "data-action" => "zoom")
 				.col-md-4
-					= image_tag(@siri.gallery_image_2_url(:standard), class: "thumbnail img-responsive", "data-action" => "zoom")
+					= image_tag(@siri.gallery_image_2.standard.url, class: "thumbnail img-responsive", "data-action" => "zoom")
 				.col-md-4
-					= image_tag(@siri.gallery_image_3_url(:standard), class: "thumbnail img-responsive", "data-action" => "zoom")
+					= image_tag(@siri.gallery_image_3.standard.url, class: "thumbnail img-responsive", "data-action" => "zoom")
 			%hr
 			#accordian.panel-group{role: "tablist", "aria-multiselectable" => true}
 				- @siri.seasons.each do |season|

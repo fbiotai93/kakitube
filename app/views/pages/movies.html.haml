@@ -17,7 +17,7 @@
 					.movie.latest
 						= link_to genre_show_path(c, sort: c.genre.slug) do
 							.gradient
-							= image_tag(c.header_image_url(:standard), class: "img-responsive")
+							= image_tag(c.header_image.standard.url, class: "img-responsive")
 							.mini-desc
 								%h4= c.title
 								%p.hidden-xs=h truncate(c.description, length: 200)
@@ -27,7 +27,7 @@
 					.mask
 					= link_to genre_show_path(p, sort: p.genre.slug) do
 						.gradient
-						= image_tag(p.poster_url(:thumb), class: "img-responsive")
+						= image_tag(p.poster.thumb.url, class: "img-responsive")
 						.mini-desc2
 							%h5= p.title
 		- else

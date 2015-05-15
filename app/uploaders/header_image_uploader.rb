@@ -18,9 +18,12 @@ class HeaderImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def cache_dir
-  "#{Rails.root}/tmp/uploads"
-  end
+  # def default_url
+  #   "http://#{fog_directory}.s3-website-ap-southeast-1.amazonaws.com/#{store_dir}/#{version_name}.jpg"
+  # end
+
+  process :set_content_type
+  process :convert => 'jpg'
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
