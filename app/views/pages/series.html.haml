@@ -17,7 +17,7 @@
 					.movie.latest
 						= link_to siri_genre_show_path(c, view: c.siri_genre.slug) do
 							.gradient
-							= image_tag(c.header_image.standar.url, class: "img-responsive")
+							= image_tag(c.header_image.standard.url, class: "img-responsive")
 							.mini-desc
 								%h4= c.title
 								%p.hidden-xs=h truncate(c.description, length: 200)
