@@ -24,7 +24,7 @@ class Episode < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :embed
 
-  default_scope -> { order('episodes.created_at DESC') }
+  default_scope -> { order('episodes.created_at ASC') }
 
   private
 
