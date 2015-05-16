@@ -304,7 +304,7 @@ section#password-form p a {
 */
 
 .background {
-	position: absolute; 
+	position: fixed; 
   top: 0; 
   left: 0; 
   /*margin-top: 51px;*/
