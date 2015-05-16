@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_filter :latest_update, only: [:index, :show, :view, :search, :movies, :series]
+  before_filter :latest_update, only: [:index, :show, :view, :ep, :search, :movies, :series]
 
   def index
 		@posts = Post.all
@@ -13,14 +13,23 @@ class PagesController < ApplicationController
     @carousel_siri = @random_siri.shift(4)
   end
 
+  # show page for movie
   def show
     @post = Post.find(params[:id])
   end
 
+  # show page for tv series
   def view
     @siri = Siri.find(params[:id])
   end
 
+  def ep
+    @episode = Episode.find(params[:id])
+    @siri = Siri.find(params[:siri_id])
+    @season = Season.find(params[:season_id])
+  end
+
+  # search pages
   def search
     @q = params[:q]
     @search = Sunspot.search [Post, Siri] do
@@ -30,6 +39,7 @@ class PagesController < ApplicationController
     @posts = @search.results
   end
 
+  # list all movies
   def movies
     @genre = Genre.find_by_slug(params[:sort])
     if @genre
@@ -42,6 +52,7 @@ class PagesController < ApplicationController
     @carousel_movie = @random_movie.shift(4)
   end
 
+  # list all tv series
   def series
     @siri_genre = SiriGenre.find_by_slug(params[:view])
     if @siri_genre

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get 'movies/:sort/:id' => 'pages#show', as: 'genre_show'
 
   get 'tv-series/:view/:id' => 'pages#view', as: 'siri_genre_show'
+  get '/tv-series/:view/:siri_id/:season_id-:id' => 'pages#ep', as: 'watch_ep'
 
   scope :q do 
     get 'search' => 'pages#search', as: :search

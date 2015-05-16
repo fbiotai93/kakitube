@@ -1,0 +1,52 @@
+- content_for :title do
+	KakiTube | #{@siri.title} - #{@season.title} - #{@episode.title}
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags',       |
+       :locals => {                                     |
+         :type => "website",                            |
+         :title => "#{@siri.title}",          |
+         :url => request.url,                           |
+         :description => "#{@siri.description}",    |
+         :canonical => request.url,                     |
+         :og_title => "#{@siri.title}",       |
+         :og_description => "#{@siri.description}", |
+         :og_image => "#{image_url(@siri.try(:header_image))}"        |
+      }                                                 |
+.row
+	.col-md-8
+		.page-header
+			%h2
+				#{@siri.title}
+				%small #{@season.title} - #{@episode.title}
+			#{link_to "Back to Season List", siri_genre_show_path(@siri, view: @siri.siri_genre.slug), class: "btn btn-xs btn-primary", style: "color:#FFFFFF;"}
+		%ul.nav.nav-pills.nav-justified
+			%li.active{role: "episode"}
+				%a{href: "#source1", role: "tab", "data-toggle" => "tab", "aria-controls" => "source1", "aria-expanded" => "true"} Source 1
+			- if !@episode.embed2.blank?
+				%li{role: "episode"}
+					%a{href: "#source2", role: "tab", "data-toggle" => "tab", "aria-controls" => "source2", "aria-expanded" => "true"} Source 2
+			- if !@episode.embed3.blank?
+				%li{role: "episode"}
+					%a{href: "#source3", role: "tab", "data-toggle" => "tab", "aria-controls" => "source3", "aria-expanded" => "true"} Source 3
+		.tab-content
+			#source1.tab-pane.fade.active.in{role: "tabpanel", "aria-labelledby" => "source1-tab"}
+				%hr
+				.embed-responsive.embed-responsive-16by9
+					.embed-responsive-item= @episode.embed.html_safe
+			- if !@episode.embed2.blank?
+				#source2.tab-pane.fade{role: "tabpanel", "aria-labelledby" => "source2-tab"}
+					%hr
+					.embed-responsive.embed-responsive-16by9
+						.embed-responsive-item= @episode.embed2.html_safe
+			- if !@episode.embed3.blank?
+				#source3.tab-pane.fade{role: "tabpanel", "aria-labelledby" => "source3-tab"}
+					%hr
+					.embed-responsive.embed-responsive-16by9
+						.embed-responsive-item= @episode.embed3.html_safe
+		%hr
+		%h4 What people are saying:
+		%center
+			%em
+				%h5 Comment section is coming soon!
+	.col-md-4
+		= render partial: "sidebar_right"
