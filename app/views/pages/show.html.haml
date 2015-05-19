@@ -12,156 +12,150 @@
 				 :og_description => "#{@post.description}", |
 				 :og_image => "#{image_url(@post.try(:header_image))}"        |
 			}                                                 |
-- if @post.try(:bg_image?)
-	%img.background.img-responsive{src: "#{@post.bg_image}"}
-- else
-	%img.background.img-responsive{src: "#{@post.header_image}"}
-.overlay
-.white-bg
-	.row
-		.col-md-8
-			.page-header
-				%h2= @post.title
+.row
+	.col-md-8
+		.page-header
+			%h2= @post.title
+			%p
+				Genre
+				%span.label.label-primary #{@post.genre.name}
+		.row
+			.col-md-4
+				= image_tag(@post.poster.standard.url, class: "img-responsive")
+			.col-md-8
 				%p
-					Genre
-					%span.label.label-primary #{@post.genre.name}
-			.row
-				.col-md-4
-					= image_tag(@post.poster.standard.url, class: "img-responsive")
-				.col-md-8
-					%p
-						= @post.description
-					.row
-						.col-md-6
+					= @post.description
+				.row
+					.col-md-6
+						%p
+							%strong Director
+							%p= @post.director
+					.col-md-6
+						%p
+							%strong Actors
+							%p= @post.actors
+				.row
+					.col-md-6
+						%p
+							%strong Language
+							%p= @post.language
+					.col-md-6
+						%p
+							%strong Country
+							%p= @post.country
+				.row
+					.col-md-4
+						%p
+							%strong Metascore
 							%p
-								%strong Director
-								%p= @post.director
-						.col-md-6
+								%span.label.label-default
+									%span.glyphicon.glyphicon-stats
+									= @post.metascore? ? @post.metascore : "N/A"
+					.col-md-4
+						%p
+							%strong IMDB Rating
 							%p
-								%strong Actors
-								%p= @post.actors
-					.row
-						.col-md-6
+								%span.label.label-default
+									%span.glyphicon.glyphicon-heart
+									= @post.imdbrating? ? @post.imdbrating : "N/A"
+					.col-md-4
+						%p
+							%strong IMDB Votes
 							%p
-								%strong Language
-								%p= @post.language
-						.col-md-6
-							%p
-								%strong Country
-								%p= @post.country
-					.row
-						.col-md-4
-							%p
-								%strong Metascore
-								%p
-									%span.label.label-default
-										%span.glyphicon.glyphicon-stats
-										= @post.metascore? ? @post.metascore : "N/A"
-						.col-md-4
-							%p
-								%strong IMDB Rating
-								%p
-									%span.label.label-default
-										%span.glyphicon.glyphicon-heart
-										= @post.imdbrating? ? @post.imdbrating : "N/A"
-						.col-md-4
-							%p
-								%strong IMDB Votes
-								%p
-									%span.label.label-default
-										%span.glyphicon.glyphicon-thumbs-up
-										= @post.imdbvotes? ? @post.imdbvotes : "N/A"
-					%table.table.table-bordered
-						%tbody
-							%tr
-								%td.col-md-3
-									%center
-										%strong Year
-										%br/
-										%span.label.label-default= @post.year
-								%td.col-md-3
-									%center
-										%strong Rated
-										%br/
-										%span.label.label-default= @post.rated
-								%td.col-md-3
-									%center
-										%strong Released
-										%br/
-										%span.label.label-default= @post.released
-								%td.col-md-3
-									%center
-										%strong Runtime
-										%br/
-										%span.label.label-default= @post.runtime
-			%hr
-			.row
-				/ .container
-				.col-md-6
-					%button.btn.btn-default.btn-block.btn-lg{"data-toggle" => "modal", "data-target" => ".trailer"}
-						%span.glyphicon.glyphicon-play
-						Watch Trailer
-				.col-md-6
-					%button.btn.btn-primary.btn-block.btn-lg{"data-toggle" => "modal", "data-target" => ".video"}
-						%span.glyphicon.glyphicon-play-circle
-						Watch Full Video
-			.video.modal.fade.cls{tabindex: -1, role: "dialog", "aria-labelledby" => "Video", "aria-hidden" => true}
-				.modal-dialog.modal-md
-					.modal-content
-						.modal-header
-							%button.close{type: "button", "data-dismiss" => "modal", "aria-label" => "Close"}
-								%span{"aria-hidden" => true} &times;
-							%h4.modal-title{id: "trailer"} #{@post.title}
-						.modal-body
-							%ul.nav.nav-pills.nav-justified
-								%li.active{role: "video"}
-									%a{href: "#source1", role: "tab", "data-toggle" => "tab", "aria-controls" => "source1", "aria-expanded" => "true"} Source 1
-								- if !@post.embed2.blank?
-									%li{role: "video"}
-										%a{href: "#source2", role: "tab", "data-toggle" => "tab", "aria-controls" => "source2", "aria-expanded" => "true"} Source 2
-								- if !@post.embed3.blank?
-									%li{role: "video"}
-										%a{href: "#source3", role: "tab", "data-toggle" => "tab", "aria-controls" => "source3", "aria-expanded" => "true"} Source 3
-							.tab-content
-								#source1.tab-pane.fade.active.in{role: "tabpanel", "aria-labelledby" => "source1-tab"}
+								%span.label.label-default
+									%span.glyphicon.glyphicon-thumbs-up
+									= @post.imdbvotes? ? @post.imdbvotes : "N/A"
+				%table.table.table-bordered
+					%tbody
+						%tr
+							%td.col-md-3
+								%center
+									%strong Year
+									%br/
+									%span.label.label-default= @post.year
+							%td.col-md-3
+								%center
+									%strong Rated
+									%br/
+									%span.label.label-default= @post.rated
+							%td.col-md-3
+								%center
+									%strong Released
+									%br/
+									%span.label.label-default= @post.released
+							%td.col-md-3
+								%center
+									%strong Runtime
+									%br/
+									%span.label.label-default= @post.runtime
+		%hr
+		.row
+			/ .container
+			.col-md-6
+				%button.btn.btn-default.btn-block.btn-lg{"data-toggle" => "modal", "data-target" => ".trailer"}
+					%span.glyphicon.glyphicon-play
+					Watch Trailer
+			.col-md-6
+				%button.btn.btn-primary.btn-block.btn-lg{"data-toggle" => "modal", "data-target" => ".video"}
+					%span.glyphicon.glyphicon-play-circle
+					Watch Full Video
+		.video.modal.fade.cls{tabindex: -1, role: "dialog", "aria-labelledby" => "Video", "aria-hidden" => true}
+			.modal-dialog.modal-md
+				.modal-content
+					.modal-header
+						%button.close{type: "button", "data-dismiss" => "modal", "aria-label" => "Close"}
+							%span{"aria-hidden" => true} &times;
+						%h4.modal-title{id: "trailer"} #{@post.title}
+					.modal-body
+						%ul.nav.nav-pills.nav-justified
+							%li.active{role: "video"}
+								%a{href: "#source1", role: "tab", "data-toggle" => "tab", "aria-controls" => "source1", "aria-expanded" => "true"} Source 1
+							- if !@post.embed2.blank?
+								%li{role: "video"}
+									%a{href: "#source2", role: "tab", "data-toggle" => "tab", "aria-controls" => "source2", "aria-expanded" => "true"} Source 2
+							- if !@post.embed3.blank?
+								%li{role: "video"}
+									%a{href: "#source3", role: "tab", "data-toggle" => "tab", "aria-controls" => "source3", "aria-expanded" => "true"} Source 3
+						.tab-content
+							#source1.tab-pane.fade.active.in{role: "tabpanel", "aria-labelledby" => "source1-tab"}
+								%hr
+								.embed-responsive.embed-responsive-16by9
+									.embed-responsive-item= @post.embed.html_safe
+							- if !@post.embed2.blank?
+								#source2.tab-pane.fade{role: "tabpanel", "aria-labelledby" => "source2-tab"}
 									%hr
 									.embed-responsive.embed-responsive-16by9
-										.embed-responsive-item= @post.embed.html_safe
-								- if !@post.embed2.blank?
-									#source2.tab-pane.fade{role: "tabpanel", "aria-labelledby" => "source2-tab"}
-										%hr
-										.embed-responsive.embed-responsive-16by9
-											.embed-responsive-item= @post.embed2.html_safe
-								- if !@post.embed3.blank?
-									#source3.tab-pane.fade{role: "tabpanel", "aria-labelledby" => "source3-tab"}
-										%hr
-										.embed-responsive.embed-responsive-16by9
-											.embed-responsive-item= @post.embed3.html_safe
-						.modal-footer
-							%button.btn.btn-default{"data-dismiss" => "modal"} Close
-			.trailer.modal.fade.cls-you{tabindex: -1, role: "dialog", "aria-labelledby" => "Trailer", "aria-hidden" => true}
-				.modal-dialog
-					.modal-content
-						.modal-header
-							%button.close{type: "button", "data-dismiss" => "modal", "aria-label" => "Close"}
-								%span{"aria-hidden" => true} &times;
-							%h4.modal-title{id: "trailer"} Trailer of #{@post.title}
-						.modal-body
-							.embed-responsive.embed-responsive-16by9
-								%iframe.embed-responsive-item{src: "http://www.youtube.com/embed/#{@post.trailer}?rel=0&showinfo=0&iv_load_policy=3&autoplay=0", allowfullscreen: "allowfullscreen"}
-						.modal-footer
-							%button.btn.btn-default{"data-dismiss" => "modal"} Close
-			%hr
-			%h4 Gallery Image
-			.row
-				.col-md-4
-					= image_tag(@post.gallery_image_1.standard.url, class: "thumbnail img-responsive", "data-action" => "zoom")
-				.col-md-4
-					= image_tag(@post.gallery_image_2.standard.url, class: "thumbnail img-responsive", "data-action" => "zoom")
-				.col-md-4
-					= image_tag(@post.gallery_image_3.standard.url, class: "thumbnail img-responsive", "data-action" => "zoom")
-			%hr
-			%h4 What people are saying:
-			#disqus_thread
-		.col-md-4
-			= render partial: "sidebar_right"
+										.embed-responsive-item= @post.embed2.html_safe
+							- if !@post.embed3.blank?
+								#source3.tab-pane.fade{role: "tabpanel", "aria-labelledby" => "source3-tab"}
+									%hr
+									.embed-responsive.embed-responsive-16by9
+										.embed-responsive-item= @post.embed3.html_safe
+					.modal-footer
+						%button.btn.btn-default{"data-dismiss" => "modal"} Close
+		.trailer.modal.fade.cls-you{tabindex: -1, role: "dialog", "aria-labelledby" => "Trailer", "aria-hidden" => true}
+			.modal-dialog
+				.modal-content
+					.modal-header
+						%button.close{type: "button", "data-dismiss" => "modal", "aria-label" => "Close"}
+							%span{"aria-hidden" => true} &times;
+						%h4.modal-title{id: "trailer"} Trailer of #{@post.title}
+					.modal-body
+						.embed-responsive.embed-responsive-16by9
+							%iframe.embed-responsive-item{src: "http://www.youtube.com/embed/#{@post.trailer}?rel=0&showinfo=0&iv_load_policy=3&autoplay=0", allowfullscreen: "allowfullscreen"}
+					.modal-footer
+						%button.btn.btn-default{"data-dismiss" => "modal"} Close
+		%hr
+		%h4 Gallery Image
+		.row
+			.col-md-4
+				= image_tag(@post.gallery_image_1.standard.url, class: "thumbnail img-responsive", "data-action" => "zoom")
+			.col-md-4
+				= image_tag(@post.gallery_image_2.standard.url, class: "thumbnail img-responsive", "data-action" => "zoom")
+			.col-md-4
+				= image_tag(@post.gallery_image_3.standard.url, class: "thumbnail img-responsive", "data-action" => "zoom")
+		%hr
+		%h4 What people are saying:
+		#disqus_thread
+	.col-md-4
+		= render partial: "sidebar_right"
