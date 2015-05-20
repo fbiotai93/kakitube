@@ -8,7 +8,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  poster     :string(255)
-#  poster_tmp :string(255)
 #
 # Indexes
 #

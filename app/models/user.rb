@@ -21,9 +21,11 @@
 #  unconfirmed_email      :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  api_key                :string(255)      default("")
 #
 # Indexes
 #
+#  index_users_on_api_key               (api_key) UNIQUE
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
@@ -32,6 +34,7 @@
 
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  before_create :generate_api_key
 
   attr_accessor :login
 
@@ -39,6 +42,7 @@ class User < ActiveRecord::Base
   has_many :siris
 
   validates :username, :uniqueness => { :case_sensitive => false }, format: { with: /\A[-\w.]*\z/ }, presence: true
+  validates :api_key, uniqueness: true
 
   default_scope -> { order('users.id DESC') }
 
@@ -58,4 +62,12 @@ class User < ActiveRecord::Base
 	    end
 	  end
 	end
+
+  protected
+
+  def generate_api_key
+    begin
+      self.api_key = Devise.friendly_token
+    end while self.class.exists?(api_key: api_key)
+  end
 end
