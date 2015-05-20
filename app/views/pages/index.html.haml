@@ -1,14 +1,14 @@
 - content_for :title do
-	KakiTube
+	KakiTube | Variance of choice to watch Movies & TV Series online
 - content_for :meta_tags do
 	= render :partial => 'application/meta_tags',       |
 			 :locals => {                                     |
 				 :type => "website",                            |
-				 :title => "KakiTube",          |
+				 :title => "KakiTube | Variance of choice to watch Movies & TV Series online",          |
 				 :url => request.url,                           |
 				 :description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.",    |
 				 :canonical => request.url,                     |
-				 :og_title => "KakiTube",       |
+				 :og_title => "KakiTube | Variance of choice to watch Movies & TV Series online",       |
 				 :og_description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.", |
 				 :og_image => ""        |
 			}                                                 |
@@ -65,8 +65,8 @@
 							.mini-desc2
 								%h5= p.title
 		= link_to movies_path, class: 'btn btn-default btn-block' do
-			Load More Movies
 			.glyphicon.glyphicon-repeat.small
+			Load More Movies
 		.row
 			.col-md-12
 				%hr
@@ -100,8 +100,8 @@
 							.mini-desc2
 								%h5= siri.title
 		= link_to tv_series_path, class: 'btn btn-default btn-block' do
-			Load More TV Series
 			.glyphicon.glyphicon-repeat.small
+			Load More TV Series
 	.col-md-4
 		= render partial: "sidebar_right"
 %hr
