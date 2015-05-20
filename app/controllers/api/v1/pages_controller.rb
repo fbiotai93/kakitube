@@ -18,13 +18,13 @@ module Api
       #api/v1/movies/movie-name
       def show
         @post = Post.find(params[:id])
-        respond_with @post.to_json(except: [:user_id])
+        respond_with @post.to_json(include: [:genre],except: [:user_id, :genre_id])
       end
 
       #api/v1/tv-series/series-name
       def view
         @siri = Siri.find(params[:id])
-        respond_with @siri.to_json(include: [seasons: {include: [:episodes]}], except: [:user_id])
+        respond_with @siri.to_json(include: [:siri_genre, seasons: {include: [:episodes]}], except: [:user_id, :siri_genre_id])
       end
 
     end

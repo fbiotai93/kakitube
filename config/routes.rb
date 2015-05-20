@@ -16,8 +16,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'movies' => 'pages#movies'
       get 'tv-series' => 'pages#series'
-      get 'movies/:sort/:id' => 'pages#show', as: 'genre_show'
-      get 'tv-series/:view/:id' => 'pages#view', as: 'siri_genre_show'
+      get 'movies/:id' => 'pages#show'
+      get 'tv-series/:id' => 'pages#view'
     end
   end
 
