@@ -64,7 +64,9 @@
 							= image_tag(p.poster.thumb.url, class: "img-responsive")
 							.mini-desc2
 								%h5= p.title
-				=# will_paginate @published_only
+		= link_to movies_path, class: 'btn btn-default btn-block' do
+			Load More Movies
+			.glyphicon.glyphicon-repeat.small
 		.row
 			.col-md-12
 				%hr
@@ -97,6 +99,9 @@
 										= siri.status
 							.mini-desc2
 								%h5= siri.title
-				=# will_paginate @siris
+		= link_to tv_series_path, class: 'btn btn-default btn-block' do
+			Load More TV Series
+			.glyphicon.glyphicon-repeat.small
 	.col-md-4
 		= render partial: "sidebar_right"
+%hr
