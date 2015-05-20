@@ -14,10 +14,19 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
+
+      # api/v1/movies
       get 'movies' => 'pages#movies'
+
+      # api/v1/tv-series
       get 'tv-series' => 'pages#series'
+
+      #api/v1/movies/movie-title
       get 'movies/:id' => 'pages#show'
+
+      #api/v1/tv-series/series-title
       get 'tv-series/:id' => 'pages#view'
+
     end
   end
 
