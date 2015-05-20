@@ -1,6 +1,6 @@
 class AddApiKeyToUsers < ActiveRecord::Migration
   def change
-    add_column :users, :api_key, :string, default: ""
+    add_column :users, :api_key, :string#, default: ""
     add_index :users, :api_key, unique: true
   end
 end

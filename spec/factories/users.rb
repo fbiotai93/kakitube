@@ -21,7 +21,7 @@
 #  unconfirmed_email      :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
-#  api_key                :string(255)      default("")
+#  api_key                :string(255)
 #
 # Indexes
 #

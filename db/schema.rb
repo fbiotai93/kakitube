@@ -156,7 +156,7 @@ ActiveRecord::Schema.define(version: 20150520200131) do
     t.string   "unconfirmed_email",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "api_key",                limit: 255, default: ""
+    t.string   "api_key",                limit: 255
   end
 
   add_index "users", ["api_key"], name: "index_users_on_api_key", unique: true, using: :btree
