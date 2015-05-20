@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  namespace :api do
+    namespace :v1 do
+      
+    end
+  end
+
   resources :posts
   resources :genres, except: [:show, :edit, :post]
   resources :siri_genres, except: [:show, :edit, :post]

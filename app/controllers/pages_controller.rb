@@ -77,7 +77,7 @@ class PagesController < ApplicationController
     @carousel_siri = @random_siri.shift(4)
     respond_to do |format|
       format.html
-      format.json { render json: @siris.to_json(except: [:user_id]) }
+      format.json { render json: @siris.to_json(include: [seasons: {include: [:episodes]}], except: [:user_id]) }
     end
   end
 
