@@ -16,11 +16,19 @@ class PagesController < ApplicationController
   # show page for movie
   def show
     @post = Post.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @post.to_json(except: [:user_id]) }
+    end
   end
 
   # show page for tv series
   def view
     @siri = Siri.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @siri.to_json(include: [seasons: {include: [:episodes]}], except: [:user_id]) }
+    end
   end
 
   def ep
@@ -50,6 +58,10 @@ class PagesController < ApplicationController
     end
     @random_movie = @posts.random.take(3)
     @carousel_movie = @random_movie.shift(4)
+    respond_to do |format|
+      format.html
+      format.json { render json: @posts.to_json(except: [:user_id]) }
+    end
   end
 
   # list all tv series
@@ -63,6 +75,10 @@ class PagesController < ApplicationController
     end
     @random_siri = @siris.random.take(3)
     @carousel_siri = @random_siri.shift(4)
+    respond_to do |format|
+      format.html
+      format.json { render json: @siris.to_json(except: [:user_id]) }
+    end
   end
 
   private
