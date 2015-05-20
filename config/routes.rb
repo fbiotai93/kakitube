@@ -12,9 +12,12 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  namespace :api do
+  namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
-      
+      get 'movies' => 'pages#movies'
+      get 'tv-series' => 'pages#series'
+      get 'movies/:sort/:id' => 'pages#show', as: 'genre_show'
+      get 'tv-series/:view/:id' => 'pages#view', as: 'siri_genre_show'
     end
   end
 
