@@ -6,7 +6,7 @@ module Api
       # api/v1/movies
       def movies
         @posts = Post.all
-        respond_with @posts.to_json(include: [:genre], except: [:user_id, :genre_id])
+        respond_with @posts.to_json(include: [genre: {except: [:id]}], except: [:user_id, :genre_id])
       end
 
       # api/v1/tv-series
@@ -18,7 +18,7 @@ module Api
       #api/v1/movies/movie-name
       def show
         @post = Post.find(params[:id])
-        respond_with @post.to_json(include: [:genre], except: [:user_id, :genre_id])
+        respond_with @post.to_json(include: [genre: {except: [:id]}], except: [:user_id, :genre_id])
       end
 
       #api/v1/tv-series/series-name
