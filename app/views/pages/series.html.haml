@@ -1,3 +1,17 @@
+- content_for :title do
+	KakiTube | TV Series Listing
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags',       |
+			 :locals => {                                     |
+				 :type => "website",                            |
+				 :title => "KakiTube | TV Series Listing",          |
+				 :url => request.url,                           |
+				 :description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.",    |
+				 :canonical => request.url,                     |
+				 :og_title => "KakiTube | TV Series Listing",       |
+				 :og_description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.", |
+				 :og_image => ""        |
+			}                                                 |
 .row
 	.col-md-8
 		.page-header
