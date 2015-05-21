@@ -1,1 +1,94 @@
-api page
+- content_for :title do
+  KakiTube API V1
+- content_for :meta_tags do
+  = render :partial => 'application/meta_tags',       |
+       :locals => {                                     |
+         :type => "website",                            |
+         :title => "KakiTube API V1",          |
+         :url => request.url,                           |
+         :description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.",    |
+         :canonical => request.url,                     |
+         :og_title => "KakiTube API V1",       |
+         :og_description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.", |
+         :og_image => ""        |
+      }                                                 |
+.page-header
+  %h3
+    API Documentation
+  %span.label.label-primary Current Version: V1
+.alert.alert-info
+  %p More to come soon, very soon. We are on our track to enhanced our API Workflow and Documentation
+.row
+  .col-md-8
+    .page-header
+      %h1 Overview
+    %p This describes the resources that make up the official KakiTube API v1. If you have any problems or requests please contact support.
+    %p
+      Our API is organized around REST. JSON will be returned in all responses from the API. All API access is over HTTPS, and accessed from the
+      %mark kakitube.com/api/v1
+      domain. All data is sent and received as JSON.
+    .page-header
+      %h1 Authentication
+    %h3 Current Version
+    %p By default, all requests receive the v1 version of the API
+    %h3 Schema
+    %p You authenticate to the KakiTube API by providing your API Access Token in the request. You can get your API key from your account’s settings page.
+    %p Authentication to the API occurs via HTTP Header Authorization. Provide your API key as HTTP Header.
+    .terminal
+      %p
+        $ curl -X GET -H "Access-Token: YourSecureRandomApiKey" http://kakitube.com/api/v1/movies/cold-eyes-korean-movie -I
+      %p
+        HTTP/1.1 200 OK
+        %br/
+        X-Frame-Options: SAMEORIGIN
+        %br/
+        X-XSS-Protection: 1; mode=block
+        %br/
+        X-Content-Type-Options: nosniff
+        %br/
+        Content-Type: application/json; charset=utf-8
+        %br/
+        ETag: W/"c2e383f347f85be39df33a794c111817"
+        %br/
+        Cache-Control: max-age=0, private, must-revalidate
+        %br/
+        X-Request-Id: 37981503-d392-4dc5-9c45-951223cb4599
+        %br/
+        X-Runtime: 0.356851
+        %br/
+        Date: Thu, 21 May 2015 04:38:13 GMT
+      %p
+        []
+    %p Blank fields are included as null instead of being omitted.
+    %strong Failed Authentication
+    .terminal
+      %p HTTP/1.1 401 Unauthorized
+    %h3 Parameters
+    %p.text-warning Currently we only support for GET request to our Movies and TV Series listing. We planning to release other action method [PUT, PATCH, DESTROY] in future.
+    %strong Get All Movies List
+    .terminal
+      %p
+        $ curl -X GET -H "Access-Token: YourSecureRandomApiKey" http://kakitube.com/api/v1/movies -I
+      %p
+        HTTP/1.1 200 OK
+    %strong Get All TV-Series List
+    .terminal
+      %p
+        $ curl -X GET -H "Access-Token: YourSecureRandomApiKey" http://kakitube.com/api/v1/tv-series -I
+      %p
+        HTTP/1.1 200 OK
+    %strong Get Movie Data
+    .terminal
+      %p
+        $ curl -X GET -H "Access-Token: YourSecureRandomApiKey" http://kakitube.com/api/v1/movies/movie-title -I
+      %p
+        HTTP/1.1 200 OK
+    %strong Get TV-Series Data
+    .terminal
+      %p
+        $ curl -X GET -H "Access-Token: YourSecureRandomApiKey" http://kakitube.com/api/v1/tv-series/series-title -I
+      %p
+        HTTP/1.1 200 OK
+    %strong Failed GET request data
+    .terminal
+      %p HTTP/1.1 404 Not Found
