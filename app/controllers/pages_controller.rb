@@ -65,6 +65,9 @@ class PagesController < ApplicationController
     @carousel_siri = @random_siri.shift(4)
   end
 
+  def developer
+  end
+
   private
 
   def latest_update
