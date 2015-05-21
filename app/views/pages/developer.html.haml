@@ -25,7 +25,7 @@
     %p This describes the resources that make up the official KakiTube API v1. If you have any problems or requests please contact support.
     %p
       Our API is organized around REST. JSON will be returned in all responses from the API. All API access is over HTTPS, and accessed from the
-      %mark kakitube.com/api/v1
+      %mark #{Settings.site_domain}/api/v1
       domain. All data is sent and received as JSON.
     .page-header
       %h1 Authentication
@@ -36,7 +36,7 @@
     %p Authentication to the API occurs via HTTP Header Authorization. Provide your API key as HTTP Header.
     .terminal
       %p
-        $ curl -X GET -H "Access-Token: YourSecureRandomApiKey" http://kakitube.com/api/v1/movies/cold-eyes-korean-movie -I
+        $ curl -X GET -H "Access-Token: YourSecureRandomApiKey" http://#{Settings.site_domain}/api/v1/movies/cold-eyes-korean-movie -I
       %p
         HTTP/1.1 200 OK
         %br/
@@ -68,25 +68,25 @@
     %strong Get All Movies List
     .terminal
       %p
-        $ curl -X GET -H "Access-Token: YourSecureRandomApiKey" http://kakitube.com/api/v1/movies -I
+        $ curl -X GET -H "Access-Token: YourSecureRandomApiKey" http://#{Settings.site_domain}/api/v1/movies -I
       %p
         HTTP/1.1 200 OK
     %strong Get All TV-Series List
     .terminal
       %p
-        $ curl -X GET -H "Access-Token: YourSecureRandomApiKey" http://kakitube.com/api/v1/tv-series -I
+        $ curl -X GET -H "Access-Token: YourSecureRandomApiKey" http://#{Settings.site_domain}/api/v1/tv-series -I
       %p
         HTTP/1.1 200 OK
     %strong Get Movie Data
     .terminal
       %p
-        $ curl -X GET -H "Access-Token: YourSecureRandomApiKey" http://kakitube.com/api/v1/movies/movie-title -I
+        $ curl -X GET -H "Access-Token: YourSecureRandomApiKey" http://#{Settings.site_domain}/api/v1/movies/movie-title -I
       %p
         HTTP/1.1 200 OK
     %strong Get TV-Series Data
     .terminal
       %p
-        $ curl -X GET -H "Access-Token: YourSecureRandomApiKey" http://kakitube.com/api/v1/tv-series/series-title -I
+        $ curl -X GET -H "Access-Token: YourSecureRandomApiKey" http://#{Settings.site_domain}/api/v1/tv-series/series-title -I
       %p
         HTTP/1.1 200 OK
     %strong Failed GET request data
