@@ -1,5 +1,5 @@
 - content_for :title do
-	KakiTube | Add New Episode for #{@season.siri.title} #{@season.title}
+	Kakitube.com | Add New Episode for #{@season.siri.title} #{@season.title}
 - content_for :meta_tags do
 	= render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | Add New Episode for #{@season.siri.title} #{@season.title}", :url => request.url, :description => "KakiTube | Add New Episode for #{@season.siri.title} #{@season.title}", :canonical => request.url, :og_title => "KakiTube | Add New Episode for #{@season.siri.title} #{@season.title}", :og_description => "KakiTube | Add New Episode for #{@season.siri.title} #{@season.title}" }
 	

@@ -1,3 +1,17 @@
+- content_for :title do
+	Kakitube.com | Dashboard
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags',       |
+			 :locals => {                                     |
+				 :type => "website",                            |
+				 :title => "Kakitube.com | Dashboard",          |
+				 :url => request.url,                           |
+				 :description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.",    |
+				 :canonical => request.url,                     |
+				 :og_title => "Kakitube.com | Dashboard",       |
+				 :og_description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.", |
+				 :og_image => ""        |
+			}                                                 |
 .alert.alert-info.alert-dismissible.fade.in
 	%button.close{"data-dismiss" => "alert", "aria-label" => "Close"}
 		%span{"aria-hidden" => "true"} &times;
