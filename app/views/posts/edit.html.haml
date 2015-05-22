@@ -9,7 +9,7 @@
     .col-lg-12
       .page-header
         %h1 Edit Movie
-      .panel.panel-default
+      #movie-list.panel.panel-default
         .panel-heading
           %h3.panel-title Edit Movie
         = form_for @post, html: { class: "form-horizontal", method: :patch } do |f|

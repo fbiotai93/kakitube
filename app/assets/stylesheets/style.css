@@ -76,7 +76,14 @@ hr {
 	border-top: 1px solid #000000;
 }
 
-
+#latest-update,
+#episode-list,
+#movie-list,
+#series-list,
+#user-list,
+#genre-list {
+	color: #222;
+}
 
 .terminal{
 	background-color: #444;
@@ -134,6 +141,7 @@ hr {
 .passwords.create {
 	/*background-color: #AE5D54;*/
 	background-color: #222222;
+	color: #222;
 }
 
 section#login-form {

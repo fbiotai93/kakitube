@@ -112,7 +112,7 @@
 									.pull-right
 										%p.small Total Episodes: #{season.episodes.count}
 						.panel-collapse.collapse{role: "tabpanel", "aria-labelledby" => "#{season.title}", id: "#{season.id}"}
-							.panel-body
+							#episode-list.panel-body
 								%table.table.table-bordered.table-hovered
 									- season.episodes.each do |episode|
 										%tr
