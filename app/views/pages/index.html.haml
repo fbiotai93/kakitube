@@ -23,7 +23,6 @@
 .row
 	.col-md-8
 		.movie.latest
-			/ - cache "featured_articles", expires_in: 24.hours do
 			- @featured.each do |f|
 				= link_to genre_show_path(f, sort: f.genre.slug) do
 					.gradient
@@ -39,69 +38,71 @@
 					.mini-desc
 						%h4= f.title
 						%p.hidden-xs=h truncate(f.description, length: 200)
-		.row
-			.col-md-12
-				%hr
-				%h4{style: "margin-bottom:20px;"}
-					%span.glyphicon.glyphicon-th-list
-					Latest Movie
-					= link_to "View All", movies_path, class: 'btn btn-link btn-xs'
-					.carousel
-						- @carousel_movie.each do |c|
-							.movie.latest
-								= link_to genre_show_path(c, sort: c.genre.slug) do
-									.gradient
-									= image_tag(c.header_image_url(:standard), class: "img-responsive")
-									.mini-desc
-										%h4= c.title
-										%p.hidden-xs=h truncate(c.description, length: 200)
-				%hr
-				- @published_only.each do |p|
-					.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
-						.mask
-						= link_to genre_show_path(p, sort: p.genre.slug) do
-							.gradient
-							= image_tag(p.poster.thumb.url, class: "img-responsive")
-							.mini-desc2
-								%h5= p.title
-		= link_to movies_path, class: 'btn btn-default btn-block' do
-			.glyphicon.glyphicon-repeat.small
-			Load More Movies
-		.row
-			.col-md-12
-				%hr
-				%h4{style: "margin-bottom:20px;"}
-					%span.glyphicon.glyphicon-th-list
-					Latest TV Series
-					= link_to "View All", tv_series_path, class: 'btn btn-link btn-xs'
-					.carousel
-						- @carousel_siri.each do |c|
-							.movie.latest
-								= link_to siri_genre_show_path(c, view: c.siri_genre.slug) do
-									.gradient
-									= image_tag(c.header_image.standard.url, class: "img-responsive")
-									.mini-desc
-										%h4= c.title
-										%p.hidden-xs=h truncate(c.description, length: 200)
-				%hr
-				- @siris.each do |siri|
-					.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
-						.mask
-						= link_to siri_genre_show_path(siri, view: siri.siri_genre.slug) do
-							.gradient
-							= image_tag(siri.poster.thumb.url, class: "img-responsive")
-							.status
-								- if siri.is_on_going?
-									%span.label.label-warning
-										= siri.status
-								- elsif siri.is_completed?
-									%span.label.label-primary
-										= siri.status
-							.mini-desc2
-								%h5= siri.title
-		= link_to tv_series_path, class: 'btn btn-default btn-block' do
-			.glyphicon.glyphicon-repeat.small
-			Load More TV Series
+		- cache "movies-list", skip_digest: true do
+			.row
+				.col-md-12
+					%hr
+					%h4{style: "margin-bottom:20px;"}
+						%span.glyphicon.glyphicon-th-list
+						Latest Movie
+						= link_to "View All", movies_path, class: 'btn btn-link btn-xs'
+						.carousel
+							- @carousel_movie.each do |c|
+								.movie.latest
+									= link_to genre_show_path(c, sort: c.genre.slug) do
+										.gradient
+										= image_tag(c.header_image_url(:standard), class: "img-responsive")
+										.mini-desc
+											%h4= c.title
+											%p.hidden-xs=h truncate(c.description, length: 200)
+					%hr
+					- @published_only.each do |p|
+						.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
+							.mask
+							= link_to genre_show_path(p, sort: p.genre.slug) do
+								.gradient
+								= image_tag(p.poster.thumb.url, class: "img-responsive")
+								.mini-desc2
+									%h5= p.title
+			= link_to movies_path, class: 'btn btn-default btn-block' do
+				.glyphicon.glyphicon-repeat.small
+				Load More Movies
+		- cache "series-list", skip_digest: true do
+			.row
+				.col-md-12
+					%hr
+					%h4{style: "margin-bottom:20px;"}
+						%span.glyphicon.glyphicon-th-list
+						Latest TV Series
+						= link_to "View All", tv_series_path, class: 'btn btn-link btn-xs'
+						.carousel
+							- @carousel_siri.each do |c|
+								.movie.latest
+									= link_to siri_genre_show_path(c, view: c.siri_genre.slug) do
+										.gradient
+										= image_tag(c.header_image.standard.url, class: "img-responsive")
+										.mini-desc
+											%h4= c.title
+											%p.hidden-xs=h truncate(c.description, length: 200)
+					%hr
+					- @siris.each do |siri|
+						.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
+							.mask
+							= link_to siri_genre_show_path(siri, view: siri.siri_genre.slug) do
+								.gradient
+								= image_tag(siri.poster.thumb.url, class: "img-responsive")
+								.status
+									- if siri.is_on_going?
+										%span.label.label-warning
+											= siri.status
+									- elsif siri.is_completed?
+										%span.label.label-primary
+											= siri.status
+								.mini-desc2
+									%h5= siri.title
+			= link_to tv_series_path, class: 'btn btn-default btn-block' do
+				.glyphicon.glyphicon-repeat.small
+				Load More TV Series
 	.col-md-4
 		= render partial: "sidebar_right"
 %hr

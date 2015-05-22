@@ -65,8 +65,8 @@ Rails.application.routes.draw do
   #pagination
   get 'movies/all/page/:page' => 'pages#movies'
   get 'movies/:sort/page/:page' => 'pages#movies'
-  get 'tv-series/all/page/:page' => 'pages#movies'
-  get 'tv-series/:view/page/:page' => 'pages#movies'
+  get 'tv-series/all/page/:page' => 'pages#series'
+  get 'tv-series/:view/page/:page' => 'pages#series'
 
   # You can have the root of your site routed with "root"
   root 'pages#index'

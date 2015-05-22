@@ -14,16 +14,17 @@
 		%blockquote{ cite: "https://www.facebook.com/kakitubedotcom"}
 			%a{href: "https://www.facebook.com/kakitubedotcom"} KakiTube
 %hr
-#latest-update.panel.panel-default
-	.panel-heading
-		%h3.panel-title TV Series - Latest Update
-	.panel-body
-		- @latest_update.each do |siri|
-			.media
-				.media-left
-					= link_to siri_genre_show_path(siri, view: siri.siri_genre.slug) do
-						= image_tag(siri.poster_url(:avatar), class: "media-object")
-				.media-body
-					= link_to siri_genre_show_path(siri, view: siri.siri_genre.slug) do
-						%h4.media-heading= siri.title
-					=h truncate(siri.description, length: 100)
+- cache "latest-series-update", skip_digest: true do
+	#latest-update.panel.panel-default
+		.panel-heading
+			%h3.panel-title TV Series - Latest Update
+		.panel-body
+			- @latest_update.each do |siri|
+				.media
+					.media-left
+						= link_to siri_genre_show_path(siri, view: siri.siri_genre.slug) do
+							= image_tag(siri.poster_url(:avatar), class: "media-object")
+					.media-body
+						= link_to siri_genre_show_path(siri, view: siri.siri_genre.slug) do
+							%h4.media-heading= siri.title
+						=h truncate(siri.description, length: 100)
