@@ -3,7 +3,7 @@
 	%head
 		%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
 		%meta{:charset => "UTF-8"}/
-		%title= (title = yield :title).blank? ? "KakiTube" : title
+		%title= (title = yield :title).blank? ? "Kakitube.com | Free Movies & Tv shows Streaming Portal" : title
 		%meta{:content => "kakitube, movies, drama, horror, wayang, imdb review, reviews, sharing, trailers, ratings, information", :name => "keywords"}/
 		%meta{:content => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.", :name => "description"}/
 		%meta{:content => "KakiTube", :name => "author"}/
@@ -13,7 +13,7 @@
 		= csrf_meta_tags
 		= yield :meta_tags
 	%body{class: "#{body_class}", data: {no_turbolink: true}}
-		= render partial: "ads_script"
+		=# render partial: "ads_script"
 		= render partial: "analytics"
 		= render partial: "alert"
 		= render partial: "navbar"
