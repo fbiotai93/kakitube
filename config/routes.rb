@@ -62,6 +62,12 @@ Rails.application.routes.draw do
   get 'tv-series' => 'pages#series'
   get 'tv-series/:view/' => 'pages#series', as: 'siri_genre_index'
 
+  #pagination
+  get 'movies/all/page/:page' => 'pages#movies'
+  get 'movies/:sort/page/:page' => 'pages#movies'
+  get 'tv-series/all/page/:page' => 'pages#movies'
+  get 'tv-series/:view/page/:page' => 'pages#movies'
+
   # You can have the root of your site routed with "root"
   root 'pages#index'
 
