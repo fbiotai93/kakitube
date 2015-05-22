@@ -4,11 +4,11 @@
 	= render :partial => 'application/meta_tags',       |
        :locals => {                                     |
          :type => "website",                            |
-         :title => "#{@siri.title}",          |
+         :title => "#{@siri.title} - #{@season.title} - #{@episode.title}",          |
          :url => request.url,                           |
          :description => "#{@siri.description}",    |
          :canonical => request.url,                     |
-         :og_title => "#{@siri.title}",       |
+         :og_title => "#{@siri.title} - #{@season.title} - #{@episode.title}",       |
          :og_description => "#{@siri.description}", |
          :og_image => "#{image_url(@siri.try(:header_image))}"        |
       }                                                 |
