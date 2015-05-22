@@ -66,6 +66,7 @@ html {
 body {
 	font-family: 'ProximaNovaRegular', arial, helvetica, sans-serif;
 	-webkit-font-smoothing: antialiased;
+	background-color: #BDBDBD;
 	/*margin-bottom: 100px;*/
 	/*padding-top: 60px;*/
 }
