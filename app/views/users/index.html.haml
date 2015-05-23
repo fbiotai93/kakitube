@@ -18,7 +18,7 @@
           %h3.panel-title
             User List
         #user-list.panel-body
-          %table.table.table-bordered.table-hovered.display{id: "postLists"}
+          %table#postLists.table.table-bordered.table-hovered.display
             %thead
               %tr
                 %th Email
@@ -27,7 +27,6 @@
                 %th.col-md-2 Action
             %tbody
               - @users.each do |user|
-                %tr{id: "all_genre"}
                 %tr
                   %td
                     = user.email
