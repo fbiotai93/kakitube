@@ -81,7 +81,10 @@ hr {
 #movie-list,
 #series-list,
 #user-list,
-#genre-list {
+#genre-list,
+#account-settings,
+#token,
+#cancel {
 	color: #222;
 }
 
