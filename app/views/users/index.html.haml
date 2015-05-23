@@ -29,6 +29,7 @@
               - @users.each do |user|
                 %tr
                   %td
+                    = image_tag avatar_small_url(user), alt: "#{user.username}", class: "img-rounded"
                     = user.email
                     - if user.is_online?
                       %span.label.label-success Online

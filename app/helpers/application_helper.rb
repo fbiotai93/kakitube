@@ -7,6 +7,11 @@ module ApplicationHelper
     "active" if current_page?(path)
   end
 
+  def avatar_small_url(user)
+    gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
+    "https://gravatar.com/avatar/#{gravatar_id}.png?s=20"
+  end
+
 	def avatar_url(user)
 	  gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
   	"https://gravatar.com/avatar/#{gravatar_id}.png?s=35"
