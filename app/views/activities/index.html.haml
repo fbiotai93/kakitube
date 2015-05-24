@@ -30,7 +30,7 @@
           %li.list-group-item
             #{image_tag avatar_small_url(admin), alt: "#{admin.username}", class: "img-rounded"} #{admin.username}
             %small.pull-right
-              last seen #{time_ago_in_words(admin.last_sign_in_at)} ago
+              last seen #{time_ago_in_words(admin.current_sign_in_at)} ago
     #admin-list.panel.panel-default
       .panel-heading
         %h3.panel-title Total Movie Posts
