@@ -71,6 +71,7 @@ class Siri < ActiveRecord::Base
 
   searchable do
     text :title, boost: 5
+    text :description
   end
 
   validates_presence_of :title
