@@ -98,6 +98,24 @@ hr {
 	margin: 10px 0;
 }
 
+.online {
+	background-color: #0F9D28;
+	border-radius: 100%;
+	border: 0;
+	height: 7px;
+	width: 7px;
+	display: inline-block;
+}
+
+.offline {
+	background-color: #777777;
+	border-radius: 100%;
+	border: 0;
+	height: 7px;
+	width: 7px;
+	display: inline-block;
+}
+
 /*
 	Navbar
 */

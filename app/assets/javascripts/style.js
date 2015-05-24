@@ -25,6 +25,10 @@ ready = function() {
   	pauseOnHover: false
   });
 
+  // Tooltip
+
+  $('[data-toggle="tooltip"]').tooltip()
+
 };
 
 $(document).ready(ready);

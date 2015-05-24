@@ -29,6 +29,8 @@
         - @admins.each do |admin|
           %li.list-group-item
             #{image_tag avatar_small_url(admin), alt: "#{admin.username}", class: "img-rounded"} #{admin.username}
+            - if admin.is_online?
+              %i.online{"data-toggle" => "tooltip", "data-placement" => "right", "title" => "Online"}
             %small.pull-right
               last seen #{time_ago_in_words(admin.current_sign_in_at)} ago
     #admin-list.panel.panel-default
