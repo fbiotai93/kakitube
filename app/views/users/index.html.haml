@@ -32,9 +32,9 @@
                     = image_tag avatar_small_url(user), alt: "#{user.username}", class: "img-rounded"
                     = user.email
                     - if user.is_online?
-                      %i.online{"data-toggle" => "tooltip", "data-placement" => "right", "title" => "Online"}
+                      %i.online.pull-right{"data-toggle" => "tooltip", "data-placement" => "right", "title" => "Online"}
                     - else
-                      %i.offline{"data-toggle" => "tooltip", "data-placement" => "right", "title" => "Offline"}
+                      %i.offline.pull-right{"data-toggle" => "tooltip", "data-placement" => "right", "title" => "Offline"}
                   %td= user.username
                   %td= user.created_at.strftime("%d %B %Y")
                   - if user.is_admin?
