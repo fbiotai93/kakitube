@@ -36,6 +36,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
   before_create :generate_api_key
 
+  include PublicActivity::Model
+  tracked except: [:update], owner: Proc.new{ |controller, model| controller.current_user }
+
   attr_accessor :login
 
   has_many :posts

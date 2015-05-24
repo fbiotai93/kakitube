@@ -1,0 +1,6 @@
+%strong
+  updated
+- if activity.trackable
+  #{ activity.trackable.title } for #{ link_to activity.trackable.siri.title, activity.trackable.siri }
+- else
+  which has been removed

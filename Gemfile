@@ -32,6 +32,7 @@ gem 'dalli'
 gem 'carrierwave_backgrounder'
 gem 'sidekiq'
 gem 'sinatra'
+gem 'public_activity'
 
 group :development do
 	gem 'letter_opener'

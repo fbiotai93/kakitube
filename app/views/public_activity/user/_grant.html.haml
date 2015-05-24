@@ -1,0 +1,6 @@
+%strong
+  grant admin permission for
+- if activity.trackable
+  = activity.trackable.username
+- else
+  which has been removed

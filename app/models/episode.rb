@@ -17,6 +17,9 @@
 #
 
 class Episode < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
+  
   belongs_to :season, touch: true
 
   after_commit :updated_series

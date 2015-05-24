@@ -1,0 +1,21 @@
+.page-header
+  %h1 Admin Activities
+- @activities.each do |activity|
+  .activity
+    - if activity.key == "post.create" || activity.key == "siri.create" || activity.key == "season.create" || activity.key == "episode.create"
+      %span.glyphicon.glyphicon-plus-sign
+    - elsif activity.key == "post.update" || activity.key == "siri.update" || activity.key == "season.update" || activity.key == "episode.update"
+      %span.glyphicon.glyphicon-pencil
+    - elsif activity.key == "post.destroy" || activity.key == "siri.destroy" || activity.key == "season.destroy" || activity.key == "episode.destroy"
+      %span.glyphicon.glyphicon-remove
+    - elsif activity.key == "user.revoke"
+      %span.glyphicon.glyphicon-exclamation-sign
+    - elsif activity.key == "user.grant"
+      %span.glyphicon.glyphicon-ok-sign
+    - else
+      %span.glyphicon.glyphicon-question-sign
+    = activity.owner.username if activity.owner
+    = render_activity activity
+    %small
+      #{ time_ago_in_words(activity.created_at) } ago
+= will_paginate @activities

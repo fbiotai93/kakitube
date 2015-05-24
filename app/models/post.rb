@@ -58,6 +58,9 @@ class Post < ActiveRecord::Base
   process_in_background :gallery_image_3
   process_in_background :bg_image
 
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
+
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders, :history]
 

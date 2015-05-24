@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :activities
   resources :posts
   resources :genres, except: [:show, :edit, :post]
   resources :siri_genres, except: [:show, :edit, :post]

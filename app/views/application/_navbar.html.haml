@@ -12,6 +12,8 @@
         - if user_signed_in? && current_user.is_admin?
           %li{:class => "#{current_page(dashboard_path)}"}
             = link_to "Dashboard", dashboard_path
+          %li{:class => "#{current_page(activities_path)}"}
+            = link_to "Activities", activities_path
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li.dropdown

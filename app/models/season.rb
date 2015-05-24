@@ -17,6 +17,9 @@
 class Season < ActiveRecord::Base
 	mount_uploader :poster, PosterUploader
   process_in_background :poster
+
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
 	
   belongs_to :siri
   has_many :episodes, dependent: :destroy

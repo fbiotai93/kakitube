@@ -304,11 +304,34 @@ section#password-form p a {
 }
 
 /*
+	News Feed
+*/
+
+.activity {
+	border-bottom: 1px solid #000;
+	padding: 16px 0;
+}
+
+.activity em {
+	color: #777;
+	font-size: 12px;
+	padding-left: 5px;
+}
+
+.activity a {
+	color: #96E6B3;
+}
+
+.activity small {
+	color: #888;
+}
+
+/*
 	Footer
 */
 
 .footer {
-	/*margin-top: 30px;*/
+	margin-top: 30px;
   position: absolute;
   /*bottom: 0;*/
   width: 100%;

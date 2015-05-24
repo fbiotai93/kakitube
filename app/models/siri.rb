@@ -52,6 +52,9 @@ class Siri < ActiveRecord::Base
   process_in_background :gallery_image_2
   process_in_background :gallery_image_3
   process_in_background :bg_image
+
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
   
   belongs_to :user
   has_many :seasons, dependent: :destroy
