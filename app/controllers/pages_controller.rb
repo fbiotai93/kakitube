@@ -68,6 +68,9 @@ class PagesController < ApplicationController
   def developer
   end
 
+  def dmca
+  end
+
   private
 
   def latest_update

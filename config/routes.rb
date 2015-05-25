@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   get '/tv-series/:view/:siri_id/:season_id-:id' => 'pages#ep', as: 'watch_ep'
   
   get '/developer' => 'pages#developer'
+  get '/dmca' => 'pages#dmca'
 
   scope :q do 
     get 'search' => 'pages#search', as: :search

@@ -1,0 +1,38 @@
+- content_for :title do
+  Kakitube.com | DMCA
+- content_for :meta_tags do
+  = render :partial => 'application/meta_tags',       |
+       :locals => {                                     |
+         :type => "website",                            |
+         :title => "Kakitube.com | DMCA",          |
+         :url => request.url,                           |
+         :description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.",    |
+         :canonical => request.url,                     |
+         :og_title => "Kakitube.com | DMCA",       |
+         :og_description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.", |
+         :og_image => ""        |
+      }                                                 |
+.page-header
+  %h3
+    DMCA
+.alert.alert-info{role: "alert"}
+  If you are a copyright owner or an agent thereof, and you believe that any content hosted on our web site (http://kakitube.com) infringes your copyrights, then you may submit a notification pursuant to the Digital Millennium Copyright Act (.DMCA.) by providing rarbg.s Designated Copyright Agent with the following information in writing (please consult your legal counsel or See 17 U.S.C. Section 512(c)(3) to confirm these requirements):
+.row
+  .col-md-12
+    %ol
+      %li Send Your Claim To #{link_to "copyright@kakitube.com", "mailto:copyright@kakitube.com", target: "_blank"}
+      %li A physical or electronic signature of a person authorized to act on behalf of the owner of an exclusive right that is allegedly infringed.
+      %li Identification of the copyrighted work claimed to have been infringed, or, if multiple copyrighted works on the rarbg social website are covered by a single notification, a representative list of such works at that website.
+      %li Identification of the material that is claimed to be infringing or to be the subject of infringing activity and that is to be removed or access to which is to be disabled, and information reasonably sufficient to permit rarbg to locate the material. Providing URLs in the body of an email is the only way to locate those files. URLs have to be to a direct link and not to an info/search page. URLs in every DMCA notice have to be no more then 10.
+      %li Information reasonably sufficient to permit rarbg to contact the complaining party, such as an address, telephone number, and, if available, an electronic mail address at which the complaining party may be contacted.
+      %li A statement that the complaining party has a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law.
+      %li A statement that the information in the notification is accurate, and under penalty of perjury, that the complaining party is authorized to act on behalf of the owner of an exclusive right that is allegedly infringed.
+      %li A scanned physical document that proves you are or you are representing the copyright owner.
+      %li A valid email address username@copyrightcompany will help you to prove you're representing or you're the legitimate copyright owner. We will not process requests from free mailboxes (Gmail, Hotmail, Yahoo, AOL, MailRu etc)
+      %li All received emails have to be in plain/text. Our automatic system is not capable of understanding anything else.
+      %li All mails should be sent to spam AT rarbg.com or else they wont be processed - the system is automated and working only on this e-mail. Example : mailing our ISPs or our support AT rarbg.com mail means we wont process your mails.
+      %li We delete only .torrent files , not search pages / info pages. Only .torrent files might or might not violate someones copyright.
+      %li Personal or attornies notices wont be processed. They have to come from companies or dmca/eipred agents.
+      %li Respect our work and we will respect yours. Threats wont do you any good.
+    %p Please note that under Section 512(f) of the DMCA, any person who knowingly materially misrepresents that material or activity is infringing may be subject to liability.
+    %p If you are writing from europe please send us an European Intellectual Property Rights Enforcement Directive request.
