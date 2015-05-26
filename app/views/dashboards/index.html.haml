@@ -17,33 +17,7 @@
 		%span{"aria-hidden" => "true"} &times;
 	%strong Welcome, #{current_user.username}
 	%p Have something to post? Great! Let's go!
-.row
-	.container
-		.col-md-4
-			%center
-				%p= image_tag('Clipboard@2x.png', class: "img-responsive")
-				%p Add/Edit/Delete your movie
-				= link_to "Manage My Movie", posts_path, class: "btn btn-primary btn-lg"
-		.col-md-4
-			%center
-				%p= image_tag('Camera@2x.png', class: "img-responsive")
-				%p Add/Edit/Delete your series
-				= link_to "Manage My Series", siris_path, class: "btn btn-primary btn-lg"
-		.col-md-4
-			%center
-				%p= image_tag('Dude@2x.png', class: "img-responsive")
-				%p Manage your user
-				= link_to "Manage User", users_path, class: "btn btn-primary btn-lg"
-%hr
-.row
-	.container
-		.col-md-6
-			%center
-				%p= image_tag('Pensils@2x.png', class: "img-responsive")
-				%p Manage your movie genre
-				= link_to "Manage Genre", genres_path, class: "btn btn-primary btn-lg"
-		.col-md-6
-			%center
-				%p= image_tag('Book@2x.png', class: "img-responsive")
-				%p Manage your tv series genre
-				= link_to "Manage TV Series Genre", siri_genres_path, class: "btn btn-primary btn-lg"
+- if current_user.is_admin?
+	= render partial: "admin_dashboard"
+- else
+	= render partial: "user_dashboard"
