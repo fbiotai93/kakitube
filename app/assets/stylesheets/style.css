@@ -118,6 +118,26 @@ hr {
 	margin-top: 7px;
 }
 
+.btn-facebook {
+	background-color: #4860A0;
+	color: #fff;
+	border: 1px solid #3b5998;
+}
+
+.btn-facebook:hover {
+	background-color: #3b5998;
+}
+
+.btn-twitter {
+	background-color: #4099FF;
+	color: #fff;
+	border: 1px solid #3988EE;
+}
+
+.btn-twitter:hover {
+	background-color: #3988EE;
+}
+
 /*
 	Navbar
 */

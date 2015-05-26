@@ -22,6 +22,10 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  api_key                :string(255)
+#  fullname               :string(255)
+#  about                  :text(65535)
+#  facebook               :string(255)
+#  twitter                :string(255)
 #
 # Indexes
 #
@@ -46,6 +50,8 @@ class User < ActiveRecord::Base
 
   validates :username, :uniqueness => { :case_sensitive => false }, format: { with: /\A[-\w.]*\z/ }, presence: true
   validates :api_key, uniqueness: true
+  validates :facebook, format: URI::regexp(%w(http https)), allow_blank: true
+  validates :twitter, format: URI::regexp(%w(http https)), allow_blank: true
 
   default_scope -> { order('users.id DESC') }
   scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }

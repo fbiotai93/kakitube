@@ -1,3 +1,8 @@
+.alert.alert-info.alert-dismissible.fade.in
+  %button.close{"data-dismiss" => "alert", "aria-label" => "Close"}
+    %span{"aria-hidden" => "true"} &times;
+  %strong Welcome, #{current_user.username}
+  %p Have something to post? Great! Let's go!
 .row
   .container
     .col-md-4

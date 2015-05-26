@@ -1,1 +1,36 @@
-%h1 Not an admin
+.page-header
+  %h1 My Profile #{ link_to "Edit Profile", account_update_path, class: 'btn btn-link btn-xs' }
+
+.row
+  .col-md-3
+    %p
+      = image_tag avatar_big_url(current_user), alt: "#{current_user.username}", class: "img-circle"
+  .col-md-6
+    %p
+      %strong Full Name
+      %br/
+      = current_user.fullname.blank? ? "N/A" : current_user.fullname
+    %p
+      %strong About Me
+      %br/
+      = current_user.about.blank? ? "N/A" : current_user.about
+    %p
+      %strong Social Network
+      %br/
+      = link_to "#{current_user.facebook.blank? ? '#' : current_user.facebook}", class: "btn btn-primary btn-xs btn-facebook", target: "_blank" do
+        %small
+          FACEBOOK
+      = link_to "#{current_user.twitter.blank? ? '#' : current_user.twitter}", class: "btn btn-primary btn-xs btn-twitter", target: "_blank" do
+        %small
+          TWITTER
+    .row
+      .col-md-6
+        %p
+          %strong Member Since
+          %br/
+          = current_user.created_at.strftime("%B %Y")
+      .col-md-6
+        %p
+          %strong Last Signed In
+          %br/
+          #{ time_ago_in_words(current_user.last_sign_in_at) } ago

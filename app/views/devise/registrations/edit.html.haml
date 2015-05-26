@@ -13,26 +13,47 @@
       #account-settings.panel-body
         = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
           = devise_error_messages!
+          .row
+            .col-md-6
+              .form-group
+                = f.label :username
+                = f.text_field :username, autofocus: true, class: "form-control"
+            .col-md-6
+              .form-group
+                = f.label :email
+                = f.email_field :email, class: "form-control"
+              - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                %div
+                  Currently waiting confirmation for: #{resource.unconfirmed_email}
           .form-group
-            = f.label :username
-            = f.text_field :username, autofocus: true, class: "form-control"
+            = f.label :fullname, "Fullname"
+            = f.text_field :fullname, class: "form-control", placeholder: "John Doe"
           .form-group
-            = f.label :email
-            = f.email_field :email, class: "form-control"
-          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-            %div
-              Currently waiting confirmation for: #{resource.unconfirmed_email}
+            = f.label :about, "About Me"
+            = f.text_area :about, class: "form-control", rows: 6, placeholder: "Describe about yourself"
+          .row
+            .col-md-6
+              .form-group
+                = f.label :facebook, "Facebook Profile Link"
+                = f.text_field :facebook, class: "form-control", placeholder: "For ex: https://www.facebook.com/username"
+                %p.help-block.small Must include full url. For example: https://www.facebook.com/username
+            .col-md-6
+              .form-group
+                = f.label :twitter, "Twitter Profile Link"
+                = f.text_field :twitter, class: "form-control", placeholder: "For ex: https://twitter.com/username"
+                %p.help-block.small Must include full url. For example: https://twitter.com/username
+          %hr
           .form-group
             = f.label :password
-            %i (leave blank if you don't want to change it)
             = f.password_field :password, autocomplete: "off", class: "form-control"
+            %p.help-block.small Leave blank if you don't want to change it
           .form-group
             = f.label :password_confirmation
             = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
           .form-group
             = f.label :current_password
-            %i (we need your current password to confirm your changes)
             = f.password_field :current_password, autocomplete: "off", class: "form-control"
+            %p.text-danger.small We need your current password to confirm your changes
           .form-group
             = f.submit "Update", class: "btn btn-primary"
     .panel.panel-primary

@@ -12,11 +12,6 @@
 				 :og_description => "Kaki Tube is a revolutionary website that gives users variance of choice to watch TV Series online.", |
 				 :og_image => ""        |
 			}                                                 |
-.alert.alert-info.alert-dismissible.fade.in
-	%button.close{"data-dismiss" => "alert", "aria-label" => "Close"}
-		%span{"aria-hidden" => "true"} &times;
-	%strong Welcome, #{current_user.username}
-	%p Have something to post? Great! Let's go!
 - if current_user.is_admin?
 	= render partial: "admin_dashboard"
 - else

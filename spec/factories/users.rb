@@ -22,6 +22,10 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  api_key                :string(255)
+#  fullname               :string(255)
+#  about                  :text(65535)
+#  facebook               :string(255)
+#  twitter                :string(255)
 #
 # Indexes
 #
