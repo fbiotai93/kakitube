@@ -12,11 +12,11 @@
  *
  *= require_self
  *= require bootstrap
+ *= require nprogress
+ *= require nprogress-bootstrap
  *= require style
  *= require jquery.dataTables.min
  *= require dataTables.bootstrap
  *= require slick
  *= require zoom
- *= require nprogress
- *= require nprogress-bootstrap
  */
