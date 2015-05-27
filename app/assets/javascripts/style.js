@@ -29,6 +29,12 @@ ready = function() {
 
   $('[data-toggle="tooltip"]').tooltip()
 
+  NProgress.configure({
+    showSpinner: true,
+    ease: 'ease',
+    speed: 500
+  });
+
 };
 
 $(document).ready(ready);

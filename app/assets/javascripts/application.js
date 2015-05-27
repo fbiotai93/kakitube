@@ -13,10 +13,12 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require nprogress
+//= require nprogress-turbolinks
 //= require turbolinks
 //= require bootstrap
 //= require jquery.dataTables.min
 //= require dataTables.bootstrap
 //= require slick
 //= require zoom
-//= require_tree .
+//= require style

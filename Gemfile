@@ -33,6 +33,7 @@ gem 'carrierwave_backgrounder'
 gem 'sidekiq'
 gem 'sinatra'
 gem 'public_activity'
+gem 'nprogress-rails'
 
 group :development do
 	gem 'letter_opener'

@@ -17,4 +17,6 @@
  *= require dataTables.bootstrap
  *= require slick
  *= require zoom
+ *= require nprogress
+ *= require nprogress-bootstrap
  */
