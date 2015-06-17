@@ -1,0 +1,27 @@
+.page-header
+  %h1 Request Details
+#request.panel.panel-default
+  .panel-heading
+    %h3.panel-title
+      Request List
+  .panel-body
+    .row
+      .col-md-2
+        %strong
+          User
+      .col-md-4
+        = @request.user.username
+    .row
+      .col-md-2
+        %strong
+          Title
+      .col-md-4
+        = @request.title
+    .row
+      .col-md-2
+        %strong
+          Content
+      .col-md-4
+        = @request.content
+  .panel-footer
+    = link_to "Back", dashboard_path, class: "btn btn-default"

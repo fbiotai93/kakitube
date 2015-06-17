@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :siris
+  has_many :requests
 
   validates :username, :uniqueness => { :case_sensitive => false }, format: { with: /\A[-\w.]*\z/ }, presence: true
   validates :api_key, uniqueness: true

@@ -85,7 +85,8 @@ hr {
 #account-settings,
 #token,
 #cancel,
-#admin-list {
+#admin-list,
+#request {
 	color: #222;
 }
 

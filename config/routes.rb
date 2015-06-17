@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       resources :episodes
     end
   end
+  resources :requests, only: [:new, :create, :show]
 
   get '/dashboard' => 'dashboards#index'
 

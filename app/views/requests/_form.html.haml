@@ -1,0 +1,24 @@
+= form_for @request, html: { class: "form-horizontal" } do |f|
+  #request.panel-body
+    - if @request.errors.any?
+      .alert.alert.danger.alert-dismissable
+        %button.close{type: "button", 'data-dismiss' => 'alert', 'alert-hidden' => 'true'} &times;
+        %strong
+          = pluralize(@request.errors.count, "error")
+          prohibited this page from being saved:
+        %ul
+          - @request.errors.full_messages.each do |msg|
+            %li= msg
+    .row
+      .col-md-8.col-md-offset-1
+        .form-group
+          = f.label :title, "Title", class: "col-md-2 control-label"
+          .col-md-10
+            = f.text_field :title, class: "form-control", placeholder: "Title"
+        .form-group
+          = f.label :content, "Message", class: "col-md-2 control-label"
+          .col-md-10
+            = f.text_area :content, class: "form-control", placeholder: "Message", rows: 6
+  .panel-footer
+    = f.submit "Submit", class: "btn btn-primary"
+    = link_to "Cancel", dashboard_path, class: "btn btn-default"
