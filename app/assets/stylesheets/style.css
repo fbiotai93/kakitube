@@ -86,8 +86,13 @@ hr {
 #token,
 #cancel,
 #admin-list,
+#request-list,
 #request {
 	color: #222;
+}
+
+#request-list th {
+	color:#fff;
 }
 
 .terminal{

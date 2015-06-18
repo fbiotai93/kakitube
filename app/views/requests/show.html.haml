@@ -8,7 +8,7 @@
     .row
       .col-md-2
         %strong
-          User
+          Request by
       .col-md-4
         = @request.user.username
     .row
@@ -22,6 +22,36 @@
         %strong
           Content
       .col-md-4
-        = @request.content
+        = @request.content.html_safe
+    .row
+      .col-md-2
+        %strong
+          Status
+      .col-md-4
+        - if @request.is_pending?
+          %span.label.label-warning= @request.status
+        - elsif @request.is_approved?
+          %span.label.label-primary= @request.status
+        - elsif @request.is_rejected?
+          %span.label.label-danger= @request.status
+        - else
+          %span.label.label-success= @request.status
   .panel-footer
     = link_to "Back", dashboard_path, class: "btn btn-default"
+    - if current_user.is_admin?
+      - if @request.is_pending?
+        = link_to "Mark as approved", set_approved_request_path(@request), method: :patch, class: "btn btn-primary btn-xs"
+        = link_to "Mark as rejected", set_rejected_request_path(@request), method: :patch, class: "btn btn-danger btn-xs"
+        = link_to "Mark as closed", set_closed_request_path(@request), method: :patch, class: "btn btn-success btn-xs"
+      - if @request.is_approved?
+        = link_to "Mark as pending", set_pending_request_path(@request), method: :patch, class: "btn btn-warning btn-xs"
+        = link_to "Mark as rejected", set_rejected_request_path(@request), method: :patch, class: "btn btn-danger btn-xs"
+        = link_to "Mark as closed", set_closed_request_path(@request), method: :patch, class: "btn btn-success btn-xs"
+      - if @request.is_rejected?
+        = link_to "Mark as approved", set_approved_request_path(@request), method: :patch, class: "btn btn-primary btn-xs"
+        = link_to "Mark as pending", set_pending_request_path(@request), method: :patch, class: "btn btn-warning btn-xs"
+        = link_to "Mark as closed", set_closed_request_path(@request), method: :patch, class: "btn btn-success btn-xs"
+      - if @request.is_closed?
+        = link_to "Mark as approved", set_approved_request_path(@request), method: :patch, class: "btn btn-primary btn-xs"
+        = link_to "Mark as pending", set_pending_request_path(@request), method: :patch, class: "btn btn-warning btn-xs"
+        = link_to "Mark as rejected", set_rejected_request_path(@request), method: :patch, class: "btn btn-danger btn-xs"

@@ -3,5 +3,6 @@ class DashboardsController < ApplicationController
 
   def index
     @requests = Request.where(user_id:current_user)
+    @all_requests = Request.all
   end
 end

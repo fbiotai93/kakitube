@@ -44,13 +44,23 @@
       %h1 
         Request
         %small= link_to "New request", new_request_path, class: "btn btn-primary btn-xs"
-    %table.table.table-bordered
+    %table.table.table-bordered.display{id: "request-list"}
       %thead
         %tr
           %th Title
+          %th.col-md-1 Status
           %th.col-md-3 Date
       %tbody
         - @requests.each do |request|
           %tr
             %td= link_to request.title, request
+            %td
+              - if request.is_pending?
+                %span.label.label-warning= request.status
+              - elsif request.is_approved?
+                %span.label.label-primary= request.status
+              - elsif request.is_rejected?
+                %span.label.label-danger= request.status
+              - else
+                %span.label.label-success= @request.status
             %td= request.created_at.strftime("%d %B %Y")

@@ -45,7 +45,14 @@ Rails.application.routes.draw do
       resources :episodes
     end
   end
-  resources :requests, only: [:new, :create, :show]
+  resources :requests, only: [:new, :create, :show] do
+    member do
+      patch :set_pending
+      patch :set_approved
+      patch :set_rejected
+      patch :set_closed
+    end
+  end
 
   get '/dashboard' => 'dashboards#index'
 
