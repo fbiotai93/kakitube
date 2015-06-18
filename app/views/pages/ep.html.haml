@@ -31,6 +31,19 @@
     .tab-content
       #source1.tab-pane.fade.active.in{role: "tabpanel", "aria-labelledby" => "source1-tab"}
         %hr
+        %center
+          %script{:type => "text/javascript"}
+            //<![CDATA[
+            toroadv_key = "9d0ef457045a7fc5e88d51c4fd6068d5";
+            toroadv_channel = "";
+            toroadv_code_format = "ads";
+            toroadv_ads_host = "//toroadvertisingmedia.com";
+            toroadv_click = "";
+            toroadv_custom_params = {m: encodeURIComponent(document.title)};
+            toroadv_width = "468";
+            toroadv_height = "60";
+            document.write("<script type='text\/javascript' src='"+(location.protocol == 'https:' ? 'https:' : 'http:') + "//toroadvertisingmedia.com\/js/show_ads_toroadv.js'><\/script>");
+            //]]>
         .embed-responsive.embed-responsive-16by9
           .embed-responsive-item= @episode.embed.html_safe
       - if !@episode.embed2.blank?
@@ -43,19 +56,6 @@
           %hr
           .embed-responsive.embed-responsive-16by9
             .embed-responsive-item= @episode.embed3.html_safe
-      %center
-        %script{:type => "text/javascript"}
-          //<![CDATA[
-          toroadv_key = "9d0ef457045a7fc5e88d51c4fd6068d5";
-          toroadv_channel = "";
-          toroadv_code_format = "ads";
-          toroadv_ads_host = "//toroadvertisingmedia.com";
-          toroadv_click = "";
-          toroadv_custom_params = {m: encodeURIComponent(document.title)};
-          toroadv_width = "468";
-          toroadv_height = "60";
-          document.write("<script type='text\/javascript' src='"+(location.protocol == 'https:' ? 'https:' : 'http:') + "//toroadvertisingmedia.com\/js/show_ads_toroadv.js'><\/script>");
-          //]]>
     %hr
     %h4 What people are saying:
     #disqus_thread
