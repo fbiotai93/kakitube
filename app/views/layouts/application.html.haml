@@ -13,7 +13,7 @@
 		= csrf_meta_tags
 		= yield :meta_tags
 	%body{class: "#{body_class}", data: {no_turbolink: true}}
-		=# render partial: "ads_script"
+		= render partial: "ads_script"
 		= render partial: "analytics"
 		= render partial: "alert"
 		= render partial: "navbar"

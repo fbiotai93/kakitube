@@ -6,8 +6,18 @@
 				= submit_tag "Search", :name => nil, class: "btn btn-primary btn-sm"
 %hr
 %center
-	=# link_to image_tag('ads-do.png', alt: "KakiTube", class: "img-responsive"), "https://www.digitalocean.com/?refcode=26873337513b", target: "_blank"
-	%iframe{src: "http://go.padstm.com/?id=299583&t=iframe", style: "width:300px;height:250px;border:0;overflow:hidden;", class: "img-responsive"}
+	%script{:type => "text/javascript"}
+		//<![CDATA[
+		toroadv_key = "34449871e9d866933204f24a22c63536";
+		toroadv_channel = "";
+		toroadv_code_format = "ads";
+		toroadv_ads_host = "//toroadvertisingmedia.com";
+		toroadv_click = "";
+		toroadv_custom_params = {m: encodeURIComponent(document.title)};
+		toroadv_width = "300";
+		toroadv_height = "250";
+		document.write("<script type='text\/javascript' src='"+(location.protocol == 'https:' ? 'https:' : 'http:') + "//toroadvertisingmedia.com\/js/show_ads_toroadv.js'><\/script>");
+		//]]>
 %hr
 .fb-page{"data-href" => "https://www.facebook.com/kakitubedotcom", "data-width" => "360", "data-hide-cover" => "false", "data-show-facepile" => "true", "data-show-posts" => "false"}
 	.fb-xfbml-parse-ignore
