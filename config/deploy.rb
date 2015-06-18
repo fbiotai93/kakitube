@@ -4,7 +4,7 @@
 set :application, 'kakitube'
 set :repo_url, 'git@github.com:fbiotai93/kakitube.git'
 
-server '188.122.91.83', user: 'deploy', roles: %w{web app db job}
+server '188.122.91.83', user: 'deploy', roles: %w{web app db job}, port: 2209
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
