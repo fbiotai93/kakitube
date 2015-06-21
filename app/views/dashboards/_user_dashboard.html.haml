@@ -62,5 +62,5 @@
               - elsif request.is_rejected?
                 %span.label.label-danger= request.status
               - else
-                %span.label.label-success= @request.status
+                %span.label.label-success= request.status
             %td= request.created_at.strftime("%d %B %Y")
