@@ -55,14 +55,14 @@ class User < ActiveRecord::Base
   validates :twitter, format: URI::regexp(%w(http https)), allow_blank: true
 
   default_scope -> { order('users.id DESC') }
-  scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
+  scope :online, lambda{ where("updated_at >= ?", 10.minutes.ago) }
 
   def is_admin?
   	admin === true
   end
 
   def is_online?
-    updated_at > 10.minutes.ago
+    updated_at >= 10.minutes.ago
   end
 
   def self.find_first_by_auth_conditions(warden_conditions)
