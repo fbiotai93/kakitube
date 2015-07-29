@@ -1,7 +1,6 @@
 # config valid only for Capistrano 3.1
 # lock '3.1.0'
 
-require 'capistrano/ext/multistage'
 require 'capistrano/gitflow'
 
 set :application, 'kakitube'
