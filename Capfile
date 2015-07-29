@@ -6,7 +6,7 @@ require 'new_relic/recipes'
 require 'capistrano/deploy'
 
 require 'capistrano/rails'
-# require 'capistrano/gitflow'
+require 'capistrano/gitflow'
 require 'capistrano/faster_assets'
 require 'capistrano/sitemap_generator'
 require 'whenever/capistrano'
