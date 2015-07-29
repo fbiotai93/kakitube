@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20150618032309) do
     t.string   "imdbvotes",       limit: 255
     t.integer  "genre_id",        limit: 4
     t.string   "header_image",    limit: 255
-    t.boolean  "featured",        limit: 1
+    t.boolean  "featured"
     t.string   "trailer",         limit: 255
     t.string   "slug",            limit: 255
     t.string   "gallery_image_1", limit: 255
@@ -169,7 +169,7 @@ ActiveRecord::Schema.define(version: 20150618032309) do
     t.string   "email",                  limit: 255,   default: "",    null: false
     t.string   "encrypted_password",     limit: 255,   default: "",    null: false
     t.string   "username",               limit: 255,   default: "",    null: false
-    t.boolean  "admin",                  limit: 1,     default: false
+    t.boolean  "admin",                                default: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

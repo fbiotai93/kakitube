@@ -1,18 +1,18 @@
 GIT
+  remote: git://github.com/amirolahmad/capistrano-gitflow.git
+  revision: 73bb6e3319da61835e37832582d4c5d953aa3a38
+  specs:
+    capistrano-gitflow (1.4.5)
+      capistrano
+      stringex
+
+GIT
   remote: git://github.com/capistrano/rbenv.git
   revision: 6f1216cfe0a6b4ac23ca4eaf8acf012e8165d247
   specs:
     capistrano-rbenv (2.0.3)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
-
-GIT
-  remote: git://github.com/czhc/capistrano-gitflow.git
-  revision: 73bb6e3319da61835e37832582d4c5d953aa3a38
-  specs:
-    capistrano-gitflow (1.4.5)
-      capistrano
-      stringex
 
 GEM
   remote: https://rubygems.org/
@@ -488,3 +488,6 @@ DEPENDENCIES
   web-console (~> 2.0)
   whenever
   will_paginate (~> 3.0.6)
+
+BUNDLED WITH
+   1.10.6
