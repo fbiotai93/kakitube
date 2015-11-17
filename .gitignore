@@ -20,7 +20,7 @@ public/uploads
 
 # solr/data
 # solr/default/data
-# solr/development
+solr/development
 # solr/pids
 # solr/test
 # /log/*.log.lck
