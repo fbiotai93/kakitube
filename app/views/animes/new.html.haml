@@ -1,0 +1,15 @@
+- content_for :title do
+	Kakitube.com | Add New Anime
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | New Anime", :url => request.url, :description => "KakiTube", :canonical => request.url, :og_title => "KakiTube | New Anime", :og_description => "KakiTube" }
+
+/ Page Content
+.container
+	.row
+		.col-lg-12
+			.page-header
+				%h1 Add New Anime
+			#series-list.panel.panel-default
+				.panel-heading
+					%h3.panel-title New Anime Form
+				= render "form"

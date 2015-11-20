@@ -1,0 +1,36 @@
+- content_for :title do
+	Kakitube.com | Anime Genre
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | Anime Genre", :url => request.url, :description => "KakiTube | Anime Genre", :canonical => request.url, :og_title => "KakiTube | Anime Genre", :og_description => "KakiTube | Anime Genre" }
+
+/ Page Content
+.container
+	.row
+		.col-lg-12
+			.page-header
+				%h1 Anime Genre List
+	.row
+		.col-md-4
+			= render partial: "sidebar"
+		.col-md-8
+			#genre-list.panel.panel-default
+				.panel-heading
+					%h3.panel-title
+						Anime Genre List
+				.panel-body
+					= link_to "New Anime Genre", new_anime_genre_path, id: "new_anime", remote: true
+					%hr
+					%table.table.table-bordered.table-hovered
+						%thead
+							%tr
+								%th Name
+								%th.col-md-2 Date Added
+								%th.col-md-2 Action
+						%tbody
+							- @anime_genres.each do |anime_genre|
+								%tr{id: "all_anime_genre"}
+								%tr
+									%td= anime_genre.name
+									%td= anime_genre.created_at.strftime("%d %B %Y")
+									%td= link_to "(remove)", anime_genre, method: :delete, data: {confirm: "Are you sure?"}
+				/ .panel-footer

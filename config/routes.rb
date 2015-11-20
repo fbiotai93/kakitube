@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   resources :posts
   resources :genres, except: [:show, :edit, :post]
   resources :siri_genres, except: [:show, :edit, :post]
+  resources :anime_genres, except: [:show, :edit, :post]
+  resources :asian_genres, except: [:show, :edit, :post]
   resources :users, except: [:show, :edit, :post, :destroy, :new, :create] do
     member do
       patch :revoke
@@ -43,6 +45,16 @@ Rails.application.routes.draw do
   resources :siris do
     resources :seasons, except: [:show] do
       resources :episodes
+    end
+  end
+  resources :animes do
+    resources :anime_seasons, except: [:show] do
+      resources :anime_episodes
+    end
+  end
+  resources :asians do
+    resources :asian_seasons, except: [:show] do
+      resources :asian_episodes
     end
   end
   resources :requests, only: [:new, :create, :show] do
@@ -60,6 +72,10 @@ Rails.application.routes.draw do
   get 'movies/:sort/:id' => 'pages#show', as: 'genre_show'
   get 'tv-series/:view/:id' => 'pages#view', as: 'siri_genre_show'
   get '/tv-series/:view/:siri_id/:season_id-:id' => 'pages#ep', as: 'watch_ep'
+  get 'anime-series/:anime_view/:id' => 'pages#anime_view', as: 'anime_genre_show'
+  get '/anime-series/:anime_view/:anime_id/:anime_season_id-:id' => 'pages#anime_ep', as: 'watch_anime_ep'
+  get 'asian-drama/:asian_view/:id' => 'pages#asian_view', as: 'asian_genre_show'
+  get '/asian-drama/:asian_view/:asian_id/:asian_season_id-:id' => 'pages#asian_ep', as: 'watch_asian_ep'
 
   get '/developer' => 'pages#developer'
   get '/dmca' => 'pages#dmca'
@@ -72,12 +88,20 @@ Rails.application.routes.draw do
   get 'movies/:sort/' => 'pages#movies', as: 'genre_index'
   get 'tv-series' => 'pages#series'
   get 'tv-series/:view/' => 'pages#series', as: 'siri_genre_index'
+  get 'anime-series' => 'pages#anime_series'
+  get 'anime-series/:anime_view/' => 'pages#anime_series', as: 'anime_genre_index'
+  get 'asian-drama' => 'pages#asian_series'
+  get 'asian-drama/:asian_view/' => 'pages#asian_series', as: 'asian_genre_index'
 
   #pagination
   get 'movies/all/page/:page' => 'pages#movies'
   get 'movies/:sort/page/:page' => 'pages#movies'
   get 'tv-series/all/page/:page' => 'pages#series'
   get 'tv-series/:view/page/:page' => 'pages#series'
+  get 'anime-series/all/page/:page' => 'pages#anime_series'
+  get 'anime-series/:anime_view/page/:page' => 'pages#anime_series'
+  get 'asian-drama/all/page/:page' => 'pages#asian_series'
+  get 'asian-drama/:asian_view/page/:page' => 'pages#asian_series'
 
   # You can have the root of your site routed with "root"
   root 'pages#index'

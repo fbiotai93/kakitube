@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_filter :latest_update, only: [:index, :show, :view, :ep, :search, :movies, :series]
+  before_filter :latest_update, only: [:index, :show, :view, :ep, :anime_view, :anime_ep, :asian_view, :asian_ep, :search, :movies, :series, :anime_series, :asian_series]
 
   def index
 		@posts = Post.all
@@ -11,6 +11,14 @@ class PagesController < ApplicationController
     @siris = Siri.all.paginate(:page => params[:page], :per_page => 10)
     @random_siri = @siris.random.take(3)
     @carousel_siri = @random_siri.shift(4)
+
+    @animes = Anime.all.paginate(:page => params[:page], :per_page => 10)
+    @random_anime = @animes.random.take(3)
+    @carousel_anime = @random_anime.shift(4)
+
+    @asians = Asian.all.paginate(:page => params[:page], :per_page => 10)
+    @random_asian = @asians.random.take(3)
+    @carousel_asian = @random_asian.shift(4)
   end
 
   # show page for movie
@@ -31,10 +39,34 @@ class PagesController < ApplicationController
     @season = Season.find(params[:season_id])
   end
 
+  # show page for anime
+  def anime_view
+    @anime = Anime.find(params[:id])
+    @bookmark = current_user ? current_user.try(:bookmarking?, @anime) : nil
+  end
+
+  def anime_ep
+    @anime_episode = AnimeEpisode.find(params[:id])
+    @anime = Anime.find(params[:anime_id])
+    @anime_season = AnimeSeason.find(params[:anime_season_id])
+  end
+
+  # show page for asian drama
+  def asian_view
+    @asian = Asian.find(params[:id])
+    @bookmark = current_user ? current_user.try(:bookmarking?, @asian) : nil
+  end
+
+  def asian_ep
+    @asian_episode = AsianEpisode.find(params[:id])
+    @asian = Asian.find(params[:asian_id])
+    @asian_season = AsianSeason.find(params[:asian_season_id])
+  end
+
   # search pages
   def search
     @q = params[:q]
-    @search = Sunspot.search [Post, Siri] do
+    @search = Sunspot.search [Post, Siri, Anime, Asian] do
       fulltext params[:q]
       paginate :page => params[:page] || 1, :per_page => 30
     end
@@ -67,6 +99,32 @@ class PagesController < ApplicationController
     @carousel_siri = @random_siri.shift(4)
   end
 
+  # list all anime
+  def anime_series
+    @anime_genre = AnimeGenre.find_by_slug(params[:anime_view])
+    if @anime_genre
+      @animes = Anime.by_anime_genre(@anime_genre.id).paginate(:page => params[:page], :per_page => 30)
+    else
+      @animes = Anime.all.paginate(:page => params[:page], :per_page => 30)
+      flash.now[:notice] = "No posts found for '#{params[:anime_view]}'." if !params[:anime_view].blank?
+    end
+    @random_anime = @animes.random.take(3)
+    @carousel_anime = @random_anime.shift(4)
+  end
+
+  # list all asian drama
+  def asian_series
+    @asian_genre = AsianGenre.find_by_slug(params[:asian_view])
+    if @asian_genre
+      @asians = Asian.by_asian_genre(@asian_genre.id).paginate(:page => params[:page], :per_page => 30)
+    else
+      @asians = Asian.all.paginate(:page => params[:page], :per_page => 30)
+      flash.now[:notice] = "No posts found for '#{params[:asian_view]}'." if !params[:asian_view].blank?
+    end
+    @random_asian = @asians.random.take(3)
+    @carousel_asian = @random_asian.shift(4)
+  end
+
   def developer
   end
 
@@ -78,5 +136,11 @@ class PagesController < ApplicationController
   def latest_update
     @siris = Siri.all.paginate(:page => params[:page], :per_page => 10)
     @latest_update = @siris.latest_update.limit(5)
+
+    @animes = Anime.all.paginate(:page => params[:page], :per_page => 10)
+    @latest_anime_update = @animes.latest_update.limit(5)
+
+    @asians = Asian.all.paginate(:page => params[:page], :per_page => 10)
+    @latest_asian_update = @asians.latest_update.limit(5)
   end
 end

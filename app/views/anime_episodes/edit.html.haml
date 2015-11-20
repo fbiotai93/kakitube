@@ -1,0 +1,50 @@
+- content_for :title do
+	Kakitube.com | Edit #{@anime_season.anime.title} - #{@anime_season.title} - #{@anime_episode.title}
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | Edit #{@anime_season.anime.title} - #{@anime_season.title} - #{@anime_episode.title}", :url => request.url, :description => "KakiTube | Edit #{@anime_season.anime.title} - #{@anime_season.title} - #{@anime_episode.title}", :canonical => request.url, :og_title => "KakiTube | Edit #{@anime_season.anime.title} - #{@anime_season.title} - #{@anime_episode.title}", :og_description => "KakiTube | Edit #{@anime_season.anime.title} - #{@anime_season.title} - #{@anime_episode.title}" }
+
+/ Page Content
+.container
+	.row
+		.col-lg-12
+			.page-header
+				%h1 Edit #{@anime_season.anime.title} - #{@anime_season.title} - #{@anime_episode.title}
+	.row
+		.col-md-4
+			= render partial: "sidebar"
+		.col-md-8
+			#series-list.panel.panel-default
+				.panel-heading
+					%h3.panel-title #{@anime_season.anime.title} - #{@anime_season.title} - #{@anime_episode.title}
+				= form_for @anime_episode, url: anime_anime_season_anime_episode_path, html: { class: "form-horizontal" } do |f|
+					.panel-body
+						- if @anime_episode.errors.any?
+							.alert.alert-danger.alert-dismissable
+								%button.close{type: "button", 'data-dismiss' => 'alert', 'alert-hidden' => 'true'} &times;
+								%strong
+									= pluralize(@anime_episode.errors.count, "error")
+									prohibited this page from being saved:
+								%ul
+									- @anime_episode.errors.full_messages.each do |msg|
+										%li= msg
+						.row
+							.col-md-12
+								.form-group
+									= f.label :title, "Episode Title", class: "col-sm-2 control-label"
+									.col-sm-10
+										= f.text_field :title, :class => "form-control"
+								.form-group
+									= f.label :embed, "Embed Code", class: "col-sm-2 control-label"
+									.col-sm-10
+										= f.text_area :embed, :class => "form-control", rows: 5
+								.form-group
+									= f.label :embed2, "Embed Code (source 2)", class: "col-sm-2 control-label"
+									.col-sm-10
+										= f.text_area :embed2, :class => "form-control", rows: 5
+								.form-group
+									= f.label :embed3, "Embed Code (source 2)", class: "col-sm-2 control-label"
+									.col-sm-10
+										= f.text_area :embed3, :class => "form-control", rows: 5
+					.panel-footer
+						= f.submit "Save", :class => "btn btn-primary"
+						= link_to "Cancel", anime_anime_season_anime_episodes_path, class: "btn btn-default"

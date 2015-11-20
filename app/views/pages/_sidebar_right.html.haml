@@ -38,3 +38,33 @@
 						= link_to siri_genre_show_path(siri, view: siri.siri_genre.slug) do
 							%h4.media-heading= siri.title
 						=h truncate(siri.description, length: 100)
+%hr
+- cache "latest-anime-update", skip_digest: true do
+	#latest-update.panel.panel-default
+		.panel-heading
+			%h3.panel-title Anime - Latest Update
+		.panel-body
+			- @latest_anime_update.each do |anime|
+				.media
+					.media-left
+						= link_to anime_genre_show_path(anime, anime_view: anime.anime_genre.slug) do
+							= image_tag(anime.poster_url(:avatar), class: "media-object")
+					.media-body
+						= link_to anime_genre_show_path(anime, anime_view: anime.anime_genre.slug) do
+							%h4.media-heading= anime.title
+						=h truncate(anime.description, length: 100)
+%hr
+- cache "latest-asian-update", skip_digest: true do
+	#latest-update.panel.panel-default
+		.panel-heading
+			%h3.panel-title Asian Drama - Latest Update
+		.panel-body
+			- @latest_asian_update.each do |asian|
+				.media
+					.media-left
+						= link_to asian_genre_show_path(asian, asian_view: asian.asian_genre.slug) do
+							= image_tag(asian.poster_url(:avatar), class: "media-object")
+					.media-body
+						= link_to asian_genre_show_path(asian, asian_view: asian.asian_genre.slug) do
+							%h4.media-heading= asian.title
+						=h truncate(asian.description, length: 100)

@@ -1,0 +1,135 @@
+- content_for :title do
+	Kakitube.com | #{@anime.title}
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags',       |
+       :locals => {                                     |
+         :type => "website",                            |
+         :title => "#{@anime.title}",          |
+         :url => request.url,                           |
+         :description => "#{@anime.description}",    |
+         :canonical => request.url,                     |
+         :og_title => "#{@anime.title}",       |
+         :og_description => "#{@anime.description}", |
+         :og_image => "#{image_url(@anime.try(:header_image))}"        |
+      }                                                 |
+.row
+	.col-md-8
+		.page-header
+			%h2= @anime.title
+			%p
+				Genre
+				%span.label.label-primary #{@anime.anime_genre.name}
+				- if @anime.is_on_going?
+					%span.label.label-warning
+						= @anime.status
+				- elsif @anime.is_completed?
+					%span.label.label-primary
+						= @anime.status
+		.row
+			.col-md-4
+				= image_tag(@anime.poster.standard.url, class: "img-responsive")
+			.col-md-8
+				%p
+					- if current_user
+						%span{class: "js-bookmark-cont#{@anime.id} bookmark-button", "data-toggle" => "tooltip", title: "Bookmark"}
+							= render partial: 'application/bookmark', locals: { bookmarkable: @anime, bookmark: @bookmark }
+				%p.text-justify
+					= @anime.description
+				.row
+					.col-md-6
+						%p
+							%strong Director
+							%p= @anime.director
+					.col-md-6
+						%p
+							%strong Actors
+							%p= @anime.actors
+				.row
+					.col-md-6
+						%p
+							%strong Language
+							%p= @anime.language
+					.col-md-6
+						%p
+							%strong Country
+							%p= @anime.country
+				.row
+					.col-md-4
+						%p
+							%strong Metascore
+							%p
+								%span.label.label-default
+									%span.glyphicon.glyphicon-stats
+									= @anime.metascore? ? @anime.metascore : "N/A"
+					.col-md-4
+						%p
+							%strong IMDB Rating
+							%p
+								%span.label.label-default
+									%span.glyphicon.glyphicon-heart
+									= @anime.imdbrating? ? @anime.imdbrating : "N/A"
+					.col-md-4
+						%p
+							%strong IMDB Votes
+							%p
+								%span.label.label-default
+									%span.glyphicon.glyphicon-thumbs-up
+									= @anime.imdbvotes? ? @anime.imdbvotes : "N/A"
+				%table.table.table-bordered
+					%tbody
+						%tr
+							%td.col-md-3
+								%center
+									%strong Year
+									%br/
+									%span.label.label-default= @anime.year
+							%td.col-md-3
+								%center
+									%strong Rated
+									%br/
+									%span.label.label-default= @anime.rated
+							%td.col-md-3
+								%center
+									%strong Released
+									%br/
+									%span.label.label-default= @anime.released
+							%td.col-md-3
+								%center
+									%strong Runtime
+									%br/
+									%span.label.label-default= @anime.runtime
+		%hr
+		%h4 Gallery Image
+		.row
+			.col-md-4
+				= image_tag(@anime.gallery_image_1.standard.url, class: "thumbnail img-responsive", "data-action" => "zoom")
+			.col-md-4
+				= image_tag(@anime.gallery_image_2.standard.url, class: "thumbnail img-responsive", "data-action" => "zoom")
+			.col-md-4
+				= image_tag(@anime.gallery_image_3.standard.url, class: "thumbnail img-responsive", "data-action" => "zoom")
+		%hr
+		#accordian.panel-group{role: "tablist", "aria-multiselectable" => true}
+			- @anime.anime_seasons.each do |season|
+				.panel.panel-default
+					.panel-heading{role: "tab", id: "#{season.title}"}
+						%a{"data-toggle" => "collapse", "data-parent" => "#accordion", href: "##{season.id}", "aria-expanded" => true, "aria-controls" => "#{season.id}"}
+							%h4.panel-title
+								= season.title
+								.pull-right
+									%p.small Total Episodes: #{season.anime_episodes.count}
+					.panel-collapse.collapse{role: "tabpanel", "aria-labelledby" => "#{season.title}", id: "#{season.id}"}
+						#episode-list.panel-body
+							%table.table.table-bordered.table-hovered
+								- season.anime_episodes.each do |episode|
+									%tr
+										%td
+											= episode.title
+											.pull-right
+												= link_to watch_anime_ep_path(anime_id:@anime, anime_season_id:season, id:episode), class: "btn btn-link btn-xs" do
+													%span.glyphicon.glyphicon-play-circle
+													Watch Now
+		%hr
+		%h4 What people are saying:
+		#disqus_thread
+	.col-md-4
+		= render partial: "sidebar_right"

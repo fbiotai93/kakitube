@@ -1,0 +1,15 @@
+- content_for :title do
+	Kakitube.com | Edit Asian Drama
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | Edit Asian Drama", :url => request.url, :description => "KakiTube", :canonical => request.url, :og_title => "KakiTube | Edit Asian Drama", :og_description => "KakiTube" }
+
+/ Page Content
+.container
+	.row
+		.col-lg-12
+			.page-header
+				%h1 Edit Asian Drama
+			#series-list.panel.panel-default
+				.panel-heading
+					%h3.panel-title Edit Asian Drama
+				= render "form"

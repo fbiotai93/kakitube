@@ -1,0 +1,14 @@
+= form_for @asian_genre, remote: true, html: { class: "form-inline" } do |f|
+	- if @asian_genre.errors.any?
+		.alert.alert-danger.alert-dismissable
+			%button.close{type: "button", 'data-dismiss' => 'alert', 'alert-hidden' => 'true'} &times;
+			%strong
+				= pluralize(@asian_genre.errors.count, "error")
+				prohibited this page from being saved:
+			%ul
+				- @asian_genre.errors.full_messages.each do |msg|
+					%li= msg
+	.form-group
+		%label Name
+		= f.text_field :name, class: "form-control"
+	= f.submit "Submit", name: "submit", class: "btn btn-primary"

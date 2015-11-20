@@ -25,14 +25,37 @@
   .container
     .col-md-6
       %center
+        %p= image_tag('dj@2x.png', class: "img-responsive")
+        %p Manage your Anime
+        = link_to "Manage Anime", animes_path, class: "btn btn-primary btn-lg"
+    .col-md-6
+      %center
+        %p= image_tag('Earth@2x.png', class: "img-responsive")
+        %p Manage your Asian Drama
+        = link_to "Manage Asian Drama", asians_path, class: "btn btn-primary btn-lg"
+%hr
+.row
+  .container
+    .col-md-3
+      %center
         %p= image_tag('Pensils@2x.png', class: "img-responsive")
         %p Manage your movie genre
         = link_to "Manage Genre", genres_path, class: "btn btn-primary btn-lg"
-    .col-md-6
+    .col-md-3
       %center
         %p= image_tag('Book@2x.png', class: "img-responsive")
         %p Manage your tv series genre
         = link_to "Manage TV Series Genre", siri_genres_path, class: "btn btn-primary btn-lg"
+    .col-md-3
+      %center
+        %p= image_tag('eye@2x.png', class: "img-responsive")
+        %p Manage your anime genre
+        = link_to "Manage Anime Genre", anime_genres_path, class: "btn btn-primary btn-lg"
+    .col-md-3
+      %center
+        %p= image_tag('flask@2x.png', class: "img-responsive")
+        %p Manage your asian genre
+        = link_to "Manage Asian Drama Genre", asian_genres_path, class: "btn btn-primary btn-lg"
 %hr
 .page-header
   %h3 Request

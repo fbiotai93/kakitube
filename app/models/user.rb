@@ -47,6 +47,8 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :siris
+  has_many :animes
+  has_many :asians
   has_many :requests
   has_many :bookmarks, dependent: :destroy
 

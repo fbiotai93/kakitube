@@ -1,0 +1,22 @@
+- content_for :title do
+	Kakitube.com | Anime Episode
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | Anime Episode", :url => request.url, :description => "KakiTube", :canonical => request.url, :og_title => "KakiTube | Anime Episode", :og_description => "KakiTube" }
+
+/ Page Content
+.container
+	.row
+		.col-lg-12
+			.page-header
+				%h1= @anime_episode.title
+	.row
+		.col-md-4
+			= render partial: "sidebar"
+		.col-md-8
+			%h2 #{@anime_season.anime.title} - #{@anime_season.title} - #{@anime_episode.title}
+			%hr
+			.embed-responsive.embed-responsive-16by9
+				.embed-responsive-item= @anime_episode.embed.html_safe
+			%hr
+			= link_to 'Edit this episode', edit_anime_anime_season_anime_episode_path(@anime_season.anime, @anime_season, @anime_episode), class: "btn btn-primary"
+			= link_to 'Back to Episode list', anime_anime_season_anime_episodes_path, class: "btn btn-default"

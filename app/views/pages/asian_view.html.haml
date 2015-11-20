@@ -1,0 +1,135 @@
+- content_for :title do
+	Kakitube.com | #{@asian.title}
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags',       |
+       :locals => {                                     |
+         :type => "website",                            |
+         :title => "#{@asian.title}",          |
+         :url => request.url,                           |
+         :description => "#{@asian.description}",    |
+         :canonical => request.url,                     |
+         :og_title => "#{@asian.title}",       |
+         :og_description => "#{@asian.description}", |
+         :og_image => "#{image_url(@asian.try(:header_image))}"        |
+      }                                                 |
+.row
+	.col-md-8
+		.page-header
+			%h2= @asian.title
+			%p
+				Genre
+				%span.label.label-primary #{@asian.asian_genre.name}
+				- if @asian.is_on_going?
+					%span.label.label-warning
+						= @asian.status
+				- elsif @asian.is_completed?
+					%span.label.label-primary
+						= @asian.status
+		.row
+			.col-md-4
+				= image_tag(@asian.poster.standard.url, class: "img-responsive")
+			.col-md-8
+				%p
+					- if current_user
+						%span{class: "js-bookmark-cont#{@asian.id} bookmark-button", "data-toggle" => "tooltip", title: "Bookmark"}
+							= render partial: 'application/bookmark', locals: { bookmarkable: @asian, bookmark: @bookmark }
+				%p.text-justify
+					= @asian.description
+				.row
+					.col-md-6
+						%p
+							%strong Director
+							%p= @asian.director
+					.col-md-6
+						%p
+							%strong Actors
+							%p= @asian.actors
+				.row
+					.col-md-6
+						%p
+							%strong Language
+							%p= @asian.language
+					.col-md-6
+						%p
+							%strong Country
+							%p= @asian.country
+				.row
+					.col-md-4
+						%p
+							%strong Metascore
+							%p
+								%span.label.label-default
+									%span.glyphicon.glyphicon-stats
+									= @asian.metascore? ? @asian.metascore : "N/A"
+					.col-md-4
+						%p
+							%strong IMDB Rating
+							%p
+								%span.label.label-default
+									%span.glyphicon.glyphicon-heart
+									= @asian.imdbrating? ? @asian.imdbrating : "N/A"
+					.col-md-4
+						%p
+							%strong IMDB Votes
+							%p
+								%span.label.label-default
+									%span.glyphicon.glyphicon-thumbs-up
+									= @asian.imdbvotes? ? @asian.imdbvotes : "N/A"
+				%table.table.table-bordered
+					%tbody
+						%tr
+							%td.col-md-3
+								%center
+									%strong Year
+									%br/
+									%span.label.label-default= @asian.year
+							%td.col-md-3
+								%center
+									%strong Rated
+									%br/
+									%span.label.label-default= @asian.rated
+							%td.col-md-3
+								%center
+									%strong Released
+									%br/
+									%span.label.label-default= @asian.released
+							%td.col-md-3
+								%center
+									%strong Runtime
+									%br/
+									%span.label.label-default= @asian.runtime
+		%hr
+		%h4 Gallery Image
+		.row
+			.col-md-4
+				= image_tag(@asian.gallery_image_1.standard.url, class: "thumbnail img-responsive", "data-action" => "zoom")
+			.col-md-4
+				= image_tag(@asian.gallery_image_2.standard.url, class: "thumbnail img-responsive", "data-action" => "zoom")
+			.col-md-4
+				= image_tag(@asian.gallery_image_3.standard.url, class: "thumbnail img-responsive", "data-action" => "zoom")
+		%hr
+		#accordian.panel-group{role: "tablist", "aria-multiselectable" => true}
+			- @asian.asian_seasons.each do |season|
+				.panel.panel-default
+					.panel-heading{role: "tab", id: "#{season.title}"}
+						%a{"data-toggle" => "collapse", "data-parent" => "#accordion", href: "##{season.id}", "aria-expanded" => true, "aria-controls" => "#{season.id}"}
+							%h4.panel-title
+								= season.title
+								.pull-right
+									%p.small Total Episodes: #{season.asian_episodes.count}
+					.panel-collapse.collapse{role: "tabpanel", "aria-labelledby" => "#{season.title}", id: "#{season.id}"}
+						#episode-list.panel-body
+							%table.table.table-bordered.table-hovered
+								- season.asian_episodes.each do |episode|
+									%tr
+										%td
+											= episode.title
+											.pull-right
+												= link_to watch_asian_ep_path(asian_id:@asian, asian_season_id:season, id:episode), class: "btn btn-link btn-xs" do
+													%span.glyphicon.glyphicon-play-circle
+													Watch Now
+		%hr
+		%h4 What people are saying:
+		#disqus_thread
+	.col-md-4
+		= render partial: "sidebar_right"

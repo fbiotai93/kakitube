@@ -1,0 +1,3 @@
+%td= asian_genre.name
+%td= asian_genre.created_at.strftime("%d %B %Y")
+%td= link_to "(remove)", asian_genre, method: :delete, data: {confirm: "Are you sure?"}

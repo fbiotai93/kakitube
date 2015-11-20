@@ -1,0 +1,159 @@
+= form_for @asian, multipart: true, html: { class: "form-horizontal" } do |f|
+	.panel-body
+		- if @asian.errors.any?
+			.alert.alert-danger.alert-dismissable
+				%button.close{type: "button", 'data-dismiss' => 'alert', 'alert-hidden' => 'true'} &times;
+				%strong
+					= pluralize(@asian.errors.count, "error")
+					prohibited this page from being saved:
+				%ul
+					- @asian.errors.full_messages.each do |msg|
+						%li= msg
+		.row
+			.col-md-6
+				.form-group
+					= f.label :imdbID, "IMDB ID", class: "col-sm-2 control-label"
+					.col-sm-10
+						.input-group
+							= f.text_field :imdbID, class: "form-control"
+							%span.input-group-btn
+								= f.submit "Fetch Data", name: "preview_button", class: "btn btn-primary"
+						%p.help-block.small Leave blank if you are not fetching the data from IMDB
+				%hr
+				.form-group
+					= f.label :poster, "Poster", class: "col-sm-2 control-label"
+					.col-sm-10
+						- if @asian.try(:poster?)
+							= image_tag(@asian.poster_url(:standard), class: "img-responsive")
+						- else
+							= image_tag('poster-default.png', class: "img-responsive")
+						%h6 Replace current image
+						= f.file_field :poster, class: "form-control"
+						= f.hidden_field :poster_cache
+				.form-group
+					= f.label :header_image, "Header Image", class: "col-sm-2 control-label"
+					.col-sm-10
+						- if @asian.try(:header_image?)
+							= image_tag(@asian.header_image_url(:standard), class: "img-responsive")
+						- else
+							= image_tag('poster-latest.png', class: "img-responsive")
+						%h6 Replace current image
+						= f.file_field :header_image, class: "form-control"
+						= f.hidden_field :header_image_cache
+				.form-group
+					= f.label :bg_image, "Header Image", class: "col-sm-2 control-label"
+					.col-sm-10
+						- if @asian.try(:bg_image?)
+							= image_tag(@asian.bg_image_url(:standard), class: "img-responsive")
+						- else
+							= image_tag('poster-background.png', class: "img-responsive")
+						%h6 Replace current image
+						= f.file_field :bg_image, class: "form-control"
+						= f.hidden_field :bg_image_cache
+				.form-group
+					= f.label :title, "Anime Name", class: "col-sm-2 control-label"
+					.col-sm-10
+						= f.text_field :title, class: "form-control", placeholder: "Anime Name"
+				.row
+					.col-md-6
+						.form-group
+							= f.label :year, "Year", class: "col-sm-4 control-label"
+							.col-sm-8
+								= f.text_field :year, class: "form-control", placeholder: "1999"
+					.col-md-6
+						.form-group
+							= f.label :rated, "Rated", class: "col-sm-4 control-label"
+							.col-sm-8
+								= f.select(:rated, options_for_select([['TV-Y - All Chidren', 'TV-Y'], ['TV-Y7 - Directed to Older Children', 'TV-Y7'], ['TV-Y7-FV - Directed to Older Children - Fantasy Violence', 'TV-Y7-FV'], ['TV-G - General Audience', 'TV-G'], ['TV-PG Parental Guidance Suggested', 'TV-PG'], ['TV-14 - Parents Strongly Cautioned', 'TV-14'], ['TV-MA - Mature Audience Only', 'TV-MA']], @asian.rated), {}, {:class => "form-control"})
+				.row
+					.col-md-6
+						.form-group
+							= f.label :released, "Released", class: "col-sm-4 control-label"
+							.col-sm-8
+								= f.text_field :released, class: "form-control", placeholder: "01 Sept 1999"
+					.col-md-6
+						.form-group
+							= f.label :runtime, "Runtime", class: "col-sm-4 control-label"
+							.col-sm-8
+								= f.text_field :runtime, class: "form-control", placeholder: "120 min"
+				.form-group
+					= f.label :director, "Director", class: "col-sm-2 control-label"
+					.col-sm-10
+						= f.text_field :director, class: "form-control"
+				.form-group
+					= f.label :writer, "Writer", class: "col-sm-2 control-label"
+					.col-sm-10
+						= f.text_field :writer, class: "form-control"
+				.form-group
+					= f.label :actors, "Actors", class: "col-sm-2 control-label"
+					.col-sm-10
+						= f.text_field :actors, class: "form-control"
+				.form-group
+					= f.label :description, "Description", class: "col-sm-2 control-label"
+					.col-sm-10
+						= f.text_area :description, class: "form-control", rows: 8
+				.row
+					.col-md-6
+						.form-group
+							= f.label :language, "Language", class: "col-sm-4 control-label"
+							.col-sm-8
+								= f.text_field :language, class: "form-control", placeholder: "English, Chinese"
+					.col-md-6
+						.form-group
+							= f.label :country, "Country", class: "col-sm-4 control-label"
+							.col-sm-8
+								= f.text_field :country, class: "form-control", placeholder: "USA"
+				.form-group
+					= f.label :asian_genre_id, "Genre", class: "col-md-2 control-label"
+					.col-md-10
+						= f.collection_select :asian_genre_id, AsianGenre.order(:name), :id, :name, {}, :class => "form-control"
+				.form-group
+					= f.label :status, "Status", class: "col-sm-2 control-label"
+					.col-sm-10
+						= f.select(:status, options_for_select([['On-Going', 'On-Going'], ['Completed', 'Completed']], @asian.status), {}, {:class => "form-control"})
+				.row
+					%h3.col-md-12
+						%strong Gallery Image
+					.col-md-4
+						.form-group
+							= f.label :gallery_image_1, "Image 1", class: "col-sm-4 control-label"
+							.col-sm-8
+								- if @asian.try(:gallery_image_1?)
+									= image_tag(@asian.gallery_image_1_url(:standard), class: "img-responsive")
+								- else
+									= image_tag('poster-default.png', class: "img-responsive")
+								%h6 Replace current image
+								= f.file_field :gallery_image_1, class: "form-control"
+								= f.hidden_field :gallery_image_1_cache
+					.col-md-4
+						.form-group
+							= f.label :gallery_image_2, "Image 2", class: "col-sm-4 control-label"
+							.col-sm-8
+								- if @asian.try(:gallery_image_2?)
+									= image_tag(@asian.gallery_image_2_url(:standard), class: "img-responsive")
+								- else
+									= image_tag('poster-default.png', class: "img-responsive")
+								%h6 Replace current image
+								= f.file_field :gallery_image_2, class: "form-control"
+								= f.hidden_field :gallery_image_2_cache
+					.col-md-4
+						.form-group
+							= f.label :gallery_image_3, "Image 3", class: "col-sm-4 control-label"
+							.col-sm-8
+								- if @asian.try(:gallery_image_3?)
+									= image_tag(@asian.gallery_image_3_url(:standard), class: "img-responsive")
+								- else
+									= image_tag('poster-default.png', class: "img-responsive")
+								%h6 Replace current image
+								= f.file_field :gallery_image_3, class: "form-control"
+								= f.hidden_field :gallery_image_3_cache
+			= f.hidden_field :metascore, class: "form-control"
+			= f.hidden_field :imdbrating, class: "form-control"
+			= f.hidden_field :imdbvotes, class: "form-control"
+			.col-md-6
+				- if params[:preview_button]
+					#preview
+						%pre= JSON.pretty_generate(@result)
+	.panel-footer
+		= f.submit "Submit", name: "submit", class: "btn btn-primary"
+		= link_to "Cancel", asians_path, class: "btn btn-link"

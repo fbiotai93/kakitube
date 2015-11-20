@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119031702) do
+ActiveRecord::Schema.define(version: 20151120224021) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -29,6 +29,132 @@ ActiveRecord::Schema.define(version: 20151119031702) do
   add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
   add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
   add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
+
+  create_table "anime_episodes", force: :cascade do |t|
+    t.string   "title",           limit: 255
+    t.integer  "anime_season_id", limit: 4
+    t.text     "embed",           limit: 65535
+    t.text     "embed2",          limit: 65535
+    t.text     "embed3",          limit: 65535
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "anime_episodes", ["anime_season_id"], name: "index_anime_episodes_on_anime_season_id", using: :btree
+
+  create_table "anime_genres", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "slug",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "anime_seasons", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.integer  "anime_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "anime_seasons", ["anime_id"], name: "index_anime_seasons_on_anime_id", using: :btree
+
+  create_table "animes", force: :cascade do |t|
+    t.string   "title",           limit: 255
+    t.string   "slug",            limit: 255
+    t.string   "status",          limit: 255
+    t.integer  "user_id",         limit: 4
+    t.string   "imdbID",          limit: 255
+    t.integer  "year",            limit: 4
+    t.string   "rated",           limit: 255
+    t.string   "released",        limit: 255
+    t.string   "runtime",         limit: 255
+    t.string   "director",        limit: 255
+    t.string   "writer",          limit: 255
+    t.string   "actors",          limit: 255
+    t.string   "language",        limit: 255
+    t.string   "country",         limit: 255
+    t.string   "awards",          limit: 255
+    t.string   "poster",          limit: 255
+    t.string   "metascore",       limit: 255
+    t.string   "imdbrating",      limit: 255
+    t.string   "imdbvotes",       limit: 255
+    t.text     "description",     limit: 65535
+    t.integer  "anime_genre_id",  limit: 4
+    t.string   "gallery_image_1", limit: 255
+    t.string   "gallery_image_2", limit: 255
+    t.string   "gallery_image_3", limit: 255
+    t.string   "header_image",    limit: 255
+    t.string   "bg_image",        limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "animes", ["anime_genre_id"], name: "index_animes_on_anime_genre_id", using: :btree
+  add_index "animes", ["slug"], name: "index_animes_on_slug", unique: true, using: :btree
+  add_index "animes", ["user_id"], name: "index_animes_on_user_id", using: :btree
+
+  create_table "asian_episodes", force: :cascade do |t|
+    t.string   "title",           limit: 255
+    t.integer  "asian_season_id", limit: 4
+    t.text     "embed",           limit: 65535
+    t.text     "embed2",          limit: 65535
+    t.text     "embed3",          limit: 65535
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "asian_episodes", ["asian_season_id"], name: "index_asian_episodes_on_asian_season_id", using: :btree
+
+  create_table "asian_genres", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "slug",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "asian_seasons", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.integer  "asian_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "asian_seasons", ["asian_id"], name: "index_asian_seasons_on_asian_id", using: :btree
+
+  create_table "asians", force: :cascade do |t|
+    t.string   "title",           limit: 255
+    t.string   "slug",            limit: 255
+    t.string   "status",          limit: 255
+    t.integer  "user_id",         limit: 4
+    t.string   "imdbID",          limit: 255
+    t.integer  "year",            limit: 4
+    t.string   "rated",           limit: 255
+    t.string   "released",        limit: 255
+    t.string   "runtime",         limit: 255
+    t.string   "director",        limit: 255
+    t.string   "writer",          limit: 255
+    t.string   "actors",          limit: 255
+    t.string   "language",        limit: 255
+    t.string   "country",         limit: 255
+    t.string   "awards",          limit: 255
+    t.string   "poster",          limit: 255
+    t.string   "metascore",       limit: 255
+    t.string   "imdbrating",      limit: 255
+    t.string   "imdbvotes",       limit: 255
+    t.text     "description",     limit: 65535
+    t.integer  "asian_genre_id",  limit: 4
+    t.string   "gallery_image_1", limit: 255
+    t.string   "gallery_image_2", limit: 255
+    t.string   "gallery_image_3", limit: 255
+    t.string   "header_image",    limit: 255
+    t.string   "bg_image",        limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "asians", ["asian_genre_id"], name: "index_asians_on_asian_genre_id", using: :btree
+  add_index "asians", ["slug"], name: "index_asians_on_slug", unique: true, using: :btree
+  add_index "asians", ["user_id"], name: "index_asians_on_user_id", using: :btree
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer  "user_id",           limit: 4
@@ -208,6 +334,14 @@ ActiveRecord::Schema.define(version: 20151119031702) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "anime_episodes", "anime_seasons"
+  add_foreign_key "anime_seasons", "animes"
+  add_foreign_key "animes", "anime_genres"
+  add_foreign_key "animes", "users"
+  add_foreign_key "asian_episodes", "asian_seasons"
+  add_foreign_key "asian_seasons", "asians"
+  add_foreign_key "asians", "asian_genres"
+  add_foreign_key "asians", "users"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "episodes", "seasons"
   add_foreign_key "posts", "genres"

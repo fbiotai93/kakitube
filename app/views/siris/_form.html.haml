@@ -118,8 +118,8 @@
 						.form-group
 							= f.label :gallery_image_1, "Image 1", class: "col-sm-4 control-label"
 							.col-sm-8
-								- if @post.try(:gallery_image_1?)
-									= image_tag(@post.gallery_image_1_url(:standard), class: "img-responsive")
+								- if @siri.try(:gallery_image_1?)
+									= image_tag(@siri.gallery_image_1_url(:standard), class: "img-responsive")
 								- else
 									= image_tag('poster-default.png', class: "img-responsive")
 								%h6 Replace current image
@@ -129,8 +129,8 @@
 						.form-group
 							= f.label :gallery_image_2, "Image 2", class: "col-sm-4 control-label"
 							.col-sm-8
-								- if @post.try(:gallery_image_2?)
-									= image_tag(@post.gallery_image_2_url(:standard), class: "img-responsive")
+								- if @siri.try(:gallery_image_2?)
+									= image_tag(@siri.gallery_image_2_url(:standard), class: "img-responsive")
 								- else
 									= image_tag('poster-default.png', class: "img-responsive")
 								%h6 Replace current image
@@ -140,8 +140,8 @@
 						.form-group
 							= f.label :gallery_image_3, "Image 3", class: "col-sm-4 control-label"
 							.col-sm-8
-								- if @post.try(:gallery_image_3?)
-									= image_tag(@post.gallery_image_3_url(:standard), class: "img-responsive")
+								- if @siri.try(:gallery_image_3?)
+									= image_tag(@siri.gallery_image_3_url(:standard), class: "img-responsive")
 								- else
 									= image_tag('poster-default.png', class: "img-responsive")
 								%h6 Replace current image

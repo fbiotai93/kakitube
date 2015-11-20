@@ -1,0 +1,3 @@
+%td= anime_genre.name
+%td= anime_genre.created_at.strftime("%d %B %Y")
+%td= link_to "(remove)", anime_genre, method: :delete, data: {confirm: "Are you sure?"}

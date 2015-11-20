@@ -1,0 +1,49 @@
+- content_for :title do
+	Kakitube.com | Anime List
+- content_for :meta_tags do
+	= render :partial => 'application/meta_tags', :locals => { :type => "website", :title => "KakiTube | Anime List", :url => request.url, :description => "KakiTube", :canonical => request.url, :og_title => "KakiTube | Anime List", :og_description => "KakiTube" }
+
+/ Page Content
+.container
+	.row
+		.col-lg-12
+			.page-header
+				%h1 Anime List
+	.row
+		.col-md-4
+			= render partial: "sidebar"
+		.col-md-8
+			.panel.panel-default
+				.panel-heading
+					%h3.panel-title
+						Anime List #{link_to "Add new anime", new_anime_path, class: "btn btn-xs btn-primary pull-right", style: "color:#FFFFFF;"}
+				#series-list.panel-body
+					%table.table.table-bordered.table-hovered.display{id: "postLists"}
+						%thead
+							%tr
+								%th Anime Title
+								%th Season
+								%th.col-md-3 Date Added
+								%th Status
+								%th.col-md-2 Action
+						%tbody
+							- @animes.each do |anime|
+								%tr
+									%td= anime.title
+									%td= link_to pluralize(anime.anime_seasons.size, "Season"), anime_anime_seasons_path(anime), class: "btn btn-link"
+									%td= anime.created_at.strftime("%d %B %Y")
+									%td
+										- if anime.is_on_going?
+											%span.label.label-warning
+												= anime.status
+										- elsif anime.is_completed?
+											%span.label.label-primary
+												= anime.status
+									%td
+										.btn-group.btn-group-justified.btn-group-xs
+											= link_to anime_path(anime), class: "btn btn-primary" do
+												%span.glyphicon.glyphicon-eye-open{"aria-hidden" => true}
+											= link_to edit_anime_url(anime), class: "btn btn-default" do
+												%span.glyphicon.glyphicon-edit{"aria-hidden" => true}
+											= link_to anime_path(anime), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do
+												%span.glyphicon.glyphicon-remove{"aria-hidden" => true}
