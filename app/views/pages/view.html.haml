@@ -25,6 +25,10 @@
 				- elsif @siri.is_completed?
 					%span.label.label-primary
 						= @siri.status
+			%p
+				- if current_user
+					%span{class: "js-bookmark-cont#{@siri.id} bookmark-button", "data-toggle" => "tooltip", title: "Bookmark"}
+						= render partial: 'application/bookmark', locals: { bookmarkable: @siri, bookmark: @bookmark }
 		.row
 			.col-md-4
 				= image_tag(@siri.poster.standard.url, class: "img-responsive")

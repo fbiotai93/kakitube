@@ -48,6 +48,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :siris
   has_many :requests
+  has_many :bookmarks, dependent: :destroy
 
   validates :username, :uniqueness => { :case_sensitive => false }, format: { with: /\A[-\w.]*\z/ }, presence: true
   validates :api_key, uniqueness: true
@@ -63,6 +64,10 @@ class User < ActiveRecord::Base
 
   def is_online?
     updated_at >= 10.minutes.ago
+  end
+
+  def bookmarking?(item)
+    self.bookmarks.find_by_bookmarkable_id_and_bookmarkable_type(item.id, item.class.name)
   end
 
   def self.find_first_by_auth_conditions(warden_conditions)

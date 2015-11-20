@@ -16,11 +16,13 @@ class PagesController < ApplicationController
   # show page for movie
   def show
     @post = Post.find(params[:id])
+    @bookmark = current_user ? current_user.try(:bookmarking?, @post) : nil
   end
 
   # show page for tv series
   def view
     @siri = Siri.find(params[:id])
+    @bookmark = current_user ? current_user.try(:bookmarking?, @siri) : nil
   end
 
   def ep

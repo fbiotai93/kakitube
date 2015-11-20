@@ -1,0 +1,7 @@
+- if current_user
+  - if bookmark
+    = link_to bookmark_path(bookmark), remote: true, method: :delete do
+      %span.glyphicon.glyphicon-book
+  - else
+    = link_to bookmarks_path(bookmark: {bookmarkable_id: bookmarkable.id, bookmarkable_type: bookmarkable.class.name}), {remote: true, method: :post} do
+      %span.glyphicon.glyphicon-bookmark

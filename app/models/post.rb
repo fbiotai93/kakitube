@@ -66,6 +66,9 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :genre
+  has_many :bookmarks, as: :bookmarkable, dependent: :destroy
+
+	accepts_nested_attributes_for :bookmarks, allow_destroy: true
 
   default_scope -> { order('posts.updated_at DESC') }
   scope :featured, -> { where(featured: true) }
@@ -97,5 +100,5 @@ class Post < ActiveRecord::Base
   def is_featured?
     featured == true
   end
-  
+
 end

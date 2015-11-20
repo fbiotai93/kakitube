@@ -55,10 +55,13 @@ class Siri < ActiveRecord::Base
 
   include PublicActivity::Model
   tracked owner: Proc.new{ |controller, model| controller.current_user }
-  
+
   belongs_to :user
   has_many :seasons, dependent: :destroy
   belongs_to :siri_genre
+  has_many :bookmarks, as: :bookmarkable, dependent: :destroy
+
+	accepts_nested_attributes_for :bookmarks, allow_destroy: true
 
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders, :history]

@@ -38,10 +38,17 @@
   .col-md-6
     .page-header
       %h1 Bookmark
-    %span.label.label-warning Coming soon
+    %table.table.table-bordered.display{id: "bookmark-list"}
+      %thead
+        %tr
+          %th Title
+      %tbody
+        - @bookmarks.each do |bookmark|
+          %tr
+            %td= render partial: "#{bookmark.bookmarkable_type.downcase}", object: bookmark.bookmarkable
   .col-md-6
     .page-header
-      %h1 
+      %h1
         Request
         %small= link_to "New request", new_request_path, class: "btn btn-primary btn-xs"
     %table.table.table-bordered.display{id: "request-list"}

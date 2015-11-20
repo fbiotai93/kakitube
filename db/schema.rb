@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618032309) do
+ActiveRecord::Schema.define(version: 20151119031702) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 20150618032309) do
   add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
   add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
   add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer  "user_id",           limit: 4
+    t.integer  "bookmarkable_id",   limit: 4
+    t.string   "bookmarkable_type", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bookmarks", ["bookmarkable_id", "bookmarkable_type"], name: "index_bookmarks_on_bookmarkable_id_and_bookmarkable_type", using: :btree
+  add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
 
   create_table "episodes", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -197,6 +208,7 @@ ActiveRecord::Schema.define(version: 20150618032309) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "episodes", "seasons"
   add_foreign_key "posts", "genres"
   add_foreign_key "posts", "users"

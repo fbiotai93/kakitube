@@ -19,6 +19,10 @@
 			%p
 				Genre
 				%span.label.label-primary #{@post.genre.name}
+			%p
+				- if current_user
+					%span{class: "js-bookmark-cont#{@post.id} bookmark-button", "data-toggle" => "tooltip", title: "Bookmark"}
+						= render partial: 'application/bookmark', locals: { bookmarkable: @post, bookmark: @bookmark }
 		.row
 			.col-md-4
 				= image_tag(@post.poster.standard.url, class: "img-responsive")

@@ -1,0 +1,3 @@
+- if @bookmark.errors.any?
+- else
+  $('.js-bookmark-cont#{@bookmark.bookmarkable_id}').html("#{j render partial: 'bookmark', locals: {bookmarkable: @bookmarkable, bookmark: nil}}")
