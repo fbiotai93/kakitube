@@ -65,6 +65,12 @@ Rails.application.routes.draw do
       patch :set_closed
     end
   end
+  resources :reports, only: [:new, :create, :show] do
+    member do
+      patch :mark_pending
+      patch :mark_solved
+    end
+  end
   resources :bookmarks, only: [:create, :destroy]
 
   get '/dashboard' => 'dashboards#index'

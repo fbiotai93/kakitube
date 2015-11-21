@@ -57,25 +57,48 @@
         %p Manage your asian genre
         = link_to "Manage Asian Drama Genre", asian_genres_path, class: "btn btn-primary btn-lg"
 %hr
-.page-header
-  %h3 Request
-%table.table.table-bordered.display{id: "request-list"}
-  %thead
-    %tr
-      %th Title
-      %th.col-md-1 Status
-      %th.col-md-3 Date
-  %tbody
-    - @all_requests.each do |request|
-      %tr
-        %td= link_to request.title, request
-        %td
-          - if request.is_pending?
-            %span.label.label-warning= request.status
-          - elsif request.is_approved?
-            %span.label.label-primary= request.status
-          - elsif request.is_rejected?
-            %span.label.label-danger= request.status
-          - else
-            %span.label.label-success= request.status
-        %td= request.created_at.strftime("%d %B %Y")
+.row
+  .col-md-6
+    .page-header
+      %h3 Request
+    %table.table.table-bordered.display{id: "request-list"}
+      %thead
+        %tr
+          %th Title
+          %th.col-md-1 Status
+          %th.col-md-3 Date
+      %tbody
+        - @all_requests.each do |request|
+          %tr
+            %td= link_to request.title, request
+            %td
+              - if request.is_pending?
+                %span.label.label-warning= request.status
+              - elsif request.is_approved?
+                %span.label.label-primary= request.status
+              - elsif request.is_rejected?
+                %span.label.label-danger= request.status
+              - else
+                %span.label.label-success= request.status
+            %td= request.created_at.strftime("%d %B %Y")
+  .col-md-6
+    .page-header
+      %h3 Report
+    %table.table.table-bordered.display{id: "report-list"}
+      %thead
+        %tr
+          %th Content
+          %th Action
+          %th.col-md-1 Status
+          %th.col-md-3 Date
+      %tbody
+        - @all_reports.each do |report|
+          %tr
+            %td=h truncate(report.content, length: 100)
+            %td= link_to "view", report
+            %td
+              - if report.is_pending?
+                %span.label.label-warning= report.status
+              - else report.is_solved?
+                %span.label.label-primary= report.status
+            %td= report.created_at.strftime("%d %B %Y")

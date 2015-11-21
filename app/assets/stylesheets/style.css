@@ -87,11 +87,14 @@ hr {
 #cancel,
 #admin-list,
 #request-list,
-#request {
+#request,
+#report-list,
+#report {
 	color: #222;
 }
 
-#request-list th {
+#request-list th,
+#report-list th {
 	color:#fff;
 }
 

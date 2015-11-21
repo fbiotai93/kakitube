@@ -1,0 +1,29 @@
+.page-header
+  %h1 Report Details
+#request.panel.panel-default
+  .panel-heading
+    %h3.panel-title
+      Report List
+  .panel-body
+    .row
+      .col-md-2
+        %strong
+          Content
+      .col-md-4
+        = @report.content.html_safe
+    .row
+      .col-md-2
+        %strong
+          Status
+      .col-md-4
+        - if @report.is_pending?
+          %span.label.label-warning= @report.status
+        - else @report.is_solved?
+          %span.label.label-primary= @report.status
+  .panel-footer
+    = link_to "Back", dashboard_path, class: "btn btn-default"
+    - if current_user.is_admin?
+      - if @report.is_pending?
+        = link_to "Mark as approved", mark_solved_report_path(@report), method: :patch, class: "btn btn-primary btn-xs"
+      - if @report.is_solved?
+        = link_to "Mark as pending", mark_pending_report_path(@report), method: :patch, class: "btn btn-warning btn-xs"
