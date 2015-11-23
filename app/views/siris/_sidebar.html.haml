@@ -5,6 +5,12 @@
 	= link_to siris_path, class: "list-group-item #{current_controller?(['siris'])}" do
 		%span.badge= Siri.all.count
 		TV Series
+	= link_to animes_path, class: "list-group-item" do
+		%span.badge= Anime.all.count
+		Anime Series
+	= link_to asians_path, class: "list-group-item" do
+		%span.badge= Asian.all.count
+		Asian Drama
 	= link_to users_path, class: "list-group-item" do
 		%span.badge= User.all.count
 		User
@@ -15,3 +21,9 @@
 	= link_to siri_genres_path, class: "list-group-item" do
 		%span.badge= SiriGenre.all.count
 		TV Series Genre
+	= link_to anime_genres_path, class: "list-group-item" do
+		%span.badge= AnimeGenre.all.count
+		Anime Series Genre
+	= link_to asian_genres_path, class: "list-group-item" do
+		%span.badge= AsianGenre.all.count
+		Asian Drama Genre
