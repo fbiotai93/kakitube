@@ -87,7 +87,6 @@ class Siri < ActiveRecord::Base
   validates_presence_of :country
   validates_presence_of :poster
   validates_presence_of :header_image
-  validates_presence_of :bg_image
 
   def is_on_going?
     status === "On-Going"
