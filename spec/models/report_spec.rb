@@ -7,6 +7,8 @@
 #  status     :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  url        :string(255)
+#  category   :string(255)
 #
 
 require 'rails_helper'

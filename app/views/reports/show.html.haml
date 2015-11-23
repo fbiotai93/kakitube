@@ -8,6 +8,18 @@
     .row
       .col-md-2
         %strong
+          Category
+      .col-md-4
+        = @report.category
+    .row
+      .col-md-2
+        %strong
+          URL
+      .col-md-4
+        = @report.url
+    .row
+      .col-md-2
+        %strong
           Content
       .col-md-4
         = @report.content.html_safe

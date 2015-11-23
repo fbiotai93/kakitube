@@ -12,6 +12,15 @@
     .row
       .col-md-8.col-md-offset-1
         .form-group
+          = f.label :category, "Category", class: "col-md-2 control-label"
+          .col-md-10
+            = f.select :category, options_for_select([["-- Select one", ""], "Movies", "TV Series", "Anime Series", "Asian Drama"]), {}, :class => "form-control"
+        .form-group
+          = f.label :url, "URL", class: "col-md-2 control-label"
+          .col-md-10
+            = f.text_field :url, class: "form-control"
+            %p.help-block.small For example: http://kakitube.com/movies/action/superman-return
+        .form-group
           = f.label :content, "Message", class: "col-md-2 control-label"
           .col-md-10
             = f.text_area :content, class: "form-control", placeholder: "Message", rows: 6
