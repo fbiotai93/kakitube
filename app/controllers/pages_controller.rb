@@ -6,19 +6,19 @@ class PagesController < ApplicationController
 		@featured = @posts.featured.random.take(1)
 		@published_only = @posts.published_only.paginate(:page => params[:page], :per_page => 10)
     @random_movie = @posts.random.take(3)
-    @carousel_movie = @random_movie.shift(4)
+    # @carousel_movie = @random_movie.shift(4)
 
     @siris = Siri.all.paginate(:page => params[:page], :per_page => 10)
     @random_siri = @siris.random.take(3)
-    @carousel_siri = @random_siri.shift(4)
+    # @carousel_siri = @random_siri.shift(4)
 
     @animes = Anime.all.paginate(:page => params[:page], :per_page => 10)
     @random_anime = @animes.random.take(3)
-    @carousel_anime = @random_anime.shift(4)
+    # @carousel_anime = @random_anime.shift(4)
 
     @asians = Asian.all.paginate(:page => params[:page], :per_page => 10)
     @random_asian = @asians.random.take(3)
-    @carousel_asian = @random_asian.shift(4)
+    # @carousel_asian = @random_asian.shift(4)
   end
 
   # show page for movie

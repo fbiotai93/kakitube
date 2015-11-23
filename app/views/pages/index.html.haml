@@ -46,16 +46,6 @@
 						%span.glyphicon.glyphicon-th-list
 						Latest Movie
 						= link_to "View All", movies_path, class: 'btn btn-link btn-xs'
-						.carousel
-							- @carousel_movie.each do |c|
-								.movie.latest
-									= link_to genre_show_path(c, sort: c.genre.slug) do
-										.gradient
-										= image_tag(c.header_image_url(:standard), class: "img-responsive")
-										.mini-desc
-											%h4= c.title
-											%p.hidden-xs=h truncate(c.description, length: 200)
-					%hr
 					- @published_only.each do |p|
 						.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
 							.mask
@@ -75,16 +65,6 @@
 						%span.glyphicon.glyphicon-th-list
 						Latest TV Series
 						= link_to "View All", tv_series_path, class: 'btn btn-link btn-xs'
-						.carousel
-							- @carousel_siri.each do |c|
-								.movie.latest
-									= link_to siri_genre_show_path(c, view: c.siri_genre.slug) do
-										.gradient
-										= image_tag(c.header_image.standard.url, class: "img-responsive")
-										.mini-desc
-											%h4= c.title
-											%p.hidden-xs=h truncate(c.description, length: 200)
-					%hr
 					- @siris.each do |siri|
 						.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
 							.mask
@@ -111,16 +91,6 @@
 						%span.glyphicon.glyphicon-th-list
 						Latest Anime
 						= link_to "View All", anime_series_path, class: 'btn btn-link btn-xs'
-						.carousel
-							- @carousel_anime.each do |c|
-								.movie.latest
-									= link_to anime_genre_show_path(c, anime_view: c.anime_genre.slug) do
-										.gradient
-										= image_tag(c.header_image.standard.url, class: "img-responsive")
-										.mini-desc
-											%h4= c.title
-											%p.hidden-xs=h truncate(c.description, length: 200)
-					%hr
 					- @animes.each do |anime|
 						.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
 							.mask
@@ -147,16 +117,6 @@
 						%span.glyphicon.glyphicon-th-list
 						Latest Asian Drama
 						= link_to "View All", asian_drama_path, class: 'btn btn-link btn-xs'
-						.carousel
-							- @carousel_asian.each do |c|
-								.movie.latest
-									= link_to asian_genre_show_path(c, asian_view: c.asian_genre.slug) do
-										.gradient
-										= image_tag(c.header_image.standard.url, class: "img-responsive")
-										.mini-desc
-											%h4= c.title
-											%p.hidden-xs=h truncate(c.description, length: 200)
-					%hr
 					- @asians.each do |asian|
 						.movie.small-movie.effect{class: cycle('', '', '', '', 'last')}
 							.mask
