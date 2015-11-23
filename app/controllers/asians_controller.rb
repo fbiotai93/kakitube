@@ -91,6 +91,6 @@ class AsiansController < ApplicationController
   end
 
   def asian_params
-  	params.require(:asian).permit(:title, :status, :imdbID, :poster, :poster_cache, :header_image, :header_image_cache, :year, :rated, :released, :runtime, :description, :director, :writer, :actors, :language, :country, :asian_genre_id, :awards, :metascore, :imdbrating, :imdbvotes, :gallery_image_1, :gallery_image_1_cache, :gallery_image_2, :gallery_image_2_cache, :gallery_image_3, :gallery_image_3_cache, :bg_image, :bg_image_cache)
+  	params.require(:asian).permit(:title, :status, :imdbID, :poster, :poster_cache, :header_image, :header_image_cache, :year, :rated, :released, :runtime, :description, :director, :writer, :actors, :language, :country, :asian_genre_id, :awards, :metascore, :imdbrating, :imdbvotes, :gallery_image_1, :gallery_image_1_cache, :gallery_image_2, :gallery_image_2_cache, :gallery_image_3, :gallery_image_3_cache)
   end
 end

@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_filter :set_post, only: [:show, :edit, :update, :destroy]
   before_filter :admin_only
   include HTTParty
-  
+
   def index
   	@posts = Post.all
   end
@@ -90,6 +90,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-  	params.require(:post).permit(:user_id, :genre_id, :poster, :poster_cache, :title, :description, :embed, :embed2, :embed3, :imdbID, :year, :rated, :released, :runtime, :director, :writer, :actors, :plot, :language, :country, :awards, :poster, :metascore, :imdbrating, :imdbvotes, :header_image, :header_image_cache, :featured, :trailer, :gallery_image_1, :gallery_image_1_cache, :gallery_image_2, :gallery_image_2_cache, :gallery_image_3, :gallery_image_3_cache, :bg_image, :bg_image_cache)
+  	params.require(:post).permit(:user_id, :genre_id, :poster, :poster_cache, :title, :description, :embed, :embed2, :embed3, :imdbID, :year, :rated, :released, :runtime, :director, :writer, :actors, :plot, :language, :country, :awards, :poster, :metascore, :imdbrating, :imdbvotes, :header_image, :header_image_cache, :featured, :trailer, :gallery_image_1, :gallery_image_1_cache, :gallery_image_2, :gallery_image_2_cache, :gallery_image_3, :gallery_image_3_cache)
   end
 end

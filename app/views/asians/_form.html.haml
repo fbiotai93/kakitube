@@ -41,16 +41,6 @@
 						= f.file_field :header_image, class: "form-control"
 						= f.hidden_field :header_image_cache
 				.form-group
-					= f.label :bg_image, "Header Image", class: "col-sm-2 control-label"
-					.col-sm-10
-						- if @asian.try(:bg_image?)
-							= image_tag(@asian.bg_image_url(:standard), class: "img-responsive")
-						- else
-							= image_tag('poster-background.png', class: "img-responsive")
-						%h6 Replace current image
-						= f.file_field :bg_image, class: "form-control"
-						= f.hidden_field :bg_image_cache
-				.form-group
 					= f.label :title, "Anime Name", class: "col-sm-2 control-label"
 					.col-sm-10
 						= f.text_field :title, class: "form-control", placeholder: "Anime Name"
